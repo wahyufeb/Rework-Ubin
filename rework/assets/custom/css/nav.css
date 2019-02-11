@@ -1,0 +1,101 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+a:hover{
+    text-decoration: none;
+    color:#FFA900;
+}
+
+.fa-shopping-cart{
+    opacity: 0;
+}
+.navbar {
+    width: 100%;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+}
+
+.navbar .navbar-brand{
+    color: #FFA900;
+}
+.navbar a:nth-child(2){
+    opacity: 0;
+}
+
+.dua {
+    opacity: 1;
+}
+
+#search {
+    border-radius: 20px;
+    width: 300px;
+}
+
+#btn-search{
+    border-radius: 50%;
+    margin-left: -50px;
+}
+
+.navbar-nav{
+    margin-left: 50%;
+}
+
+.navbar-nav li {
+    margin-left: 10px;
+}
+.sign {
+    border-radius: 15px;
+    background-color: white;
+    border: 1px solid #FFA900;
+    color:#FFA900; 
+}
+
+.sign:hover{
+    background-color: #FFA900;
+    border: 1px solid #FFA900;
+}
+/* Menu Dropdown */
+.menu {
+    width: 100%;
+    margin-top: 60px;
+    border-top: 1px solid #B9B9B9; 
+    border-bottom: 1px solid #B9B9B9; 
+    margin-bottom: 30px;
+}
+
+
+
+
+@media only screen and (max-width: 1000px) {
+    .navbar-nav{
+        margin-left: 0;
+    }
+
+    .navbar-nav li {
+        margin-left: 0;
+    }
+
+    .fa-shopping-cart{
+        opacity: 1;
+    }
+    .navbar a:nth-child(2){
+        opacity: 1;
+    } 
+
+    .dua {
+        opacity: 0;
+    }
+
+    .nav-item:nth-child(2) span{
+        opacity: 0;  
+    }
+  }
+
