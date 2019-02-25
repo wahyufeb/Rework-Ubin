@@ -1,0 +1,111 @@
+body {
+  margin-top: 60px;
+}
+
+.user-content {
+  margin-bottom: 60px;
+}
+
+.left-side {
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.photo-profile a img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  float: left;
+  margin-left: 20px;
+  text-align: center;
+  line-height: 64px;
+}
+
+.photo-profile a {
+  transition: 0.3s;
+  color: grey;
+}
+
+.photo-profile a:hover {
+  color: white;
+}
+
+.header-menu p {
+  float: left;
+  line-height: 64px;
+  margin-left: 10px;
+}
+
+.side-menu {
+  float: left;
+  padding-left: 0;
+}
+
+.side-menu ul {
+  list-style: none;
+  margin-left: -20px;
+  cursor: pointer;
+}
+
+#dropdown {
+  cursor: pointer;
+}
+
+.side-menu ul li {
+  margin-bottom: 10px;
+}
+
+.menu-side .active {
+  color: red;
+}
+
+.right-side {
+  margin-left: 20px;
+}
+
+.right-side table tbody td .trash {
+  color: orange;
+}
+
+.right-side table tbody td .trash:hover {
+  color: red;
+  -webkit-animation: trashdance 0.4s infinite; /* Safari 4+ */
+  -moz-animation: trashdance 0.4s infinite; /* Fx 5+ */
+  -o-animation: trashdance 0.4s infinite; /* Opera 12+ */
+  animation: trashdance 0.4s infinite; /* IE 10+, Fx 29+ */
+}
+
+/* Button  */
+.continue-button {
+  margin: 0 auto;
+}
+
+/* delete photo profile */
+#delete-photo{
+    color:red;
+}
+
+@keyframes trashdance {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(30deg);
+  }
+
+  100% {
+    transform: rotate(-30deg);
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .side-menu ul {
+    display: none;
+    background-color: white;
+    position: relative;
+    z-index: 20;
+    margin-left: -180px;
+    margin-top: 100px;
+    cursor: pointer;
+  }
+}

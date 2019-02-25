@@ -1,0 +1,76 @@
+REWORK E COMMERCE UBIN by AlexzCorp
+
+Database Structure
+    1. Users Table for
+                    -> Login Page
+                    -> Registration Page
+                    -> Testimonial Page
+        Table Structure 
+            1. Id_user
+            2. Email
+            3. Name
+                -> first name
+                -> last name
+            4. Telephone
+            5. Password
+            6. Level
+                -> super_admin
+                -> admin
+                -> member
+
+
+    2. Products Table for
+                        -> Review Product Page
+                        -> Checkout Page / Order Page
+                        -> Payment Page
+        Table Structure
+            1. Id_product
+            2. Name
+            3. Price
+            4. Weight
+            5. Description
+    
+
+    3. Orders Table for 
+                        -> Checkut Page / Order Page
+        Table Structure
+            1. Id_order
+            2. Id_user
+            3. Id_product
+            4. Time
+            5. Status
+                -> unpaid
+                -> paid
+        
+
+
+Component:
+    1. Home Page
+        -> Top Discount Product
+        -> Free Shipping Product
+        -> Top 10 Product
+        -> Testimonial about Product
+        -> About Website
+            -> Contact
+            -> Social Media
+        
+    2. Review Product Page
+        -> Huge Image Product (zoom features only)
+        -> Price
+        -> Description about Product
+        -> Add to cart BUTTON
+        -> Form Comment/Testimoni about product
+
+    3. Login Page
+        -> Website logo
+        -> Form for Login
+
+    4. Registration Page
+        -> Website Logo
+        -> Form for Registration
+        -> Confirmation with email
+
+    5. Checkout Page / Order Page
+        -> Product
+        -> Price
+    6. Payment Page

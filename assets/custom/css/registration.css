@@ -1,0 +1,10 @@
+.sign {
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.sign .btn{
+    width: 100%;
+    background-color: #FFA900;
+    color: white;
+}

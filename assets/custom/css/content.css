@@ -1,0 +1,155 @@
+/* Discount */
+.discount {
+  height: 300px;
+  background-position: center;
+  background-size: cover;
+  background-image: url("../../img/mugs.jpg");
+}
+
+.discount h1 {
+  position: absolute;
+  left: 30px;
+  top: 20px;
+  z-index: 10;
+  transform: rotate(-40deg);
+}
+
+.discount img {
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.discount button {
+  position: absolute;
+  right: 40px;
+  bottom: 20px;
+  background-color: #ffc900;
+  border: 2px solid #ffc900;
+  width: 120px;
+  height: 45px;
+  border-radius: 20px;
+}
+
+.discount button:hover {
+  background-color: #ffa900;
+  border: 2px solid #ffa900;
+}
+/* end Discount */
+
+/* Top Items */
+.list {
+  width: 100%;
+  margin-top: 70px;
+}
+
+.top-items {
+  float: left;
+}
+
+.top-items .card img {
+  height: 200px;
+}
+
+.top-items .card {
+  margin-bottom: 30px;
+}
+
+.top-items .card p {
+  margin-top: -10px;
+}
+
+.top-items .card .card-body a {
+  height: 35px;
+  font-size: 15px;
+  line-height: 25px;
+  background-color: #ffaa00;
+  border: 1px solid #ffc900;
+  margin-left: 15px;
+}
+/* end Top Items */
+
+/* Free Shipping */
+.free-shipping {
+  width: 100%;
+  margin-top: 70px;
+}
+
+.product-free-shipping {
+  float: left;
+}
+
+.product-free-shipping .card {
+  margin-bottom: 20px;
+}
+
+.product-free-shipping .card p {
+  margin-top: -10px;
+}
+
+.product-free-shipping .card img {
+  height: 200px;
+}
+
+.product-free-shipping .card .card-body a {
+  height: 35px;
+  font-size: 15px;
+  line-height: 25px;
+  background-color: #ffaa00;
+  border: 1px solid #ffc900;
+  margin-left: 15px;
+}
+
+/* End Free Shipping */
+
+/* pagination */
+#pagination {
+  margin: auto;
+}
+/* end pagination */
+
+/* Testimonial */
+/* end testimonial */
+.ilustration {
+  width: 100%;
+}
+
+@media only screen and (max-width: 750px) {
+  /* discount */
+  .discount {
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 10px;
+  }
+  /* end discount */
+
+  /* Top Items */
+  .top-product {
+    height: 180px;
+    margin-bottom: 20px;
+  }
+  /* end Items */
+}
+
+@media only screen and (max-width: 600px) {
+  /* Top Items */
+  .top-items .card img {
+    height: 150px;
+  }
+
+  .top-items .card a {
+    bottom: 10px;
+  }
+
+  /* End top Items */
+
+  /* Free Shipping */
+  .product-free-shipping .card img {
+    height: 150px;
+  }
+
+  .product-free-shipping .card .card-body a {
+    bottom: 10px;
+  }
+  /* end Free Shipping */
+}

@@ -1,0 +1,151 @@
+.big-img{
+}
+.big-img img{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: red;
+    margin:0;
+    padding: 0;
+}
+
+/* Price & Weight */
+.con-price, .con-weight {
+    margin-top: 20px;
+}
+.con-weight h4 {
+    margin-top: -20px;
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.con-price h3{
+    margin-top: -20px;
+}
+
+/* Description */
+.con-description {
+    margin-top: 20px;
+}
+
+.description{
+    padding: 5px;
+    margin-top: -10px;
+    background-color: rgb(243, 243, 243);
+}
+
+/* Add to Cart */
+.add_cart {
+    background-color: #FFA900;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.add_cart:hover{
+    background-color: white;
+    color: #FFA900;
+    border: 1px solid #FFA900;
+}
+
+/* Testimonial */
+.con-testimonial{
+    padding-left: 0;
+}
+
+.testimonial{   
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.testimonial .photo-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    floatl:left;
+}
+
+.testimonial .photo-profile span {
+    font-weight: bold;
+}
+
+.testimonial .photo-profile p {
+    font-size: 15px;
+}
+
+/* Recent Side */
+.recent-side p{
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+.recent-side hr {
+    margin-top: -6px;
+    border: 2px solid orange;
+    width: 80%;
+    float: left;
+}
+
+.recent-side .recent-img img {
+    width: 100%;
+    position: relative;
+    top: 0;
+}
+
+.recent-side .recent-img p {
+    transition: .5s;
+    position: relative;
+    left: 0;
+    top: -50px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    padding-left: 20px;
+}
+.recent-side .recent-img .hover a{
+    transition: .5s;
+    position: relative;
+    left: 0;
+    top: -5px;
+    height: 30px;
+    color: white;
+    padding-left: 20px;
+    font-size: 18px;
+}
+
+/* Recent Image */
+.recent-img {
+    padding: 0;
+}
+.recent-side .recent-img .hover-img{
+    transition: .4s;
+}
+
+.recent-side .recent-img p{
+    opacity: 0;
+}
+
+/* Pagination */
+#pagination{
+    margin: auto;
+    margin-bottom: 100px;
+}
+
+
+
+
+
+@media only screen and (max-width: 400px) {
+    .product-side h2{
+        font-size: 20px;                                                                     
+    }
+    .con-price h3{
+        font-size: 25px;
+    }
+
+    .description {
+        font-size: 15px;
+    }
+    .testimonial .photo-profile p {
+        font-size: 13px;
+    }
+}
