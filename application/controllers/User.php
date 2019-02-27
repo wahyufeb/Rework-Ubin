@@ -48,6 +48,23 @@ class User extends CI_Controller {
 
     }
 
+    // Donation 
+    function donation(){
+        $id = $this->session->userdata('id_user');
+        $where = array('id_user' => $id);
+        $data['user'] = $this->M_User->getUser($where, 'users');
+        $this->template->user('user/donation', $data);
+    }
+
+    // Payment
+    function setting(){
+        $id = $this->session->userdata('id_user');
+        $where = array('id_user' => $id);
+        $data['user'] = $this->M_User->getUser($where, 'users');
+        $this->template->user('user/setting', $data);
+
+    }
+
     // Logout   
     function logout(){
         $this->session->sess_destroy();

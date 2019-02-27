@@ -109,7 +109,6 @@
     </div>
 </body>
 <script>
-$('#delete-photo').tooltip('toggle');
 
 Dropzone.autoDiscover = false;
 

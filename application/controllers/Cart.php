@@ -12,6 +12,9 @@ class Cart extends CI_Controller {
 
         // load model User
         $this->load->model('M_User');
+
+        //load model Cart
+        $this->load->model('M_Cart');
         
     }
     
@@ -19,6 +22,7 @@ class Cart extends CI_Controller {
         $id = $this->session->userdata('id_user');
         $where = array('id_user' => $id);
         $data['user'] = $this->M_User->getUser($where, 'users');
+
         $this->template->user('user/shopping_cart', $data);
     }
 
@@ -34,6 +38,39 @@ class Cart extends CI_Controller {
     function clearCart(){
         $this->cart->destroy();
         redirect('Cart/index');
+    }
+
+    // add qty
+    function addQty($id, $rowid, $qty, $weight, $image){
+        $where      = array('id_product' => $id);
+        $itemsId    = $this->M_Cart->getWeightId($where, 'products');
+        $itemWeight =  $itemsId[0]['weight'];
+
+        $data = array('rowid' => $rowid,
+                        'qty' => $qty+1,
+                        'options' => array('weight' => $weight + $itemWeight,
+                                            'image' => $image
+                        )
+                );
+        $cart = $this->cart->update($data);
+        redirect('Cart/index');   
+    }
+
+    // min qty
+    function minQty($id, $rowid, $qty, $weight, $image){
+        $where      = array('id_product' => $id);
+        $itemsId    = $this->M_Cart->getWeightId($where, 'products');
+        $itemWeight =  $itemsId[0]['weight'];
+
+        $data = array('rowid' => $rowid,
+                        'qty' => $qty-1,
+                        'options' => array('weight' => $weight - $itemWeight,
+                                            'image' => $image
+                        )
+                );
+        $cart = $this->cart->update($data);
+        $this->M_Cart->minWeight($data);
+        redirect('Cart/index');   
     }
 
 

@@ -79,12 +79,12 @@
                         </a>
                     </li>
                     <li class="menu-side">
-                        <a href="#"><i class="fas fa-hand-holding-usd">
+                        <a href="<?= base_url() ?>User/donation"><i class="fas fa-hand-holding-usd">
                             </i> Donation
                         </a>
                     </li>
                     <li class="menu-side">
-                        <a href="#"><i class="fas fa-cog"></i> Setting
+                        <a href="<?= base_url() ?>User/setting"><i class="fas fa-cog"></i> Setting
                         </a>  
                     </li>
                     <li class="menu-side">

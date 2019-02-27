@@ -52,7 +52,9 @@ class Ubin extends CI_Controller {
 			'qty'     => 1,
 			'price'   => $getProducts->price,
 			'name'    => $getProducts->name,
-			'options' => array('weight' => $getProducts->weight)
+			'options' => array('weight' => $getProducts->weight,
+								'image' => $getProducts->image
+								)
 					);
 		$this->cart->insert($data);
 		redirect(base_url());

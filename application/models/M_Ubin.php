@@ -5,7 +5,7 @@ class M_Ubin extends CI_Model {
 
     // get all products
     function getProducts(){
-        return $this->db->get('products')->result_array();
+        return $this->db->limit(12)->get('products')->result_array();
     }
 
     // get product by Id
