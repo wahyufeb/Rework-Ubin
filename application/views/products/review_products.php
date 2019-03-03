@@ -24,6 +24,14 @@
                     <p class="weight">Weight</p>
                     <h4><?= $row['weight']; ?> gram</h4>
                 </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-3 con-sold">
+                    <p class="price">Sold</p>
+                    <h5><?= $row['sold']; ?></h5>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-3 con-stock">
+                    <p class="stock">Stock</p>
+                    <h5><?= $row['stock']; ?></h5>
+                </div>
                 <div class="col-lg-12 con-description">
                     <h5>Description</h5>
                     <p class="description">

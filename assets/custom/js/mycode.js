@@ -24,7 +24,6 @@ $(".logout").on("click", function(e) {
 
 // tombol dropdown user
 $("#dropdown").on("click", function() {
-  $("#menu-user").css("z-index", "-1");
   $("#top-arrow")
     .toggleClass("fa-caret-down")
     .toggleClass("fa-caret-up");

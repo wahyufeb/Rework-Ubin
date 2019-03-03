@@ -22,8 +22,12 @@ class Ubin extends CI_Controller {
 		$where = array('id_user' => $id);
 		// get user by id
 		$data['user'] = $this->M_User->getUser($where, 'users');
-		// get products
+		// ger products discount
+		$data['discount'] = $this->M_Ubin->discount();
+		// get products with no discount
 		$data['products'] = $this->M_Ubin->getProducts();
+		// top product
+		$data['top'] = $this->M_Ubin->top();
 		$this->template->component('home', $data);
 	}
 
@@ -46,17 +50,20 @@ class Ubin extends CI_Controller {
 	function addToCart($id){
 		$where = array('id_product' => $id);
 		$getProducts = $this->M_Ubin->productId($where);
-
-		$data = array(
-			'id'      => $getProducts->id_product,
-			'qty'     => 1,
-			'price'   => $getProducts->price,
-			'name'    => $getProducts->name,
-			'options' => array('weight' => $getProducts->weight,
-								'image' => $getProducts->image
-								)
-					);
-		$this->cart->insert($data);
+		if($getProducts->stock < 1){
+			$this->session->set_flashdata('nostock', 'Sorry');
+		}else{
+			$data = array(
+				'id'      => $getProducts->id_product,
+				'qty'     => 1,
+				'price'   => $getProducts->price,
+				'name'    => $getProducts->name,
+				'options' => array('weight' => $getProducts->weight,
+									'image' => $getProducts->image
+									)
+						);
+			$this->cart->insert($data);
+		}
 		redirect(base_url());
 	}
 }

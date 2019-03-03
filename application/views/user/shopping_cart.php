@@ -1,4 +1,9 @@
+<div id="order" data-order="<?= $this->session->flashdata('order');  ?>"></div>
+<?php if($this->session->flashdata('order')){ ?>
+<?php $this->session->flashdata('order') ?>
+<?php }?>
         <div class="col-lg-9 col-md-9 col-sm-9 col-9 right-side">
+        <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead align="center">
                     <tr>
@@ -41,6 +46,7 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
             <div class="row">
                 <div class="continue-button">
                     <a href="<?= base_url() ?>Cart/clearCart" class="btn btn-danger" id="clear-cart">Clear Cart <i class="fas fa-trash"></i></a>

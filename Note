@@ -1,5 +1,4 @@
-REWORK E COMMERCE UBIN by AlexzCorp
-
+REWORK E COMMERCE UBIN by Wahyu Febrianto
 Database Structure
     1. Users Table for
                     -> Login Page
@@ -29,6 +28,9 @@ Database Structure
             3. Price
             4. Weight
             5. Description
+            6. Stock
+            7. Catagory
+            8. Sold
     
 
     3. Orders Table for 
@@ -41,6 +43,10 @@ Database Structure
             5. Status
                 -> unpaid
                 -> paid
+Orders Table
+1. tabel orders menampung id_product, qty => buat row baru -> id_product, qty
+2. tabel cost menampung dest_prov, dest city, courier, service, postalcode, street_adress, total
+
         
 
 
@@ -74,3 +80,35 @@ Component:
         -> Product
         -> Price
     6. Payment Page
+
+
+
+Algoritma stock berkurang
+1. get cart session => id_product, qty
+2. get products table => id_product, stock
+3. kurangkan stock dengan qty
+4. update data ke products
+
+94
+96 
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+

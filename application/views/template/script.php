@@ -6,7 +6,7 @@
 <script src="<?= base_url() ?>/assets/custom/js/custom.js"></script>
 <script src="<?= base_url() ?>/assets/custom/js/sweetcustom.js"></script>
 <!-- <script src="<?= base_url() ?>assets/dropzone/dropzone.min.js"></script> -->
-<script src="<?= base_url() ?>/assets/custom/js/mycode.js"></script>
+<script src="<?= base_url() ?>assets/custom/js/mycode.js"></script>
 <script>
     $('#navigation').slimmenu(
         {

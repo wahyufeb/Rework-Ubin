@@ -11,6 +11,8 @@ class Order extends CI_Controller {
         }
         $this->load->library('Template');
         $this->load->model('M_User');
+        $this->load->model('M_Order');
+        
         
     }
 
@@ -80,7 +82,36 @@ class Order extends CI_Controller {
         echo $output;
     }
 
+    function getCityId($idCity, $idProvince){
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://api.rajaongkir.com/starter/city?id=$idCity&province=$idProvince",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_HTTPHEADER => array(
+        "key: $this->api_key"
+        ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            echo "cURL Error #:" . $err;
+        } else {
+            return json_decode($response);
+        }
+    }
+
     function getcost(){
+        $prov = $this->get_city($province_id);
         $originCity = 37;
         $destCity = $this->input->post('dest', TRUE);
         $courier = $this->input->post('courier', TRUE);
@@ -118,7 +149,7 @@ class Order extends CI_Controller {
         } else {
             // echo $response;
             $data =  json_decode($response, TRUE);
-            echo '<option value="" selected disabled>Service</option>';
+            echo '<option value="" selected disabled>- Service - </option>';
             for ($i=0; $i < count($data['rajaongkir']['results']); $i++) { 
 
                 for ($l=0; $l < count($data['rajaongkir']['results'][$i]['costs']); $l++) { 
@@ -141,15 +172,55 @@ class Order extends CI_Controller {
         $data['user'] = $this->M_User->getUser($where, 'users');
         $this->template->user('user/order', $data);
     }
-    function as(){
-        $data['cost'] = $this->get_cost();
-    }
 
     function cost(){
         $totalPayment = explode(',', $this->input->post('service', TRUE));
         $total        = $this->cart->total() + $totalPayment[0];
 
         echo $totalPayment[0].','.$total;
+    }
+
+    function getOrder(){
+        // User
+        $id = $this->session->userdata('id_user');
+
+        //Tabel Invoices
+        date_default_timezone_set('Asia/Jakarta');
+        $invoice = array(
+            'id_user' => $id,
+            'date' => date('Y-m-d H:i:s'),
+            'due_date' => date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d')+1,date('Y'))),
+            'status' => 'unpaid'
+        );
+
+
+        // Tabel Costs
+        $destProvince   = $this->input->post('destination_province');
+        $destCity       = $this->input->post('destination_city');
+        $courier        = $this->input->post('couirer');
+        $service        = $this->input->post('service');
+        $postalcode     = $this->input->post('postalcode');
+        $street         = $this->input->post('street');
+        $total          = $this->input->post('total');
+
+        $prov = $this->get_city($destProvince);
+        $dataProvince = $prov->rajaongkir->results[0]->province;
+
+        $city = $this->getCityId($destCity, $destProvince);
+        $dataCity = $city->rajaongkir->results->city_name;
+        
+        $costs = array('province' => $dataProvince,
+                        'city' => $dataCity,
+                        'courier' => $courier,
+                        'service' => $service,
+                        'postal_code' => $postalcode,
+                        'street_adress' => $street,
+                        'total_payment' => $total
+                    );
+        $this->M_Order->orderNow($id, $invoice, $costs);
+        $this->session->set_flashdata('order', 'sukses');
+        redirect('Cart/index');
+        
     }
 
 }

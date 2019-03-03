@@ -80,3 +80,23 @@ $("#delete-product").on("click", function(e) {
     }
   });
 });
+
+// Order page
+const orderData = $("#order").data("order");
+const url = "http://localhost/rework/User/payment";
+if (orderData == "sukses") {
+  Swal.fire("Order Successfully", "Please go to Payment page!", "success");
+  setTimeout(() => {
+    document.location.href = url;
+  }, 1500);
+}
+
+// Home Page
+const nostock = $("#nostock").data("stock");
+if (nostock) {
+  Swal.fire({
+    type: "error",
+    title: "Oops.. :(",
+    text: "Sorry there is no stock"
+  });
+}
