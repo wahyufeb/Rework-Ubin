@@ -46,8 +46,18 @@ Database Structure
 Orders Table
 1. tabel orders menampung id_product, qty => buat row baru -> id_product, qty
 2. tabel cost menampung dest_prov, dest city, courier, service, postalcode, street_adress, total
+     
 
-        
+
+    4. Testimonials Table for 
+                            -> add comment from user about product
+        Table structure
+            1. id_testi
+            2. id_user
+            3. id_product
+            4. content
+            5. time
+    
 
 
 Component:
@@ -89,8 +99,10 @@ Algoritma stock berkurang
 3. kurangkan stock dengan qty
 4. update data ke products
 
-94
-96 
+
+
+
+
 
 
 

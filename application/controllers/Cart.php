@@ -44,16 +44,29 @@ class Cart extends CI_Controller {
     function addQty($id, $rowid, $qty, $weight, $image){
         $where      = array('id_product' => $id);
         $itemsId    = $this->M_Cart->getWeightId($where, 'products');
-        $itemWeight =  $itemsId[0]['weight'];
+        $itemWeight = $itemsId[0]['weight'];
 
-        $data = array('rowid' => $rowid,
-                        'qty' => $qty+1,
-                        'options' => array('weight' => $weight + $itemWeight,
-                                            'image' => $image
-                        )
-                );
-        $cart = $this->cart->update($data);
-        redirect('Cart/index');   
+        $productId  = $this->M_Cart->getProductWhere($where);
+        if($productId->num_rows() > 0 ){
+            $rowId = $productId->row();
+            $rowStock = $rowId->stock;
+
+            if($rowStock ==  $qty){
+                $this->session->set_flashdata('nostock', 'Sorry');
+                redirect('Cart/index');
+            }else{
+                $data = array('rowid' => $rowid,
+                                'qty' => $qty+1,
+                                'options' => array('weight' => $weight + $itemWeight,
+                                                    'image' => $image
+                                )
+                        );
+                $cart = $this->cart->update($data);
+                redirect('Cart/index');   
+            }
+        }
+
+
     }
 
     // min qty
@@ -69,7 +82,6 @@ class Cart extends CI_Controller {
                         )
                 );
         $cart = $this->cart->update($data);
-        $this->M_Cart->minWeight($data);
         redirect('Cart/index');   
     }
 

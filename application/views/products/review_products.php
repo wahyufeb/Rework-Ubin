@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-lg-9 product-side">
 <?php foreach($productid as $row): ?>
-        <h2><?= $row['name']; ?></h2>
+            <h2><?= $row['name']; ?></h2>
             <div class="big-img">
                 <img class="col-lg-12 col-md-12 col-sm-12 col-12 img-product" src="<?= base_url() ?>assets/img/<?= $row['image'];?>" alt="">
             </div>
@@ -41,25 +41,6 @@
             </div>
             <a href="<?= base_url() ?>Ubin/addToCart/<?= $row['id_product']; ?>" class="col-lg-12 btn btn add_cart">Buy</a>
 <?php endforeach; ?>
-            <div class="col-lg-12 con-testimonial">
-                <h5>Testimonial</h5>
-                <div class="testimonial">
-                    <div class="row">
-                        <div class="col-lg-12 photo-profile">
-                            <img src="<?= base_url() ?>assets/img/3.jpg" alt="">
-                            <span>Lorem</span>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi eaque, similique, ducimus magni, impedit velit quod earum esse enim tempora quis? Quia inventore aspernatur nobis eum repellat quo necessitatibus asperiores?</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 photo-profile">
-                            <img src="<?= base_url() ?>assets/img/3.jpg" alt="">
-                            <span>Lorem</span>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi eaque, similique, ducimus magni, impedit velit quod earum esse enim tempora quis? Quia inventore aspernatur nobis eum repellat quo necessitatibus asperiores?</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="col-lg-3 recent-side">
             <p>Recent Products</p>
@@ -85,22 +66,56 @@
                     <a href="">Product Name</a>
                 </p>
             </div>
-            <div class="recent-img" >
-                <img src="<?= base_url() ?>assets/img/4.jpg" class="hover-img">
-                <p class="hover">
-                    $200
-                    <a href="">Product Name</a>
-                </p>
-            </div>
-            <div class="recent-img" >
-                <img src="<?= base_url() ?>assets/img/5.jpg" class="hover-img">
-                <p class="hover">
-                    $200
-                    <a href="">Product Name</a>
-                </p>
+        </div>
+        <div class="container">
+            <div class="testi" id="comment">
+                <h5>Testimonial</h5>
+                <div class="row" style="padding:20px;">
+                <?php foreach($comment as $row): ?>
+                    <div class="col-lg-12 photo-profile" style="background-color:#eaeff2;padding:15px;border-radius:10px;margin-bottom:10px;">
+                        <img src="<?= base_url() ?>uploads/<?= $row['photo'] ?>" alt="">
+                        <span><?= $row['name'] ?></span><span style="font-weight:lighter;font-size:15px;float:right;"><?= $row['date_created']; ?></span>
+                        <p><?= $row['comment'] ?></p>
+                        <?php if($this->session->userdata('id_user') == $row['id_user']){ ?>
+                        <div class="row">
+                            <div class="col-lg-12 text-right">
+                                <a href="<?= $row['id_comment'] ?>"><i class="far fa-edit"></i>edit</i></a>
+                                <a href="<?= base_url() ?>Comment/deleteComment/<?= $row['id_comment'] ?>/<?= $row['id_product'] ?>"><i class="fas fa-trash-alt"></i>delete</a>
+                                <a href="<?= $row['id_comment'] ?>"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </div>
+                        <?php } ?>
+                    </div>
+                <?php endforeach; ?>
+                </div>
             </div>
         </div>
-            <nav aria-label="Page navigation example" id="pagination">
+        </div>
+        <div class="row">
+            <div class="col-lg-1">
+                <div class="col-lg-12 col-sm-3 col-3">
+                <?php if($this->session->userdata('level') == "member"){ ?>
+                    <img src="<?= base_url() ?>uploads/<?= $user[0]->photo;?>" width="60" style="margin-top:35px;border-radius:50%;width:70px;height:70px;">
+                <?php }else{ ?>
+                    <img src="<?= base_url() ?>uploads/user.svg" width="60" style="margin-top:35px;border-radius:50%;width:70px;height:70px;">         
+                <?php } ?>
+                </div>
+            </div>
+            <div class="col-lg-11 col-md-12 col-sm-12 col-12">
+                    <form action="<?= base_url() ?>Comment/addComment" method="post">
+                    <input type="hidden" name="idproduct" value="<?= $this->uri->segment(3);
+                     ?>">
+                        <div class="form-group">
+                            <label for="comment">Comment</label>
+                            <textarea class="form-control" id="comment" rows="5"  name="comment"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12  text-right">
+                    <button type="submit" class="btn btn-primary">Submit <i class="fas fa-paper-plane"></i></button>
+                </div>
+            </form>
+                <!-- <nav aria-label="Page navigation example" id="pagination">
             <ul class="pagination">
                 <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                 <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -108,9 +123,10 @@
                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                 <li class="page-item"><a class="page-link" href="#">Next</a></li>
             </ul>
-            </nav>
+        </nav> -->
     </div>
 </div>
+                <!-- style="padding:5px;padding-top:15px;border-radius:20px;border:1px solid rgba(0,0,0,0.2);margin-bottom:10px;"" -->
     
 </body>
 </html>

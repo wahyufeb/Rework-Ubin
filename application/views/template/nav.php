@@ -31,7 +31,7 @@
                     $userlog =  $user[0]->name;
                     echo substr($userlog, 0, 5);
                 ?> 
-                <i class="fas fa-caret-down" id="arrow-menu"></i>
+                <i class="fas fa-caret-down " id="arrow-menu"></i>
                 <ul id="login-menu">
                     <li><a href="<?= base_url() ?>User/profile">View profile</a></li>
                     <li><a href="#">Setting</a></li>
@@ -40,7 +40,8 @@
             </li>
             <?php endif; ?>
             <li class="nav-item">
-                <a href="<?= base_url() ?>Cart/index"><i class="fas fa-shopping-cart fa-md dua mt-2"></i><span> <?php echo  $this->cart->total_items(); ?> items</span></a>
+                <a href="<?= base_url() ?>Cart/index"><i class="fas fa-shopping-cart fa-md dua mt-2 "></i>
+                <span> <?php echo  $this->cart->total_items(); ?> items</span></a>
             </li>
         </ul>
     </div>

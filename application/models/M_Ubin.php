@@ -9,10 +9,17 @@ class M_Ubin extends CI_Model {
         $queryGet = $this->db->get('products');
         if($queryGet->num_rows() > 0){
             $rowProduct = $queryGet->row();
-            $noDiscount = 0;
             // no doscount
-            $where = array('discount' => $noDiscount);
-            return $this->db->limit(12)->get_where('products', $where)->result_array();
+            $where = array('discount' => 0);
+
+            // no stock
+            $noStock = 0;
+
+            $this->db->where($where);
+            $this->db->where_not_in('stock', $noStock);
+            $query = $this->db->get('products',4);
+            return $query->result_array();
+            
         }
         
     }
@@ -44,20 +51,27 @@ class M_Ubin extends CI_Model {
 
     // Top 4 products
     function top(){
-        $this->db->from('products');
-        $this->db->select('id_product,sold as total_sold, price, name, stock, image, ');         
-        $this->db->order_by('total_sold',' DESC');
-        $this->db->limit(4);
+        $this->db->from('products')
+                    ->select('id_product,sold as total_sold, price, name, stock, image, discount')
+                    ->order_by('total_sold',' DESC')
+                    ->order_by('discount', 'DESC')
+                    ->limit(4);
+
+        $noStock = 0;
+        $this->db->where_not_in('stock', $noStock);
         return $this->db->get()->result_array();  
     }
 
     //Discount
     function discount(){
-        $this->db->from('products');
-        $this->db->select('id_product, price, name, stock, image, sold, discount as getdiscount');
-        $this->db->order_by('getdiscount', 'DESC');
-        $this->db->limit(3);
-        return $this->db->get()->result_array();
+        $noStock = 0;
+        $this->db->where_not_in('stock', $noStock);
+        $query = $this->db->from('products')
+                            ->select('id_product, price, name, stock, image, sold, discount as discount')
+                            ->order_by('discount', 'DESC')
+                            ->limit(3);
+        return  $query->get()->result_array();
+
     }
 
 

@@ -63,6 +63,11 @@
                             <i class="fas fa-user"></i> Profile
                         </a>
                     </li>
+                    <!-- <li class="menu-side">
+                        <a href="<?= base_url() ?>User/comment">
+                        <i class="fas fa-comments"></i> Comments
+                        </a>
+                    </li> -->
                     <li class="menu-side">
                         <a href="<?= base_url() ?>">
                             <i class="fas fa-book"></i> Catalog
@@ -78,7 +83,7 @@
                             <i class="fas fa-money-bill-alt"></i> Payment
                         </a>
                     </li>
-                    <li class="menu-side">
+                    <!-- <li class="menu-side">
                         <a href="<?= base_url() ?>User/donation"><i class="fas fa-hand-holding-usd">
                             </i> Donation
                         </a>
@@ -86,7 +91,7 @@
                     <li class="menu-side">
                         <a href="<?= base_url() ?>User/setting"><i class="fas fa-cog"></i> Setting
                         </a>  
-                    </li>
+                    </li> -->
                     <li class="menu-side">
                         <a href="<?= base_url() ?>User/logout" class="logout">
                             <i class="fas fa-power-off"></i>  Logout

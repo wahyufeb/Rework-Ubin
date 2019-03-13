@@ -60,29 +60,20 @@
 }
 
 /* Testimonial */
-.con-testimonial {
-  padding-left: 0;
+.testi {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 100px;
 }
-
-.testimonial {
-  padding: 10px;
-  margin-top: 20px;
-}
-
-.testimonial .photo-profile img {
+.testi .photo-profile img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   background-position: center;
   background-size: cover;
-  floatl: left;
 }
 
-.testimonial .photo-profile span {
-  font-weight: bold;
-}
-
-.testimonial .photo-profile p {
+.testi .photo-profile p {
   font-size: 15px;
 }
 

@@ -11,6 +11,19 @@ $(document).ready(function() {
   });
 });
 
+//icon cart
+$(".add-cart").on("click", function(e) {
+  e.preventDefault();
+
+  const href = $(this).attr("href");
+  $(".fa-shopping-cart").addClass("animated tada fast");
+
+  setTimeout(() => {
+    $(".fa-shopping-cart").removeClass("animated tada fast");
+    document.location.href = href;
+  }, 900);
+});
+
 // User Side
 // $(document).ready(function() {
 //   $(".menu-side a").removeAttr("href");

@@ -1,0 +1,78 @@
+History Payment
+1. Product Name
+2. Qty
+3. Expired
+4. Total Payment
+5. Adress
+
+
+
+
+
+1. User Order
+2. setelah order user akan masuk ke hal. payment
+3. User harus membayarkan orderannya dalam jangka waktu 2 hari
+4. Jika 2 hari tidak membayar maka orderannya akan mempunyai status caceled
+5. setelah status canceled maka orderan yang berada di hal. page akan hilang
+6. Jika orderan hilang maka barang => qty akan ditmbahkan kbali ke hal. produk 
+    dengan stoknya akan kmbali juga, seperti sblum diorder
+
+
+QUESTION
+1. Apakah jika user sudah order terus orderannya blm dibayar dan blm mncapai 2 hari, apakah bisa user 
+    order lagi??
+2. Apakah pengurangan stok di hal. produk akan berkurang jika barang diklik add to cart??
+3. Apakah user harus mengirimkan / mengupload  bukti pembayaran berupa foto struck transfer ATM?
+4. Apakah sistem CUBIN mempunyai Tracker barang milik JNE, TIKI, or POS. jika barang akan dikirimkan
+    menggunakan kurir tsb?
+5. Apakah website CUBIN akan menggunakan layanan pembayaran  seperti Transfer Bank, Kartu Kredit, dan Paypal?
+
+
+
+Logika Pembayaran dan Cancel pembayaran
+
+#Pembayaran
+1. Jika User Mengklik "Pay Now" maka user akan dikirim email dari
+    CUBIN tentang rician pembayaran
+2. komponen yg berada di email yaitu : Salam,sedikit kata kata manis,  no Rekening Bank CUBIN, Jumlah yang harus dibayar,
+    kata2 untuk mengupload bukti pembayaran di menu Pembayaran
+
+#Cancel Pembayaran
+1. Ketika User mengeklik "Cancel " maka user membatalkan orderannya
+2. Menghapus di tabel orders, berdasarkan id_user
+3. Menghapus di tabel invoice, berdasarkan id_user
+4. Menghapus di tabel costs, berdasarkan id_cost yang didapat dari table orders =>
+    berdasarkan id_user
+5. Penambahan stok kembali / stok dari orderan yang dicancel ketika user mengcancel orderannya berdasarkan id_product dan qty nya 
+6. Setelah itu si User boleh order lagi
+
+
+*Note : user tidak bisa order ketika ada orderan yang belum jelas statusnya,
+    jika user mempunyai orderan yang belum terbayar, si User harus mengcancel orderannya dulu sebelum
+    si User order lagi. 
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+

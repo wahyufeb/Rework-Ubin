@@ -6,9 +6,9 @@
             <h5>Profile </h5>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus rerum debitis, quidem quam vero a voluptatum commodi maxime eligendi mollitia magnam eius excepturi, labore doloremque fugit itaque quibusdam sint suscipit.</p>
                 <div class="row">
-                    <div class="col-lg-10 col-md-10 col-sm-10 col-10 offset-lg-1 offset-md-1 offset-sm-2 offset-2">
+                    <div class="col-lg-11 col-md-12 col-sm-12 col-12 offset-lg-1 offset-md-1 ">
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-4">
                             <div class="photo">
                                 <img src="<?= base_url() ?>uploads/<?= $user[0]->photo;?>" width="100%">
                                     <a href="<?= base_url(); ?>User/delete_photo" id="delete-trash">
@@ -18,11 +18,11 @@
                                     </a>
                             </div>
                         </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9 col-12">
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-8">
                             <div class='content'>
                                 <div class="dropzone">
                                     <div class="dz-message">
-                                        <p> Drop file here to upload your photo profile</p>
+                                        <p style="font-size:15px;"> Drop file here to upload your photo profile</p>
                                     </div>
                                 </div>
                             </div>
@@ -32,12 +32,12 @@
                     <form action="<?= base_url() ?>User/profile_update" method="post">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                        <div class="form-group">
+                                        <div class="form-group ">
                                         <label for="email">Email address</label><br>  
                                         <small id="passwordHelpInline" class="text-muted">
                                             Your email adress : <?= $user[0]->email; ?>
                                         </small>
-                                        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email..." autocomplete="off" value="<?= $user[0]->email; ?>" required>
+                                        <input type="email" class="form-control " name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email..." autocomplete="off" value="<?= $user[0]->email; ?>" disabled required>
                                         <span style="color:red;font-size:13px;"><?= form_error('email'); ?></span>
                                     </div>
                                     </div>

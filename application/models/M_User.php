@@ -28,6 +28,7 @@ class M_User extends CI_Model {
         $this->db->where($where);
         $this->db->update($table, $data);
     }
+    // end 
 
 
     // function getUserajax($table, $where){
@@ -44,6 +45,34 @@ class M_User extends CI_Model {
         $this->db->where($where);
         $this->db->update($table, $data);
     }
+    // end
+
+    // Payment History
+    function paymentHistory($whereId){
+        // return $this->db->get_where('orders', $where);
+        // $this->db->select('DISTINCT(*)');
+        // $this->db->from('orders');
+        // $this->db->join('invoices', 'invoices.id_invoice = orders.id_invoice', 'left');
+        // $this->db->join('users', 'users.id_user = invoices.id_user', 'left'); 
+        // $this->db->join('products', 'products.id_product = orders.id_product', 'left');
+        // $this->db->join('costs', 'costs.id_cost = orders.id_cost', 'left');
+        // $this->db->where($whereName);
+        // $this->db->distinct();
+        $this->db->select('orders.id_user, orders.id_order, orders.id_invoice, orders.id_cost, orders.qty, invoices.date, invoices.due_date, invoices.status, costs.total, products.id_product, products.name, products.image');
+        $this->db->from('orders');
+        $this->db->join('users', 'users.id_user = orders.id_user', 'left');
+        $this->db->join('invoices', 'invoices.id_invoice = orders.id_invoice', 'left');
+        $this->db->join('costs', 'costs.id_cost = orders.id_cost', 'left');
+        $this->db->join('products', 'products.id_product = orders.id_product', 'left');
+        
+        $this->db->where($whereId);
+        
+        return $this->db->get()->result_array();
+    }
+
+
+
+
 
 
 }

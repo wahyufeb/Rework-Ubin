@@ -2,7 +2,9 @@
 const flashData = $(".flashdata").data("flashdata");
 
 if (flashData == "sukses") {
-  Swal.fire("Registration Successfully", "Click Ok to Continue!", "success");
+  Swal.fire("Registration Success", "Click Ok to Continue!", "success");
+} else if (flashData == "verifikasi") {
+  Swal.fire("Verification Success", "Click Ok to Continue!", "success");
 }
 
 // update profile sweetalert
@@ -83,12 +85,30 @@ $("#delete-product").on("click", function(e) {
 
 // Order page
 const orderData = $("#order").data("order");
-const url = "http://localhost/rework/User/payment";
+const url = "http://localhost/rework/User/getPayment";
+const gif = "http://localhost/rework/assets/img/email.gif";
+const gif2 = "http://localhost/rework/assets/img/send.gif";
+
 if (orderData == "sukses") {
-  Swal.fire("Order Successfully", "Please go to Payment page!", "success");
+  // Swal.fire("Order Successfully", "Please go to Payment page!", "success");
+  Swal.fire({
+    title: "Sending Email...",
+    width: 1000,
+    padding: "300px",
+    background: "transparent",
+    backdrop:
+      `
+      #fff
+      url("` +
+      gif +
+      `")
+      top
+      no-repeat
+    `
+  });
   setTimeout(() => {
     document.location.href = url;
-  }, 1500);
+  }, 3000);
 }
 
 // Home Page

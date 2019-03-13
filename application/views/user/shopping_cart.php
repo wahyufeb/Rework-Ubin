@@ -1,8 +1,10 @@
 <div id="order" data-order="<?= $this->session->flashdata('order');  ?>"></div>
-<?php if($this->session->flashdata('order')){ ?>
+<div id="nostock" data-stock="<?= $this->session->flashdata('nostock') ?>"></div>
+<?php if($this->session->flashdata('order') && $this->session->flashdata('nostock')){ ?>
 <?php $this->session->flashdata('order') ?>
+<?php $this->session->flashdata('nostock'); ?>
 <?php }?>
-        <div class="col-lg-9 col-md-9 col-sm-9 col-9 right-side">
+        <div class="col-lg-9 col-md-9 col-sm-11 col-11 right-side">
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead align="center">

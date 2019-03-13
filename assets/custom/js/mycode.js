@@ -42,3 +42,16 @@ $("#login_user").on("click", function() {
     .toggleClass("fa-caret-down")
     .toggleClass("fa-caret-up");
 });
+
+const date = $("#clock").data("clock");
+const cancel = $("#cancel");
+const href = cancel.attr("href");
+$("#clock").countdown(date, function(event) {
+  $(this).html(event.strftime("%D days %H:%M:%S"));
+});
+
+cancel.click(e => {
+  e.preventDefault();
+  $("#clock").remove();
+  document.location.href = href;
+});

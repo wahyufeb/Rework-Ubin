@@ -10,7 +10,7 @@
         <div class="col-lg- col-md-9 col-sm-12 col-12 offset-md-1  right-side">
             <div class="table-responsive">
                   <table class="table table-bordered table-striped">
-                      <thead align="center" class="thead-dark">
+                      <thead align="center" >
                           <tr>
                           <th scope="col">No</th>
                           <th>Image</th>
@@ -112,6 +112,7 @@
                     </div>
                 </div>
                 <hr>
+                <div id="costtotal"></div>
                 <div id="totalpayment"></div>
                 <div class="row">
                     <div class="col-lg-3 offset-lg-9" id="cost">                    
@@ -134,7 +135,6 @@
     //menampilkan kota tujuan pengiriman
     $(document).ready(function () {
         $('#destination_province').change(function () {
-
             var province_id = $('#destination_province').val();
             $.get('<?php echo site_url('Order/get_city_by_province/') ?>'+ province_id, function (resp) {
                 $('#destination_city').html(resp);
@@ -170,6 +170,7 @@
                     var result = resp.split(",");
                     var resultCost  = result[0];
                     var resultTotal = result[1];
+                  $('#costtotal').html(`<input type="hidden" value="`+result[0]+`"  name="cost" >`)
                   $('#totalpayment').html(`<input type="hidden" value="`+result[1]+`"  name="total" >`)
                     var reverse = resultCost.toString().split('').reverse().join(''),
                             cost  = reverse.match(/\d{1,3}/g);

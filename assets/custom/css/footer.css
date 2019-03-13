@@ -1,31 +1,30 @@
-.footer{
-    width: 100%;
-    background-color: rgb(42, 41, 41);
-    margin-top: 60px;
+.footer {
+  width: 100%;
+  background-color: rgb(42, 41, 41);
+  margin-top: 60px;
 }
 
 .footer .row {
-    padding-top: 30px;
-    padding-bottom: 80px;    
+  padding-top: 30px;
+  padding-bottom: 80px;
 }
 
-.footer .row h4{
-    color: rgba(255, 255, 255, 0.7);
-    margin-top: 20px;
+.footer .row h4 {
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 20px;
 }
 
-.footer .container .row ul li{
-    list-style: none;
-    color: rgba(255, 255, 255, 0.5);
-    text-align: left;
-    margin-left: 30px;
+.footer .container .row ul li {
+  list-style: none;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: left;
+  margin-left: 30px;
 }
-
 
 /* Footer UBin */
 .ubin {
-    background-color: rgb(22, 22, 22);
-    padding:10px;
-    color: aliceblue;
-
+  background-color: rgb(22, 22, 22);
+  padding: 10px;
+  color: aliceblue;
+  width: 100%;
 }

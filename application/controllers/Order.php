@@ -10,10 +10,9 @@ class Order extends CI_Controller {
             redirect('Login');
         }
         $this->load->library('Template');
+        $this->load->library('email');
         $this->load->model('M_User');
         $this->load->model('M_Order');
-        
-        
     }
 
     public function index(){
@@ -167,10 +166,25 @@ class Order extends CI_Controller {
 
     function order(){
         $data['province'] = $this->index();
+
+        // id_user
         $id = $this->session->userdata('id_user');
         $where = array('id_user' => $id);
+
+        // get user
         $data['user'] = $this->M_User->getUser($where, 'users');
-        $this->template->user('user/order', $data);
+
+        // count id_user ada berapa
+        $user = $this->M_Order->countId($where, 'orders');
+        $count = $user[0]['count'];
+
+        if($count < 1){
+            $this->template->user('user/order', $data);
+        }else{
+            $this->session->set_flashdata('ordermax', 'Sorry ');
+            redirect('User/payment');
+        }
+
     }
 
     function cost(){
@@ -184,12 +198,13 @@ class Order extends CI_Controller {
         // User
         $id = $this->session->userdata('id_user');
 
+
         //Tabel Invoices
         date_default_timezone_set('Asia/Jakarta');
         $invoice = array(
             'id_user' => $id,
             'date' => date('Y-m-d H:i:s'),
-            'due_date' => date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d')+1,date('Y'))),
+            'due_date' => date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d')+2,date('Y'))),
             'status' => 'unpaid'
         );
 
@@ -201,6 +216,7 @@ class Order extends CI_Controller {
         $service        = $this->input->post('service');
         $postalcode     = $this->input->post('postalcode');
         $street         = $this->input->post('street');
+        $cost           = $this->input->post('cost');
         $total          = $this->input->post('total');
 
         $prov = $this->get_city($destProvince);
@@ -209,19 +225,43 @@ class Order extends CI_Controller {
         $city = $this->getCityId($destCity, $destProvince);
         $dataCity = $city->rajaongkir->results->city_name;
         
-        $costs = array('province' => $dataProvince,
+        $costs = array('id_user' => $id,
+                        'province' => $dataProvince,
                         'city' => $dataCity,
                         'courier' => $courier,
                         'service' => $service,
                         'postal_code' => $postalcode,
                         'street_adress' => $street,
-                        'total_payment' => $total
+                        'total' => $total
                     );
         $this->M_Order->orderNow($id, $invoice, $costs);
         $this->session->set_flashdata('order', 'sukses');
         redirect('Cart/index');
-        
     }
+
+    function cancelOrder($id_order){
+        $id = $this->session->userdata('id_user');
+
+        $where = array('id_order' => $id_order);
+        
+        // add qty in stock products
+        $getOrder = $this->M_Order->getOrder($where);
+        // $qty        = $getOrder[0]['qty'];
+        // $id_product = $getOrder[0]['id_product'];
+        
+        // //insert qty in stock again
+        // $stockAgain = $this->M_Order->stockBack($qty, $id_product);
+        
+        // Delete Invoice
+        $id_invoice = $getOrder[0]['id_invoice'];
+        $whereId = array('id_invoice' => $id_invoice);
+        $this->M_Order->deleteInv($whereId);
+
+        // Cancel Order
+        $this->M_Order->cancelOrder($where);
+        redirect('User/payment');
+    }
+
 
 }
 
