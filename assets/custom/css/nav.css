@@ -35,12 +35,10 @@ a:hover {
 }
 
 #search {
-  border-radius: 20px;
   width: 300px;
 }
 
 #btn-search {
-  border-radius: 50%;
   margin-left: -50px;
 }
 

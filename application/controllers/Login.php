@@ -16,31 +16,31 @@ class Login extends CI_Controller {
     function login(){
         $email      = $this->input->post('email');
         $password   = $this->input->post('password');
-
-        $processlogin = $this->M_Login->process_login($email, $password);
-        if($processlogin){
-            foreach($processlogin as $row);
-            if($row['active'] == 0){
+        $userLog = $this->db->get_where('users', ['email' => $email])->row_array();
+        if($userLog){
+            if($userLog['active'] == 0){
                 echo 'akun anda belum aktif';
             }else{
-                $this->session->set_userdata('id_user', $row['id_user']);
-                $this->session->set_userdata('name', $row['name']);
-                $this->session->set_userdata('level', $row['level']);
-                $this->session->set_userdata('acrive', $row['active']);
+                if(password_verify($password, $userLog['password'])){
+                    $data = array('id_user' => $userLog['id_user'],
+                                    'level' => $userLog['level'],
+                                    'active' => $userLog['active']
+                    );
+                $this->session->set_userdata($data);
 
-                
-                //$output['mess'] = 'SUCCES';
-                if($this->session->userdata('level')== "member"){
-                    redirect('User/index');
-                }elseif($this->session->userdata('level') == "admin"){
-                    redirect('User_admin/index');
-                }elseif($this->session->userdata('level') == "super_admin"){
-                    redirect('User_super_admin/index');
+                // redirect ke masing2 level
+                    if($this->session->userdata('level')== "member"){
+                        redirect('User/index');
+                    }elseif($this->session->userdata('level') == "admin"){
+                        redirect('User_admin/index');
+                    }elseif($this->session->userdata('level') == "super_admin"){
+                        redirect('User_super_admin/index');
+                    }
+                }else{
+                    $this->session->set_flashdata('failed', 'Incorrect email or password.');
+                    redirect('Login'); 
                 }
             }
-        } else{
-            $this->session->set_flashdata('failed', 'Incorrect email or password.');
-            redirect('Login');
         }
     }
 }

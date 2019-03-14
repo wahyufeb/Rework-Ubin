@@ -7,9 +7,9 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search" autocomplete="off">
-            <button class="btn my-2 my-sm-0" type="submit" id="btn-search"><i class="fas fa-search"></i></button>
+        <form class="form-inline my-2 my-lg-0" action="<?= base_url(); ?>Ubin/search" id="form-search" method="get">
+            <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search"  id="search" autocomplete="off">
+            <button class="btn" type="submit" id="btn-search"><i class="fas fa-search"></i></button>
         </form>
         <ul class="navbar-nav">
             <?php if($this->session->userdata('level') != "member"):?>
@@ -68,10 +68,12 @@
             <a href="#">Testimonial</a>
         </li>
         <li>
-            <a href="#">Contact</a>
+            <a href="#contact">Contact</a>
         </li>
         <li>
-            <a href="#">About</a>
+            <a href="#about">About</a>
         </li>
     </ul>
 </div>
+
+

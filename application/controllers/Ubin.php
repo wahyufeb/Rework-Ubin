@@ -8,7 +8,8 @@ class Ubin extends CI_Controller {
 		parent::__construct();
 		// Load Libraries
 		$this->load->library('Template');
-
+		$this->load->library('pagination');
+		
 
 		// Model User
 		$this->load->model('M_User');
@@ -25,7 +26,7 @@ class Ubin extends CI_Controller {
 		// get user by id
 		$data['user'] = $this->M_User->getUser($where, 'users');
 		
-		// ger products discount
+		// get products discount
 		$data['discount'] = $this->M_Ubin->discount();
 		
 		
@@ -36,6 +37,35 @@ class Ubin extends CI_Controller {
 		$data['top'] = $this->M_Ubin->top(); 
 		  
 		$this->template->component('home', $data);
+	}
+
+	function get_autocomplete(){
+        if (isset($_GET['term'])) {
+            $result = $this->M_Ubin->search($_GET['term']);
+            if (count($result) > 0) {
+            foreach ($result as $row)
+                $arr_result[] = $row->name;
+                echo json_encode($arr_result);
+            }
+        }
+	}
+	
+	function search(){
+		// user login id
+		$id = $this->session->userdata('id_user');
+		$where = array('id_user' => $id);
+		
+		// get user by id
+		$data['user'] = $this->M_User->getUser($where, 'users');
+
+		// search input
+		$search  = $this->input->get('search');
+		// get products discount
+		$data['discount'] = $this->M_Ubin->discount();
+		
+		//result search
+		$data['results'] = $this->M_Ubin->search($search);
+		$this->template->component('user/search', $data);
 	}
 
 	function product($id_product){
@@ -95,4 +125,43 @@ class Ubin extends CI_Controller {
 		}
 		redirect(base_url());
 	}
+
+	function pagination(){
+
+		$this->load->library('pagination');
+	
+		$config['base_url'] = '#';
+		$config['total_rows'] = $this->M_Ubin->count_all();;
+		$config["per_page"] = 4;
+		$config["uri_segment"] = 3;
+		$config["use_page_numbers"] = TRUE;
+		$config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Prev';
+        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
+		$this->pagination->initialize($config);
+		$page = $this->uri->segment(3);
+		$start = ($page - 1) * $config["per_page"];
+		 
+		$output = array('pagination_link' => $this->pagination->create_links(),
+						'data_products' => $this->M_Ubin->fetch_details($config['per_page'], $start)
+		);
+		echo json_encode($output);
+	}
+
+	
 }

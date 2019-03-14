@@ -56,48 +56,12 @@
             </div>
         <?php endforeach; ?>
         <!-- end Top Items -->
-
-        <!-- Free Shipping -->
-        <div class="free-shipping">
-            <h2>Products</h2>
-        <?php foreach($products as $row): ?>
-        <?php         
-            $price = $row['price'];
-            $disc  = $row['discount'];
-
-            $discount = $price * $disc / 100;
-            $countDisc = $price - $discount;
-            $row['price'] = $countDisc;
-        ?>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-6 product-free-shipping">
-                <div class="card">
-                    <a href="<?= base_url() ?>Ubin/product/<?= $row['id_product'] ?>">
-                        <img src="<?= base_url() ?>assets/img/<?= $row['image']; ?>" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title"><?= $row['name']; ?></h5>
-                        <p>Rp.<?= number_format($row['price'], 0,',','.') ?></p>
-                        <p style="font-size:13px;">Stock : <?= $row['stock']; ?></p>
-                        <div class="row">
-                            <a href="<?= base_url() ?>Ubin/addToCart/<?= $row['id_product']; ?>" class="btn btn-success add-cart">Add to cart <i class="fas fa-cart-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
-
-            <!-- end Free Shipping -->
         </div>
     </div>
-        <nav aria-label="Page navigation example" id="pagination">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
+    <div class="table-responsive" id="products"></div>
+    <nav aria-label="Page navigation example" id="pagination">
+        
+    </nav>
 </div>
     <!-- Testimonial -->
     <div class="testimonial">

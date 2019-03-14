@@ -15,6 +15,9 @@
 <script src="<?= base_url() ?>assets/custom/js/sweetcustom.js"></script>
 <!-- <script src="<?= base_url() ?>assets/dropzone/dropzone.min.js"></script> -->
 <script src="<?= base_url() ?>/assets/custom/js/mycode.js"></script>
+<script src="<?= base_url() ?>assets/custom/js/jquery-ui.min.js"></script>
+ 
+
 <script>
     $('#navigation').slimmenu(
         {
@@ -25,5 +28,44 @@
             indentChildren: false,
             childrenIndenter: '&nbsp;'
         });
+</script>
+<script type="text/javascript">
+    $(document).ready(()=>{
+        $('#search').keyup('blur', function(){
+            $('#btn-search').css('display', 'none');
+        });
+        $('#search').autocomplete({
+              source: "<?php echo site_url('Ubin/get_autocomplete/?');?>",
+              select: function(event, ui){
+                  $(this).val(ui.item.label);
+                  $('#form-search').submit();
+              }
+        });
+    });
+</script>
+<script>
+    $(document).ready(()=>{
+
+        const load_data =(page)=>{
+            $.ajax({
+                url:"<?php echo base_url();?>Ubin/pagination/"+ page,
+                type:"GET",
+                dataType:"json",
+                success:(data)=>{
+                    $('#products').html(data.data_products);
+                    $('#pagination').html(data.pagination_link);
+                },    
+                error: function(data){
+                    alert("fail");
+                }
+            });
+        }
+        load_data(1);
+        $(document).on("click", ".pagination li a", function(e){
+        e.preventDefault();
+        var page = $(this).data("ci-pagination-page");
+        load_data(page);
+        });
+    });
 </script>
 </html>

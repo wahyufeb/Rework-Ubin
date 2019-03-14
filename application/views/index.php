@@ -45,7 +45,15 @@
     <!-- Dropzone -->
     <!-- link rel="stylesheet" href="<?= base_url() ?>assets/dropzone/dropzone.min.css"> -->
 
+    <!-- Jquery -->
     <script src="<?= base_url() ?>assets/custom/js/jquery.js"></script>
+
+    <!-- Jquery UI -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/custom/css/jquery-ui.min.css">
+
+ 
+
+
 </head>
 
 <body>

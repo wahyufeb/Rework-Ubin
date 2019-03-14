@@ -87,7 +87,7 @@ class Registration extends CI_Controller {
             $data = array(  'email' => htmlspecialchars($email),
                             'name' => htmlspecialchars($name),
                             'photo' => $photo,
-                            'password' => md5($password),
+                            'password' => password_hash($password, PASSWORD_DEFAULT),
                             'level' => $level,
                             'active' => 0
                         );

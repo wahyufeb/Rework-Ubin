@@ -43,28 +43,37 @@
 <?php endforeach; ?>
         </div>
         <div class="col-lg-3 recent-side">
-            <p>Recent Products</p>
-            <hr>
-            <div class="recent-img">
-                    <img src="<?= base_url() ?>assets/img/5.jpg" class="hover-img">
-                <p class="hover">
-                    $200
-                    <a href="">Product Name</a>
-                </p>
-            </div>
-            <div class="recent-img" >
-                <img src="<?= base_url() ?>assets/img/2.jpg" class="hover-img">
-                <p class="hover">
-                    $200
-                    <a href="">Product Name</a>
-                </p>
-            </div>
-            <div class="recent-img" >
-                <img src="<?= base_url() ?>assets/img/3.jpg" class="hover-img">
-                <p class="hover">
-                    $200
-                    <a href="">Product Name</a>
-                </p>
+            <div class="row">
+                <p>&emsp;&emsp;Recent Products</p>
+                <hr>
+                <div class="col-lg-12 col-md-10 col-sm-6 col-6 recent-img">
+                        <img src="<?= base_url() ?>assets/img/5.jpg" class="hover-img" height="200">
+                    <p class="hover">
+                        $200
+                        <a href="">Product Name</a>
+                    </p>
+                </div>
+                <div class="col-lg-12 col-md-10 col-sm-6 col-6 recent-img" >
+                    <img src="<?= base_url() ?>assets/img/2.jpg" class="hover-img" height="200">
+                    <p class="hover">
+                        $200
+                        <a href="">Product Name</a>
+                    </p>
+                </div>
+                <div class="col-lg-12 col-md-10 col-sm-6 col-6 recent-img" >
+                    <img src="<?= base_url() ?>assets/img/3.jpg" class=" hover-img" height="200">
+                    <p class="hover">
+                        $200
+                        <a href="">Product Name</a>
+                    </p>
+                </div>
+                <div class="col-lg-12 col-md-10 col-sm-6 col-6 recent-img" >
+                    <img src="<?= base_url() ?>assets/img/3.jpg" class=" hover-img" height="200">
+                    <p class="hover">
+                        $200
+                        <a href="">Product Name</a>
+                    </p>
+                </div>
             </div>
         </div>
         <div class="container">
@@ -115,18 +124,8 @@
                     <button type="submit" class="btn btn-primary">Submit <i class="fas fa-paper-plane"></i></button>
                 </div>
             </form>
-                <!-- <nav aria-label="Page navigation example" id="pagination">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav> -->
     </div>
 </div>
-                <!-- style="padding:5px;padding-top:15px;border-radius:20px;border:1px solid rgba(0,0,0,0.2);margin-bottom:10px;"" -->
     
 </body>
 </html>

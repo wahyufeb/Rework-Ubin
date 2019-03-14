@@ -2,7 +2,7 @@
  <div class="container">
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-6 col-6 text-center" >
-            <h4>About</h4>
+            <h4 id="about">About</h4>
             <ul>
                 <li>menu</li>
                 <li>menu</li>
@@ -12,9 +12,9 @@
         </div>
 
         <div class="col-lg-3 col-md-3 col-sm-6 col-6 text-center">
-            <h4>Contact</h4>
+            <h4 id="contact">Contact</h4>
             <ul>
-                <li>menu</li>
+                <li>WA</li>
                 <li>menu</li>
                 <li>menu</li>
                 <li>menu</li>

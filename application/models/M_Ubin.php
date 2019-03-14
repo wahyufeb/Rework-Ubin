@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Ubin extends CI_Model {
 
+    function search($tittle){
+        $this->db->like('name', $tittle);
+        $this->db->or_like('catagory', $tittle);
+        return $this->db->get('products')->result();
+    }
+
+
     // get all products width no discount
     function getProducts(){
         //return $this->db->limit(12)->get('products')->result_array();
@@ -72,6 +79,43 @@ class M_Ubin extends CI_Model {
                             ->limit(3);
         return  $query->get()->result_array();
 
+    }
+
+    function count_all(){
+        $query = $this->db->get('products');
+        return $query->num_rows();
+        
+    }
+
+    function fetch_details($limit, $start){
+        $where = array('discount' => 0);
+        $output = '';
+        $this->db->select('*');
+        $this->db->from('products');
+        $this->db->order_by('name', 'asc');
+        $this->db->limit($limit, $start);
+        $this->db->where($where);
+        $query = $this->db->get();
+        $output .='<div class="free-shipping"><h2>All Products</h2>';
+        foreach ($query->result() as $row) {
+            $output.=' <div class="col-lg-3 col-md-6 col-sm-6 col-6 product-free-shipping" >
+            <div class="card">
+                <a href="'.base_url("Ubin/product/").''.$row->id_product.'">
+                    <img src="'.base_url("assets/img/").''.$row->image.'" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">'.$row->name.'</h5>
+                    <p>Rp. '.number_format($row->price, 0,',','.').'</p>
+                    <p style="font-size:13px;">Stock : '. $row->stock.'</p>
+                    <div class="row">
+                        <a href="'. base_url("Ubin/addToCart/").''.$row->id_product.'" class="btn btn-success add-cart">Add to cart <i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>';
+        }
+        $output .='</div>';
+        return $output;
     }
 
 
