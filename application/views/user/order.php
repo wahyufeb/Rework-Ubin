@@ -9,44 +9,44 @@
         <?php }?>
         <div class="col-lg- col-md-9 col-sm-12 col-12 offset-md-1  right-side">
             <div class="table-responsive">
-                  <table class="table table-bordered table-striped">
-                      <thead align="center" >
-                          <tr>
-                          <th scope="col">No</th>
-                          <th>Image</th>
-                          <th scope="col">Product</th>
-                          <th scope="col" width="50">Option</th>
-                          <th scope="col" align="center">Qty</th>
-                          <th scope="col">Price</th>
-                          <th scope="col">Weight</th>
-                          <th scope="col">Subtotal</th>
-                          </tr>
-                      </thead>
-                      <tbody align="center">
-                      <?php $i = 0; ?>
-                      <?php $total = $this->cart->contents() ?>
-                      <?php $sum = 0; ?>
-                      <?php foreach($total as $row):  ?>
-                      <?php $i++ ?>
-                          <tr>
-                              <th scope="row"><?= $i; ?></th>
-                              <td><img src="<?= base_url() ?>assets/img/<?=$row['options']['image'];?>" alt="<?= $row['name'] ?>" width=80"></td>
-                              <td><?= $row['name']; ?></td>
-                              <td><a href="<?= base_url() ?>Cart/deleteProduct/<?= $row['rowid'] ?>" id="delete-product"><i class="fas fa-trash trash"></i></a></td>
-                              <td> <?= $row['qty']; ?></td>
-                              <td>Rp.<?= number_format($row['price'], 0,',','.'); ?></td>
-                              <td><?= $row['options']['weight'] ?> grams</td>
-                              <td>Rp.<?= number_format($row['subtotal'], 0,',','.'); ?></td>
-                              <?php $sum += $row['options']['weight'];?>
-                          </tr>
-                      <?php endforeach;?>
-                          <!-- <tr>
-                              <td colspan="6" align="right"> <b>Total</b> </td>
-                              <td><?php echo $sum;  ?> grams</td>
-                              <td>Rp.<?= number_format($this->cart->total(),0,',','.') ?></td>
-                          </tr> -->
-                      </tbody>
-                  </table>
+                <table class="table table-bordered table-striped">
+                    <thead align="center" >
+                        <tr>
+                        <th scope="col">No</th>
+                        <th>Image</th>
+                        <th scope="col">Product</th>
+                        <th scope="col" width="50">Option</th>
+                        <th scope="col" align="center">Qty</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Weight</th>
+                        <th scope="col">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody align="center">
+                    <?php $i = 0; ?>
+                    <?php $total = $this->cart->contents() ?>
+                    <?php $sum = 0; ?>
+                    <?php foreach($total as $row):  ?>
+                    <?php $i++ ?>
+                        <tr>
+                            <th scope="row"><?= $i; ?></th>
+                            <td><img src="<?= base_url() ?>assets/img/<?=$row['options']['image'];?>" alt="<?= $row['name'] ?>" width=80"></td>
+                            <td><?= $row['name']; ?></td>
+                            <td><a href="<?= base_url() ?>Cart/deleteProduct/<?= $row['rowid'] ?>" id="delete-product"><i class="fas fa-trash trash"></i></a></td>
+                            <td> <?= $row['qty']; ?></td>
+                            <td>Rp.<?= number_format($row['price'], 0,',','.'); ?></td>
+                            <td><?= $row['options']['weight'] ?> grams</td>
+                            <td>Rp.<?= number_format($row['subtotal'], 0,',','.'); ?></td>
+                            <?php $sum += $row['options']['weight'];?>
+                        </tr>
+                    <?php endforeach;?>
+                        <!-- <tr>
+                            <td colspan="6" align="right"> <b>Total</b> </td>
+                            <td><?php echo $sum;  ?> grams</td>
+                            <td>Rp.<?= number_format($this->cart->total(),0,',','.') ?></td>
+                        </tr> -->
+                    </tbody>
+                </table>
             </div>
             <div class="row">
             <input type="hidden" value="<?php echo $sum; ?>" id="weight">

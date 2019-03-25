@@ -38,9 +38,12 @@ class Login extends CI_Controller {
                     }
                 }else{
                     $this->session->set_flashdata('failed', 'Incorrect email or password.');
-                    redirect('Login'); 
+                    redirect('Login/index'); 
                 }
             }
+        }else{
+            $this->session->set_flashdata('failed', 'Incorrect email or password.');
+            redirect('Login/index'); 
         }
     }
 }

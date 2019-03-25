@@ -35,7 +35,7 @@ class Ubin extends CI_Controller {
 		
 		// top product
 		$data['top'] = $this->M_Ubin->top(); 
-		  
+	
 		$this->template->component('home', $data);
 	}
 
@@ -132,7 +132,7 @@ class Ubin extends CI_Controller {
 	
 		$config['base_url'] = '#';
 		$config['total_rows'] = $this->M_Ubin->count_all();;
-		$config["per_page"] = 4;
+		$config["per_page"] = 8;
 		$config["uri_segment"] = 3;
 		$config["use_page_numbers"] = TRUE;
 		$config['first_link']       = 'First';
@@ -156,7 +156,7 @@ class Ubin extends CI_Controller {
 		$this->pagination->initialize($config);
 		$page = $this->uri->segment(3);
 		$start = ($page - 1) * $config["per_page"];
-		 
+		
 		$output = array('pagination_link' => $this->pagination->create_links(),
 						'data_products' => $this->M_Ubin->fetch_details($config['per_page'], $start)
 		);

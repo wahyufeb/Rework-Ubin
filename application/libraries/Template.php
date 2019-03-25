@@ -28,4 +28,11 @@ class Template {
 		$this->_ci->load->view('user/index',$data);
 	}
 
+	function admin($template,$data=null){
+		$data['nav']		=	$this->_ci->load->view('user_admin/nav',$data, TRUE);
+		$data['content']    =	$this->_ci->load->view($template,$data, TRUE);
+		$data['footer']		=	$this->_ci->load->view('user_admin/footer',$data, TRUE);
+		$this->_ci->load->view('user_admin/index',$data);
+	}
+
 }

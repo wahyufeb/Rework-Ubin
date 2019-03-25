@@ -123,7 +123,6 @@ class User extends CI_Controller {
 
         
         //memanggil library email dan set konfigurasi untuk pengiriman email
-       
         $this->email->initialize($config);
         //konfigurasi pengiriman
         $this->email->from($config['smtp_user'], 'CUBIN Website');
