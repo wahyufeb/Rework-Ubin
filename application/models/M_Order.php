@@ -8,13 +8,23 @@ class M_Order extends CI_Model {
     }
 
     function orderNow($id, $invoice, $costs){
+        //  Transaction Table
+        $length = 15;
+        $code= "";
+        $data = "A1B2C3D4E5F6G7H8I9J10K23L02M2N0O0P2Q1R2S3T4U5V6W7X8Y9Z10QWERTYUIOPLKJHGFDSAZXCVBNM";
         
-        // add to costs table
-        $this->db->insert('costs', $costs);
-        $id_costs = $this->db->insert_id();
-        
+            for($i = 0; $i < $length; $i++){
+                $code .= substr($data, (rand()%(strlen($data))), 1);
+            }
+        $transaction = array('transaction_code' => $code,
+                                'id_user' => $id
+        );
+        $this->db->insert('transaction', $transaction);
         // Qty
         foreach($this->cart->contents() as $row){
+            // add to costs table
+            $this->db->insert('costs', $costs);
+            $id_costs = $this->db->insert_id();
             // add to invoice table
             $this->db->insert('invoices', $invoice);
             $id_invoice = $this->db->insert_id();
@@ -23,7 +33,8 @@ class M_Order extends CI_Model {
                             'id_user' => $id,
                             'id_product' => $row['id'],
                             'qty' => $row['qty'],
-                            'id_cost' => $id_costs
+                            'id_cost' => $id_costs,
+                            'total' => $row['subtotal']
                         );
             $this->db->insert('orders', $data);
         }
@@ -83,8 +94,14 @@ class M_Order extends CI_Model {
         $this->db->where($whereId);
         $this->db->delete('invoices');
     }
-
     // end Invoices
+
+    // Cost 
+    function deleteCost($wherecost){
+        $this->db->where($wherecost);
+        $this->db->delete('costs');
+    }
+    // end Cost
 
     function cancelOrder($where){
         $this->db->where($where);

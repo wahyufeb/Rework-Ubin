@@ -33,7 +33,64 @@ class M_Admin extends CI_Model {
         $this->db->delete('products');
     }
 
+    // Update Image
+    function updateImage($where, $data){
+        $this->db->where($where);
+        $this->db->update('products', $data);
+    }
 
+    function get_where($table, $where){
+        return $this->db->get_where($table, $where);
+        
+    }
+
+    function updateFile($table, $data, $where){
+        $this->db->where($where);
+        $this->db->update($table, $data);
+    }
+
+    // END PRODUCTS
+
+
+    // ACCOUNTS
+    // get all acccounts
+    function allAccounts(){
+        $this->db->where('level', 'member');
+        $this->db->order_by('name', 'asc');
+        return $this->db->get('users')->result_array();
+    }
+
+    // get account id
+    function getAccount($where){
+        $this->db->where($where);
+        return $this->db->get('users')->result();
+    }
+
+    // suspend account
+    function suspend($where, $suspend){
+        $this->db->where($where);
+        $this->db->update('users', $suspend);
+    }
+
+    // active account
+    function active($where, $active){
+        $this->db->where($where);
+        $this->db->update('users', $active);
+    }
+
+    // END ACCOUNTS
+
+    // ORDERS
+
+    function orders(){
+        $this->db->from('orders');
+        $this->db->join('users', 'users.id_user = orders.id_user', 'left');
+        $this->db->join('invoices', 'invoices.id_invoice = orders.id_invoice', 'left');
+        $this->db->order_by('invoices.date', 'desc');
+        return $this->db->get()->result_array();
+    }
+
+    // END ORDERS
 }
 
 /* End of file M_Admin.php */

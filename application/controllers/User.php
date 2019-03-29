@@ -152,13 +152,24 @@ class User extends CI_Controller {
         }
     }
 
-    // // Donation 
-    // function donation(){
-    //     $id = $this->session->userdata('id_user');
-    //     $where = array('id_user' => $id);
-    //     $data['user'] = $this->M_User->getUser($where, 'users');
-    //     $this->template->user('user/donation', $data);
-    // }
+    // Transaction 
+    function transaction(){
+        $id = $this->session->userdata('id_user');
+        $email = $this->session->userdata('email');
+        $where = array('id_user' => $id);
+        // $whereE = array('email' => $email);
+        $data['user'] = $this->M_User->getUser($where, 'users');
+
+        // $data['transaction'] = $this->M_User->transaction($whereE);
+        $this->template->user('user/transaction', $data);
+    }
+
+    function getTransaction(){
+        $where  = array('id_user' => $this->input->post('id_user'));
+        $key    = $this->input->post('key');
+        $transaction = $this->M_User->transaction($where, $key);
+        echo json_encode($transaction);
+    }
 
     // // Payment
     // function setting(){
@@ -178,7 +189,7 @@ class User extends CI_Controller {
 
 
     // REQUEST
-      function proses_upload(){
+    function proses_upload(){
         $id = $this->session->userdata('id_user');
         $config['upload_path']   = FCPATH.'/uploads/';
         $config['allowed_types'] = 'gif|jpg|png|ico';
@@ -186,7 +197,7 @@ class User extends CI_Controller {
 
         if($this->upload->do_upload('userfile')){
             $this->load->model('M_User');
-        	$token  =   $this->input->post('token_foto');
+            $token  =   $this->input->post('token_foto');
             $name   =   $this->upload->data('file_name');
             $data  = array('photo' => $name,
                             'token' => $token
@@ -234,7 +245,6 @@ class User extends CI_Controller {
     function profile_update(){
         $id = $this->session->userdata('id_user');
 
-        $email      = $this->input->post('email');
         $name       = $this->input->post('name');
         $province   = $this->input->post('province');
         $city       = $this->input->post('city');
@@ -242,8 +252,7 @@ class User extends CI_Controller {
         $telephone  = $this->input->post('telephone');
 
         $where = array ('id_user' => $id);
-        $data = array ('email' => $email,
-                        'name' => $name,
+        $data = array ('name' => $name,
                         'province' => $province,
                         'city' => $city,
                         'street' => $street,
@@ -272,6 +281,7 @@ class User extends CI_Controller {
             redirect('User/profile');     
         }
     }
+
     
 
     

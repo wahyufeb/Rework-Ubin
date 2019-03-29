@@ -23,7 +23,7 @@ class User_admin extends CI_Controller {
         $this->template->admin('user_admin/home', $data);
     }
 
-    // PRODUCTS
+    // PRODUCTS PAGE
     public function products(){
         $id = $this->session->userdata('id_user');
         $where = array('id_user' => $id);
@@ -85,7 +85,100 @@ class User_admin extends CI_Controller {
         redirect('User_admin/products');
     }
 
-    // END PRODUCTS
+    public function updateImage(){
+        $config['upload_path']   = FCPATH.'/assets/img/';
+        $config['allowed_types'] = 'gif|jpg|png|ico';
+        $this->load->library('upload',$config);
+
+        if($this->upload->do_upload('userfile')){
+            $this->load->model('M_Admin');
+            $id             = $this->input->post('id_product');
+            $name           = $this->upload->data('file_name');
+            $data           = array('image' => $name);       
+            // id user, to add the model
+            $where = array('id_product' => $id);
+            $this->M_Admin->updateImage($where, $data);
+        }
+    }
+
+    public function remove_image(){
+		//Ambil id image
+        $id     =    $this->input->post('id');
+        $where  =    array('id_product' => $id);
+        $image  =    $this->M_Admin->get_where('products', $where);
+
+        if($image->num_rows()>0){
+			$result     =   $image->row();
+            $img        =   $result->image;
+            
+			if(file_exists($file=FCPATH.'/assets/img/'.$img)){
+				unlink($file);
+            }
+            $data = array( 'image' => '');
+            $this->M_User->updateFile('products', $data, $where);
+		}
+        echo "{}";
+
+    }
+
+    // END PRODUCTS PAGE
+
+    // ACCOUNTS PAGE
+
+    // get all accounts
+    function allAccounts(){
+        $id = $this->session->userdata('id_user');
+        $where = array('id_user' => $id);
+
+        // saia admin
+        $data['admin'] = $this->M_Admin->saiaAdmin($where);
+
+        $data['allaccounts'] = $this->M_Admin->allAccounts();
+
+        $this->template->admin('user_admin/accounts', $data);
+    }
+
+    // get account id
+    function getAccount(){
+        $where = array('id_user' => $this->input->post('id_user'));
+        $get = $this->M_Admin->getAccount($where);
+        echo json_encode($get);
+    }
+
+    // suspend accounts
+    function suspendAccount($id){
+        $where      = array('id_user' => $id);
+        $suspend    = array('active' => 0);
+
+        $this->M_Admin->suspend($where, $suspend);
+        redirect('User_admin/allAccounts');
+    }
+
+    // active accounts
+    function activeAccount($id){
+        $where      = array('id_user' => $id);
+        $active    = array('active' => 1);
+
+        $this->M_Admin->active($where, $active);
+        redirect('User_admin/allAccounts');
+    }
+    // END ACCOUNTS PAGE
+
+
+    // ORDERS PAGE
+    function orders(){
+        $id = $this->session->userdata('id_user');
+        $where = array('id_user' => $id);
+
+        // saia admin
+        $data['admin'] = $this->M_Admin->saiaAdmin($where);
+
+        // get orders
+        $data['orders'] = $this->M_Admin->orders();
+
+        $this->template->admin('user_admin/orders', $data);
+    }
+    // END ORDERS PAGE
 
 
 

@@ -113,6 +113,7 @@
                 </div>
                 <hr>
                 <div id="costtotal"></div>
+                <input type="hidden" name="cost">
                 <div id="totalpayment"></div>
                 <div class="row">
                     <div class="col-lg-3 offset-lg-9" id="cost">                    
@@ -122,8 +123,8 @@
                 </div><hr>
                 <div class="row mt-200">
                     <div class="col-lg-3 offset-lg-9" >
-                          <a href="#" class="btn btn-danger">Cancel</a>
-                          <button type="submit" class="btn btn-success">Order Now</button>
+                        <a href="#" class="btn btn-danger">Cancel</a>
+                        <button type="submit" class="btn btn-success">Order Now</button>
                     </div>
                 </div>
             </form>
@@ -170,8 +171,10 @@
                     var result = resp.split(",");
                     var resultCost  = result[0];
                     var resultTotal = result[1];
-                  $('#costtotal').html(`<input type="hidden" value="`+result[0]+`"  name="cost" >`)
-                  $('#totalpayment').html(`<input type="hidden" value="`+result[1]+`"  name="total" >`)
+                    $('input[name="cost"]').val(resultCost);
+
+                    $('#costtotal').html(`<input type="hidden" value="`+result[0]+`"  name="cost" >`)
+                    $('#totalpayment').html(`<input type="hidden" value="`+result[1]+`"  name="total" >`)
                     var reverse = resultCost.toString().split('').reverse().join(''),
                             cost  = reverse.match(/\d{1,3}/g);
                             cost  = cost.join('.').split('').reverse().join('');

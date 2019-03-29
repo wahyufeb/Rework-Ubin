@@ -19,16 +19,16 @@ class Order extends CI_Controller {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-          CURLOPT_URL => "https://api.rajaongkir.com/starter/province",
-          CURLOPT_RETURNTRANSFER => true,
-          CURLOPT_ENCODING => "",
-          CURLOPT_MAXREDIRS => 10,
-          CURLOPT_TIMEOUT => 30,
-          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-          CURLOPT_CUSTOMREQUEST => "GET",
-          CURLOPT_HTTPHEADER => array(
+            CURLOPT_URL => "https://api.rajaongkir.com/starter/province",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
             "key: $this->api_key"
-          ),
+            ),
         ));
 
         $response = curl_exec($curl);
@@ -37,7 +37,7 @@ class Order extends CI_Controller {
         curl_close($curl);
 
         if ($err) {
-          echo "cURL Error #:" . $err;
+            echo "cURL Error #:" . $err;    
         } else {
             return json_decode($response);
         }
@@ -232,8 +232,10 @@ class Order extends CI_Controller {
                         'service' => $service,
                         'postal_code' => $postalcode,
                         'street_adress' => $street,
-                        'total' => $total
+                        'total_cost' => $cost
                     );
+
+        
         $this->M_Order->orderNow($id, $invoice, $costs);
         $this->session->set_flashdata('order', 'sukses');
         redirect('Cart/index');
@@ -246,16 +248,17 @@ class Order extends CI_Controller {
         
         // add qty in stock products
         $getOrder = $this->M_Order->getOrder($where);
-        // $qty        = $getOrder[0]['qty'];
-        // $id_product = $getOrder[0]['id_product'];
-        
-        // //insert qty in stock again
-        // $stockAgain = $this->M_Order->stockBack($qty, $id_product);
         
         // Delete Invoice
         $id_invoice = $getOrder[0]['id_invoice'];
         $whereId = array('id_invoice' => $id_invoice);
         $this->M_Order->deleteInv($whereId);
+
+        // Delete Cost
+        $id_cost = $getOrder[0]['id_cost'];
+        $wherecost = array('id_cost' => $id_cost);
+        $this->M_Order->deleteCost($wherecost);
+
 
         // Cancel Order
         $this->M_Order->cancelOrder($where);

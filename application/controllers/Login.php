@@ -19,10 +19,11 @@ class Login extends CI_Controller {
         $userLog = $this->db->get_where('users', ['email' => $email])->row_array();
         if($userLog){
             if($userLog['active'] == 0){
-                echo 'akun anda belum aktif';
+                redirect('My404/error');
             }else{
                 if(password_verify($password, $userLog['password'])){
                     $data = array('id_user' => $userLog['id_user'],
+                                    'email' => $userLog['email'],
                                     'level' => $userLog['level'],
                                     'active' => $userLog['active']
                     );

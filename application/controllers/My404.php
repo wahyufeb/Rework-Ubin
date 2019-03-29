@@ -7,6 +7,10 @@ class My404 extends CI_Controller {
         $this->load->view('404_Not_Found');
     }
 
+    function error(){
+        $this->load->view('Error');
+    }
+
 }
 
 /* End of file My404.php */

@@ -88,9 +88,14 @@
                         <?php if($this->session->userdata('id_user') == $row['id_user']){ ?>
                         <div class="row">
                             <div class="col-lg-12 text-right">
-                                <a href="<?= $row['id_comment'] ?>"><i class="far fa-edit"></i>edit</i></a>
-                                <a href="<?= base_url() ?>Comment/deleteComment/<?= $row['id_comment'] ?>/<?= $row['id_product'] ?>"><i class="fas fa-trash-alt"></i>delete</a>
-                                <a href="<?= $row['id_comment'] ?>"><i class="fas fa-trash-alt"></i></a>
+                                <button type="button" class="btn btn-success edit-comment" data-id="<?= $row['id_comment'] ?>">
+                                    <a href="#form" style="color:white;"><i class="far fa-edit" ></i>edit</i></a>
+                                </button>
+
+                                <button type="button" class="btn btn-danger">
+                                    <a href="<?= base_url() ?>Comment/deleteComment/<?= $row['id_comment'] ?>/<?= $row['id_product'] ?>" style="color:white;"><i class="fas fa-trash-alt"></i>delete</a>
+                                </button>
+                                    <!-- <a href="<?= $row['id_comment'] ?>"><i class="fas fa-trash-alt"></i></a> -->
                             </div>
                         </div>
                         <?php } ?>
@@ -100,6 +105,7 @@
             </div>
         </div>
         </div>
+        <div id="form"></div>
         <div class="row">
             <div class="col-lg-1">
                 <div class="col-lg-12 col-sm-3 col-3">
@@ -110,22 +116,41 @@
                 <?php } ?>
                 </div>
             </div>
-            <div class="col-lg-11 col-md-12 col-sm-12 col-12">
-                    <form action="<?= base_url() ?>Comment/addComment" method="post">
-                    <input type="hidden" name="idproduct" value="<?= $this->uri->segment(3);
-                     ?>">
+            <div class="col-lg-11 col-md-12 col-sm-12 col-12" >
+            <form action="<?= base_url() ?>Comment/addComment" method="post" id="update-comment">
+                <input type="hidden" name="idproduct" value="<?= $this->uri->segment(3); ?>">
+                <input type="hidden" name="idcomment">
                         <div class="form-group">
                             <label for="comment">Comment</label>
                             <textarea class="form-control" id="comment" rows="5"  name="comment"></textarea>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12  text-right">
-                    <button type="submit" class="btn btn-primary">Submit <i class="fas fa-paper-plane"></i></button>
+                <div class="col-lg-12 text-right">
+                    <button type="submit" class="btn btn-primary" id="submit"></button>
                 </div>
             </form>
     </div>
 </div>
-    
 </body>
+<script>
+    $('#submit').append('Submit <i class="fas fa-paper-plane"></i>');
+    $('.edit-comment').on("click", function(){
+        let id = $(this).data('id');
+        $.ajax({
+            url:'<?= base_url() ?>Comment/getCommentId',
+            type:'POST',
+            dataType:'json',
+            data:'id_comment='+id,
+            success:function(data){
+                let result = data[0];
+                $('textarea[name="comment"]').val(result.comment);
+                $('#update-comment').attr('action', '<?= base_url() ?>Comment/updateComment');
+                $('input[name="idcomment"]').attr('value', ''+ id +'');
+                $('#submit').removeClass('btn-primary');
+                $('#submit').addClass('btn-success');
+            }
+        });
+    });
+</script>
 </html>

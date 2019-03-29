@@ -83,12 +83,12 @@
                             <i class="fas fa-money-bill-alt"></i> Payment
                         </a>
                     </li>
-                    <!-- <li class="menu-side">
-                        <a href="<?= base_url() ?>User/donation"><i class="fas fa-hand-holding-usd">
-                            </i> Donation
+                    <li class="menu-side">
+                        <a href="<?= base_url() ?>User/transaction"><i class="fas fa-hand-holding-usd">
+                            </i> Transaction
                         </a>
                     </li>
-                    <li class="menu-side">
+                    <!-- <li class="menu-side">
                         <a href="<?= base_url() ?>User/setting"><i class="fas fa-cog"></i> Setting
                         </a>  
                     </li> -->

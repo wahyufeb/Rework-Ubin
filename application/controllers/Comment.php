@@ -27,12 +27,7 @@ class Comment extends CI_Controller {
     function addComment(){
         
         // id user
-        $id = $this->session->userdata('id_user');
-        $where = array('id_user' => $id);
-        $userId = $this->M_User->getUser($where, 'users');
-        $user = $userId[0];
-
-        $photo = $user->photo;
+        $id = $this->session->userdata('id_user');;
         $name  = $user->name;
 
         // time zone Indonesia
@@ -43,10 +38,8 @@ class Comment extends CI_Controller {
         $idProduct = $this->input->post('idproduct');
 
         $data = array(
-            'id_product' => $idProduct,
             'id_user' => $id,
-            'photo' => $photo,
-            'name' => $name,
+            'id_product' => $idProduct,
             'comment' => htmlspecialchars($this->input->post('comment')),
             'date_created' => $date->format('d-M-Y')
         );
@@ -58,6 +51,31 @@ class Comment extends CI_Controller {
 
     function deleteComment($id, $idProduct){
         $this->M_Comment->delete($id);
+        redirect('Ubin/product/'.$idProduct.'/#comment');
+    }
+
+    //  Get Comment Id
+    function getCommentId(){
+        $where = array('id_comment' => $this->input->post('id_comment'));
+        $getComment  = $this->M_Comment->getComment($where);
+        echo json_encode($getComment);
+    }
+
+    // Update Comment
+    function updateComment(){
+        // time zone Indonesia
+        $timeZone = new DateTimeZone('Asia/Jakarta');
+        $date     = new DateTime();
+        $date->setTimeZone($timeZone);
+
+        $where = array('id_comment' => $this->input->post('idcomment'));
+        $data = array('comment' => $this->input->post('comment'),
+                        'date_created' => $date->format('d-M-Y')
+        );
+
+        $idProduct = $this->input->post('idproduct');
+
+        $this->M_Comment->updateComment($where, $data);
         redirect('Ubin/product/'.$idProduct.'/#comment');
     }
 

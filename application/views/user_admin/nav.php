@@ -193,21 +193,21 @@
     </a>
     </li>
     <li class="nav-item">
-    <a class="nav-link" href="pages/forms/basic_elements.html">
+    <a class="nav-link" href="<?= base_url() ?>User_admin/allAccounts">
         <span class="menu-title">Accounts</span>
         <i class="mdi mdi-account-multiple menu-icon"></i>
+    </a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="<?= base_url() ?>User_admin/orders">
+        <span class="menu-title">Orders</span>
+        <i class="mdi mdi-basket menu-icon"></i>
     </a>
     </li>
     <li class="nav-item">
     <a class="nav-link" href="pages/charts/chartjs.html">
         <span class="menu-title">Charts</span>
         <i class="mdi mdi-chart-bar menu-icon"></i>
-    </a>
-    </li>
-    <li class="nav-item">
-    <a class="nav-link" href="pages/tables/basic-table.html">
-        <span class="menu-title">Tables</span>
-        <i class="mdi mdi-table-large menu-icon"></i>
     </a>
     </li>
     <li class="nav-item sidebar-actions">
@@ -256,6 +256,7 @@
                         <input type="number" class="form-control" id="stock" placeholder="Stock" name="stock" autocomplete="off" required>
                     </div>
                     <div class="form-group">
+                    <label for="catagory">Discount</label>
                         <div class="input-group">
                             <input type="number" class="form-control" placeholder="Discount" aria-label="Recipient's discount" aria-describedby="basic-addon2" name="discount" autocomplete="off" required>
                             <div class="input-group-append">

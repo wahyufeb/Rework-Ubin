@@ -20,7 +20,7 @@
         <script src="<?= base_url() ?>assets/custom/js/jquery.js"></script>
 
         <!-- datatables -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.18/datatables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/datatables/datatables.min.css"/>
 
         </head>
     <body>
@@ -45,10 +45,17 @@
     <script src="<?= base_url() ?>assets/admin/custom/sweet.js"></script>
 
     <!-- datatables -->
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.18/datatables.min.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>assets/datatables/datatables.min.js"></script>
     <script>
         $(document).ready(function(){
-            $('#table-product').DataTable();
+            $('#table').DataTable( {
+                responsive: true
+            });
+        })
+    </script>
+        <script>
+        $(document).ready(function(){
+            $('#table-accounts').DataTable();
         })
     </script>
 </body>
