@@ -31,26 +31,51 @@
             success:function(data){
                 let result = '';
                 for (let i = 0; i < data.length; i++) {
+                    let payment = data[i].total_payment;
+
+
+                    let reverse2 =  payment.toString().split('').reverse().join(''),
+                    total = reverse2.match(/\d{1,3}/g);
+                    total = total.join('.').split('').reverse().join('');
+
                     result +=`
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="margin-bottom:20px;">
                         <div class="card" style="box-shadow:none;">
                             <div class="card-body">
-                                <h6 class="card-title">Transaction Code : <span style="font-weight:normal;">`+data[i].transaction_code +`</span> </h6>
+                                <h6 class="card-title" id="code" data-code="`+data[i].transaction_code +`">Transaction Code : <span style="font-weight:normal;">`+data[i].transaction_code +`</span> </h6>
                                     <div class="detail"></div>
+                                <h6>Rp.`+ total +`</h6>
                             </div>
                         </div>
                     </div>
                     `;
                 }
                 $('#result-search').html(result);
-                
-                let detail = '';
-                for (let i = 0; i < data.length; i++) {
-                    detail +=`
-                        <p>`+ data[i].transaction_code +`</p>
-                    `;
-                }
-                $('.detail').html(detail);
+
+                let code = $('#code').data('code');
+                $.ajax({
+                    url:'<?= base_url() ?>User/getCode',
+                    data:'code='+code,
+                    dataType:'json',
+                    type:'POST',
+                    success:function(resp){
+                        console.log(resp);
+                        let data = '';
+                        for (let i = 0; i < resp.length; i++) {                    
+                            let total = resp[i].total;
+
+                            let reverse2 =  total.toString().split('').reverse().join(''),
+                            payment = reverse2.match(/\d{1,3}/g);
+                            payment = payment.join('.').split('').reverse().join('');
+                            
+                            data += `
+                                <p>`+ payment +`</p>
+                            `;
+                        }
+
+                        $('.detail').html(data);
+                    }
+                });
             }
         });
     });

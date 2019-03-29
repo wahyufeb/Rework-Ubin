@@ -236,7 +236,7 @@ class Order extends CI_Controller {
                     );
 
         
-        $this->M_Order->orderNow($id, $invoice, $costs);
+        $this->M_Order->orderNow($id, $invoice, $costs, $total);
         $this->session->set_flashdata('order', 'sukses');
         redirect('Cart/index');
     }
@@ -251,18 +251,28 @@ class Order extends CI_Controller {
         
         // Delete Invoice
         $id_invoice = $getOrder[0]['id_invoice'];
-        $whereId = array('id_invoice' => $id_invoice);
-        $this->M_Order->deleteInv($whereId);
+        $id_cost    = $getOrder[0]['id_cost'];
 
-        // Delete Cost
-        $id_cost = $getOrder[0]['id_cost'];
-        $wherecost = array('id_cost' => $id_cost);
-        $this->M_Order->deleteCost($wherecost);
+        $whereInv = array('id_invoice' => $id_invoice);
+        $whereCost= array('id_cost' => $id_cost);
+        
+        $invoice = $this->M_Order->countInv($whereInv);
+        $cost = $this->M_Order->countCost($whereCost);
 
+        if($invoice[0]['inv'] == 0 && $cost[0]['cost'] == 0){
+            // Cancel Order
+            $this->M_Order->cancelOrder($where);
+            redirect('User/payment');
+        }else{
+            //  Delete Invoice
+            $this->M_Order->deleteInv($whereInv);
+            // Delete Cost
+            $this->M_Order->deleteCost($whereCost);
+        }
 
-        // Cancel Order
-        $this->M_Order->cancelOrder($where);
-        redirect('User/payment');
+        // // Delete Cost
+        // $id_cost = $getOrder[0]['id_cost'];
+        // $wherecost = array('id_cost' => $id_cost);
     }
 
 

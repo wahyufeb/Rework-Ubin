@@ -171,6 +171,12 @@ class User extends CI_Controller {
         echo json_encode($transaction);
     }
 
+    function getCode(){
+        $where = array('transaction_code' => $this->input->post('code'));
+        $result = $this->M_User->getCode($where);
+        echo json_encode($result);
+    }
+
     // // Payment
     // function setting(){
     //     $id = $this->session->userdata('id_user');

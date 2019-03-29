@@ -7,7 +7,7 @@ class M_Order extends CI_Model {
         return $this->db->get_where($table,$where)->result_array();
     }
 
-    function orderNow($id, $invoice, $costs){
+    function orderNow($id, $invoice, $costs, $total){
         //  Transaction Table
         $length = 15;
         $code= "";
@@ -17,32 +17,38 @@ class M_Order extends CI_Model {
                 $code .= substr($data, (rand()%(strlen($data))), 1);
             }
         $transaction = array('transaction_code' => $code,
-                                'id_user' => $id
+                                'id_user' => $id,
+                                'total_payment' => $total
         );
         $this->db->insert('transaction', $transaction);
+
+        // add to costs table
+        $this->db->insert('costs', $costs);
+        $id_costs = $this->db->insert_id();
+        // add to invoice table
+        $this->db->insert('invoices', $invoice);
+        $id_invoice = $this->db->insert_id();
+
         // Qty
         foreach($this->cart->contents() as $row){
-            // add to costs table
-            $this->db->insert('costs', $costs);
-            $id_costs = $this->db->insert_id();
-            // add to invoice table
-            $this->db->insert('invoices', $invoice);
-            $id_invoice = $this->db->insert_id();
 
             $data = array('id_invoice' => $id_invoice,
                             'id_user' => $id,
                             'id_product' => $row['id'],
                             'qty' => $row['qty'],
                             'id_cost' => $id_costs,
-                            'total' => $row['subtotal']
+                            'total' => $row['subtotal'],
+                            'transaction_code' => $code
                         );
             $this->db->insert('orders', $data);
         }
+
+
         foreach($this->cart->contents() as $product){
             $where = array('id_product' =>$product['id']);
             $qty   = $product['qty'];
 
-        $productTable = $this->db->get_where('products', $where);
+            $productTable = $this->db->get_where('products', $where);
 
             if($productTable->num_rows() > 0){
                 $rowProduct = $productTable->row();
@@ -94,12 +100,22 @@ class M_Order extends CI_Model {
         $this->db->where($whereId);
         $this->db->delete('invoices');
     }
+
+    function countInv(){
+        $this->db->select('count(id_invoice) as inv');
+        return $this->db->get('invoices')->result_array();  
+    }
     // end Invoices
 
     // Cost 
     function deleteCost($wherecost){
         $this->db->where($wherecost);
         $this->db->delete('costs');
+    }
+
+    function countCost(){
+        $this->db->select('count(id_cost) as cost');
+        return $this->db->get('costs')->result_array();  
     }
     // end Cost
 

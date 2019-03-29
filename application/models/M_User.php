@@ -71,7 +71,12 @@ class M_User extends CI_Model {
         // $this->db->join('invoices', 'invoices.id_invoice = orders.id_invoice', 'left');      
         // $this->db->join('costs', 'costs.id_cost = orders.id_cost', 'left');
         // $this->db->join('products', 'products.id_product = orders.id_product', 'left');       
-
+    function getCode($where){
+        $this->db->join('invoices', 'invoices.id_invoice = orders.id_invoice', 'left');
+        $this->db->join('products', 'products.id_product = orders.id_product', 'left');
+        $this->db->join('costs', 'costs.id_cost = orders.id_cost', 'left');        
+        return $this->db->get_where('orders', $where)->result();
+    }
 
 
 
