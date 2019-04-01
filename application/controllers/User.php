@@ -93,18 +93,21 @@ class User extends CI_Controller {
             $email = $result->email;
             $key = $result->id_user;
             $name = $result->name;
-
         }
-
 
         $whereId = array('orders.id_user' => $key);
 
         // get orders history
         $orders = $this->M_User->paymentHistory($whereId);
         foreach($orders as $row){
-            $x = $row['total'];
+            $x = $row['total_payment'];
         }
 
+        // get tranaction_code
+        $transaction = $this->M_User->codeTransaction($where);
+        foreach ($transaction as $row){
+            $code = $row['transaction_code'];
+        }
         // Konfigurasi email
         $this->load->library('email');
         $config = array();
@@ -133,6 +136,8 @@ class User extends CI_Controller {
             <img src="https://image.freepik.com/free-vector/variety-payment-methods_23-2147692637.jpg" width="400" style="margin-bottom:40px;">
         </center>
         </table>
+        <p> Kode Transaksi '.$name.'</p>
+        <h5>'.$code.'</h5><br>
         <p style="font-size:15px;">Terimakasih '. $name .', telah memesan produk dari website kami <a href="cubin.com">cubin.com</a> Total yang harus dibayar <b> Rp.'. number_format($x, 0,',','.').'</b> Untuk metode pembayaran kami menggunakan metode Transfer Bank, berikut daftar Nomor Rekening Kami:</p>
         <ul>
             <li>BCA     : 13912738721167</li>
@@ -140,6 +145,10 @@ class User extends CI_Controller {
             <li>Mandiri : 13721632716423</li>
             <li>BNI     : 82367216327167</li>
         </ul>
+        <p>Tranfer ke No Rekening di atas, dengan format atas nama "CUBIN WEBSITE" dan masukan kode transaksi di sampingnya</p><br>
+        <p>Contoh : </p>
+        <p>Atas Nama : CUBIN WEBSITE GGX06MB3W9 </p>
+        <p>Rek. No.  : 13912738721167</p><br>
         <p>Untuk Expired Pembayaran dimulai dari 2 hari setelah order atau cek di <a href="http://localhost/rework/User/payment">Expired Pembayaran</a></p>
         ');
 
@@ -166,8 +175,8 @@ class User extends CI_Controller {
 
     function getTransaction(){
         $where  = array('id_user' => $this->input->post('id_user'));
-        $key    = $this->input->post('key');
-        $transaction = $this->M_User->transaction($where, $key);
+        // $key    = $this->input->post('key');
+        $transaction = $this->M_User->transaction($where);
         echo json_encode($transaction);
     }
 
@@ -175,6 +184,37 @@ class User extends CI_Controller {
         $where = array('transaction_code' => $this->input->post('code'));
         $result = $this->M_User->getCode($where);
         echo json_encode($result);
+    }
+
+    function uploadTransaction_image(){
+        $id = $this->session->userdata('id_user');
+
+        $config['upload_path']          = './assets/transaction/image';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+        $config['max_size']             = 2048;
+        $config['max_width']            = 2000;
+        $config['max_height']           = 2000;
+
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('image')){
+            $error = array('error' => $this->upload->display_errors());
+            print_r($error);
+        }else{
+            $data = array('upload_data' => $this->upload->data());
+            $img = $data['upload_data']['file_name'];
+            
+            //  transaction table
+            $where  = array('id_user' => $id);
+            $data   = array('transaction_image' => $img);
+
+            // invoice table
+            $updateInv = array('status' => 'confirmation process');
+
+            $this->M_User->uploadTransactionImage($where, $data);
+            $this->M_User->confirmTransaction($where, $updateInv);
+            redirect('User/transaction');
+        }
     }
 
     // // Payment

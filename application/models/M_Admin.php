@@ -91,6 +91,18 @@ class M_Admin extends CI_Model {
     }
 
     // END ORDERS
+
+    // TESTIMONIALS PAGE
+    function getTesti(){
+        $this->db->from('testimonials');
+        $this->db->select('users.email, users.photo, users.name, products.image,  products.name as product, testimonials.id_comment, testimonials.comment, testimonials.date_created ');
+        $this->db->join('users', 'users.id_user = testimonials.id_user', 'left');
+        $this->db->join('products', 'products.id_product = testimonials.id_product', 'left');
+        $this->db->order_by('date_created', 'desc');
+        return $this->db->get()->result_array();
+    }
+    // END TESTIMONIALS PAGE
+
 }
 
 /* End of file M_Admin.php */

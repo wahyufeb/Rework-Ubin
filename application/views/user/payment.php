@@ -4,7 +4,7 @@
     }
 </style>
 <div class="col-lg-9 col-md-9 col-sm-9 col-9 offset-lg-1 offset-md-1 offset-sm-1 offset-1 right-side">
-    <h6>Payment</h6><br>
+    <h5>Payment</h5><br>
         <?php if($this->session->flashdata('payment')){ ?>
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong>Terimakasih, </strong>permintaan akan segera diproses. Silahkan <?=  $this->session->flashdata('payment'); ?>

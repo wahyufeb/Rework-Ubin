@@ -205,6 +205,12 @@
     </a>
     </li>
     <li class="nav-item">
+    <a class="nav-link" href="<?= base_url() ?>User_admin/testimonials">
+        <span class="menu-title">Testimonials</span>
+        <i class="mdi mdi-basket menu-icon"></i>
+    </a>
+    </li>
+    <li class="nav-item">
     <a class="nav-link" href="pages/charts/chartjs.html">
         <span class="menu-title">Charts</span>
         <i class="mdi mdi-chart-bar menu-icon"></i>

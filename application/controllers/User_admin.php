@@ -3,17 +3,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_admin extends CI_Controller {
     
-    public function __construct()
-    {
+    public function __construct(){
         parent::__construct();
         if($this->session->userdata('level') != "admin"){
             redirect('Login');
         }
 
         $this->load->library('Template');
-        $this->load->model('M_Admin');
-        
-        
+        $this->load->model('M_Admin'); 
     }
     
     public function index(){
@@ -180,6 +177,16 @@ class User_admin extends CI_Controller {
     }
     // END ORDERS PAGE
 
+    // TESTIMONIALS PAGE
+    function testimonials(){
+        $id = $this->session->userdata('id_user');
+        $where = array('id_user' => $id);
+
+        // saia admin
+        $data['admin'] = $this->M_Admin->saiaAdmin($where);
+        $data['testimonial'] = $this->M_Admin->getTesti();
+        $this->template->admin('user_admin/testimonials', $data);
+    }
 
 
 }
