@@ -4,7 +4,7 @@
 <?php } ?>
 <div class="container">
     <!-- Discount -->
-    <h2>BIG DISCOUNT <i class="fas fa-percent fa-sm"></i></h2>
+    <h3 style="color:#009ae1;">BIG DISCOUNT <i class="fas fa-percent fa-sm"></i></h3>
     <div class="row">
     <?php foreach($discount as $row): ?>
     <?php
@@ -29,7 +29,7 @@
 
         <!-- Top Items -->
         <div class="list">
-            <h2>Top 4 Products</h2>
+            <h3 style="color:#009ae1;">Top 4 Products</h3>
         <?php foreach($top as $row): ?>
         <?php         
             $price = $row['price'];
@@ -65,7 +65,7 @@
 </div>
     <!-- Testimonial -->
     <div class="testimonial">
-        <h2>Testimonial</h2>
+        <h2 style="color:#009ae1;">Testimonial</h2>
     </div>
     <!-- end Testimonial -->
 <div class="row">

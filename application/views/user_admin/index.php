@@ -53,9 +53,14 @@
             });
         })
     </script>
-        <script>
+    <script>
         $(document).ready(function(){
             $('#table-accounts').DataTable();
+        })
+    </script>
+        <script>
+        $(document).ready(function(){
+            $('#table-orders').DataTable();
         })
     </script>
 </body>

@@ -43,33 +43,13 @@
                                         <div class="detail"></div>
                                         <div id="address" style="margin-top:20px;"></div>
                                         <div id="cost" style="margin-top:40px;"></div>
-                                        <h6>Total Payment : Rp.`+ total +`</h6><br>
+                                        <h6>Total Payment : Rp.`+ total +`</h6><hr><br>
                                         <div id="status" style="margin-bottom:20px;"></div>
                                     <span style="font-size:15px;opacity:.8;">*Upload your proof of transaction in here</span>
                                     <?php echo form_open_multipart('User/uploadTransaction_image');?>
                                         <input type="file" name="image" size="20" />
                                         <input type="submit" class="btn btn-success" value="Upload Image" />
                                     </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                            <h5>Step For Payment Confirmation</h5>
-                        </div>
-                        `;
-                    }else{
-                        result +=`
-                        <div class="col-lg-6  col-md-6 col-sm-12 col-12" style="margin-bottom:20px;">
-                            <div class="card" style="box-shadow:none;">
-                                <div class="card-body">
-                                    <h6 class="card-title" id="code" data-code="`+data[i].transaction_code +`">Transaction Code : <span style="font-weight:normal;">`+data[i].transaction_code +`</span> </h6>
-                                        <div class="detail"></div>
-                                        <div id="address" style="margin-top:20px;"></div>
-                                        <div id="cost" style="margin-top:40px;"></div>
-                                        <h6>Total Payment : Rp.`+ total +`</h6><br>
-                                        <div id="status" style="margin-bottom:20px;"></div>
-                                        <img src="<?= base_url() ?>assets/transaction/image/`+data[i].transaction_image+`" width="200"><br>
-                                        <span style="font-size:15px;opacity:.8;">*Proof of payment is being confirmed by the admin, please wait and check the status in the transaction menu</span>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +63,38 @@
                                 <li>After that, the photo approves the payment from your ATM and uploads it on the transaction menu</li>
                                 <li>Check payment confirmation from the admin</li>
                                 <li>Check the status in the transaction menu</li>
-                                <li>If the transaction status is "unpaid" means the item is being shipped</li>
+                                <li>If the transaction status is "paid" means the item is being shipped</li>
+                            </ol>
+                        </div>
+                        `;
+                    }else{
+                        result +=`
+                        <div class="col-lg-6  col-md-6 col-sm-12 col-12" style="margin-bottom:20px;">
+                            <div class="card" style="box-shadow:none;">
+                                <div class="card-body">
+                                    <h6 class="card-title" id="code" data-code="`+data[i].transaction_code +`">Transaction Code : <span style="font-weight:normal;">`+data[i].transaction_code +`</span> </h6>
+                                        <div class="detail"></div>
+                                        <div id="address" style="margin-top:20px;"></div>
+                                        <div id="cost" style="margin-top:40px;"></div>
+                                        <h6>Total Payment : Rp.`+ total +`</h6><hr><br>
+                                        <div id="status" style="margin-bottom:20px;"></div>
+                                        <img src="<?= base_url() ?>assets/transaction/image/`+data[i].transaction_image+`" width="200"><br>
+                                        <span id="note" style="font-size:15px;opacity:.8;">*Proof of payment is being confirmed by the admin, please wait and check the status in the transaction menu</span>
+                                        <span id="note2" style="font-size:15px;opacity:.8;"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                            <p>Step for Payment Confirmation</p>
+                            <ol>
+                                <li>Check your email</li>
+                                <li>In the e-mail contact, select the e-mail from CUBIN Website</li>
+                                <li>Open the email, see the transaction code and ATM Account number belonging to Cubin Webiste</li>
+                                <li>Send the approved money in an email and choose one of the account numbers from the Cubin ATM Site</li>
+                                <li>After that, the photo approves the payment from your ATM and uploads it on the transaction menu</li>
+                                <li>Check payment confirmation from the admin</li>
+                                <li>Check the status in the transaction menu</li>
+                                <li>If the transaction status is "paid" means the item is being shipped</li>
                             </ol>
                         </div>
                         `;
@@ -113,19 +124,42 @@
                             cost = reverse.match(/\d{1,3}/g);
                             cost = cost.join('.').split('').reverse().join('');
                             
+                            let date = resp[i].date;
+                            let due_date = resp[i].due_date;
+
                             data += `
                                 <div class="row">
-                                    <div class="col-md-8 col-sm-8 col-12">`+no+`. `+resp[i].name+`</div>
-                                    <div class="col-md-4 col-sm-4 col-12"> Rp. `+ payment +`</div>
+                                    <div class="col-md-6 col-sm-6 col-12">`+no+`. `+resp[i].name+`</div>
+                                    <div class="col-md-2 col-sm-2 col-6">`+ resp[i].qty +`</div>
+                                    <div class="col-md-4 col-sm-4 col-6"> Rp. `+ payment +`</div>
                                 </div>
                             `;
-                            $('#address').html(`<h6>Address : </h6><p>`+ resp[i].province+`, `+resp[i].city+`, `+resp[i].street_adress +`</p>`)
+                            $('#address').html(`<h6>Address : </h6><p>`+ resp[i].province+`, `+resp[i].city+`, `+resp[i].street_adress +`</p>
+                            <div class="row">
+                                <div class="col-md-6"><h6>Date : </h6><p>`+ date.substr(0, 10) +`</p></div>
+                                <div class="col-md-6"><h6>Expired : </h6><p>`+ due_date.substr(0,10) +`</p></div>
+                            </div>`)
                             $('#status').html(`
                             <center>
-                                <h5>Status : `+ resp[i].status +`</h5>
+                                <h5 style="color:red;">Status : `+ resp[i].status +` <i class="far fa-times-circle animated infinite heartBeat delay-3s"></i></h5>
                             </center>
                             `);
                             $('#cost').html(`Total Cost &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Rp.`+cost+``);
+                            if(resp[i].status == "paid"){
+                                $('#note').hide();
+                                $('#note2').html("*Thank you, your order is in the process of being shipped")
+                                $('#status').html(`
+                                    <center>
+                                        <h5 style="color:#84CF96;">Status : `+ resp[i].status +` <i class="fas fa-check animated infinite tada delay-1s"></i></h5>
+                                    </center>
+                                `);
+                            }else if(resp[i].status == "confirmation process"){
+                                $('#status').html(`
+                                    <center>
+                                        <h5 style="color:#ff7400;">Status : `+ resp[i].status +` <i class="fas fa-spinner animated infinite rotateOut "></i></h5>
+                                    </center>
+                                `);
+                            }
                         }
                         $('.detail').html(data);
                     }

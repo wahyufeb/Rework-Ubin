@@ -96,9 +96,9 @@ class M_Ubin extends CI_Model {
         $this->db->limit($limit, $start);
         $this->db->where($where);
         $query = $this->db->get();
-        $output .='<div class="free-shipping"><h2>All Products</h2>';
+        $output .='<div class="free-shipping" style="color:#009ae1;"><h3>All Products</h3>';
         foreach ($query->result() as $row) {
-            $output.=' <div class="col-lg-3 col-md-6 col-sm-6 col-6 product-free-shipping" >
+            $output.=' <div class="col-lg-3 col-md-6 col-sm-6 col-6 product-free-shipping" style="color:#333;">
             <div class="card">
                 <a href="'.base_url("Ubin/product/").''.$row->id_product.'">
                     <img src="'.base_url("assets/img/").''.$row->image.'" class="card-img-top" alt="...">

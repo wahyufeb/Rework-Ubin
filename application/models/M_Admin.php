@@ -80,17 +80,28 @@ class M_Admin extends CI_Model {
 
     // END ACCOUNTS
 
-    // ORDERS
+    // ORDERS & TRANSACTION
 
     function orders(){
-        $this->db->from('orders');
-        $this->db->join('users', 'users.id_user = orders.id_user', 'left');
-        $this->db->join('invoices', 'invoices.id_invoice = orders.id_invoice', 'left');
-        $this->db->order_by('invoices.date', 'desc');
+        $this->db->from('transaction');
+        $this->db->select('transaction.id_transaction, transaction.transaction_code, users.email, users.photo, users.name, users.telephone, invoices.date, invoices.status');
+        $this->db->join('users', 'users.id_user = transaction.id_user', 'left');
+        $this->db->join('invoices', 'invoices.id_user = transaction.id_user', 'left');
+        
         return $this->db->get()->result_array();
     }
 
-    // END ORDERS
+    function getIdUser($where){
+        $this->db->select('transaction.id_user');
+        return $this->db->get_where('transaction', $where)->result_array();
+    }
+
+    function confirmTransaction($whereId, $dataInv){
+        $this->db->where($whereId);
+        $this->db->update('invoices', $dataInv);
+    }
+
+    // END ORDERS & TRANSACTION
 
     // TESTIMONIALS PAGE
     function getTesti(){

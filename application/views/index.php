@@ -18,7 +18,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/custom/css/general.css">
 
     <!-- nav plugin -->
-    <link rel="stylesheet" href="<?= base_url() ?>assets/menu/css/slimmenu.min.css">
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/menu/css/slimmenu.min.css"> -->
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/custom/menu/styles.css">
 
     <!-- Nav -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/custom/css/nav.css">
@@ -51,7 +52,7 @@
     <!-- Jquery UI -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/custom/css/jquery-ui.min.css">
 
- 
+
 
 
 </head>

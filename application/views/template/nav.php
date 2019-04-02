@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <a class="navbar-brand" href="#">UBIN</a>
+    <a class="navbar-brand" href="<?= base_url() ?>Ubin">UBIN</a>
     <a href="<?= base_url() ?>User/shopping_cart"><i class="fas fa-shopping-cart fa-lg"></i> <?php echo  $this->cart->total_items(); ?> items</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +34,6 @@
                 <i class="fas fa-caret-down " id="arrow-menu"></i>
                 <ul id="login-menu">
                     <li><a href="<?= base_url() ?>User/profile">View profile</a></li>
-                    <li><a href="#">Setting</a></li>
                     <li><a href="<?= base_url() ?>User/logout" class="logout">Logout</a></li>
                 </ul>
             </li>
@@ -45,35 +44,33 @@
             </li>
         </ul>
     </div>
-</nav>
-<div class="menu">
-    <ul class="slimmenu" id="navigation">
-        <li>
-            <a href="#">All Product</a>
-        </li>
-        <li>
-            <a href="#">Catagories</a>
+</nav>   
+        <div id='cssmenu'>
             <ul>
-                <li><a href="#">Bowl </a></li>
-                <li><a href="#">Plate </a></li>
-                <li><a href="#">Vase </a></li>
-                <li><a href="#">Mugs </a></li>
-                <li><a href="#">Kettle </a></li>
+                <li><a href='<?= base_url() ?>Ubin'>Home</a></li>
+                <li class='active has-sub'><a href='#'>Catagories</a>
+                    <ul>
+                        <li class='has-sub'><a href='#'>Product 1</a>
+                            <ul>
+                            <li><a href='#'>Sub Product</a></li>
+                            <li><a href='#'>Sub Product</a></li>
+                            </ul>
+                        </li>
+                        <li class='has-sub'><a href='#'>Product 2</a>
+                            <ul>
+                            <li><a href='#'>Sub Product</a></li>
+                            <li><a href='#'>Sub Product</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href='#'>Big Discounts</a></li>
+                <li><a href='#'>Top Products</a></li>
+                <li><a href='#'>All Products</a></li>
+                <li><a href='#'>Testimonials</a></li>
+                <li><a href='#'>About</a></li>
             </ul>
-        </li>
-        <li>
-            <a href="#">Hot Sale</a>
-        </li>
-        <li>
-            <a href="#">Testimonial</a>
-        </li>
-        <li>
-            <a href="#contact">Contact</a>
-        </li>
-        <li>
-            <a href="#about">About</a>
-        </li>
-    </ul>
+        </div>
 </div>
 
 

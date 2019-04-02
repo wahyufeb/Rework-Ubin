@@ -11,6 +11,8 @@ class User_admin extends CI_Controller {
 
         $this->load->library('Template');
         $this->load->model('M_Admin'); 
+        $this->load->model('M_User');
+        
     }
     
     public function index(){
@@ -162,7 +164,7 @@ class User_admin extends CI_Controller {
     // END ACCOUNTS PAGE
 
 
-    // ORDERS PAGE
+    // ORDERS & TRANSACTION PAGE
     function orders(){
         $id = $this->session->userdata('id_user');
         $where = array('id_user' => $id);
@@ -175,7 +177,30 @@ class User_admin extends CI_Controller {
 
         $this->template->admin('user_admin/orders', $data);
     }
-    // END ORDERS PAGE
+
+    function getTransaction(){
+        $where  = array('transaction_code' => $this->input->post('transaction_code'));
+        $transaction = $this->M_User->transaction($where);
+        echo json_encode($transaction);
+    }
+
+    function getCode(){
+        $where = array('transaction_code' => $this->input->post('code'));
+        $getCode = $this->M_User->getCode($where);
+        echo json_encode($getCode);
+    }
+
+    function confirmationTransaction($code){
+        $where  = array('transaction_code' => $code);
+        $get = $this->M_Admin->getIdUser($where);
+        $id_user = $get[0]['id_user'];
+
+        $whereId = array('id_user' => $id_user);
+        $dataInv = array('status' => 'paid');
+        $this->M_Admin->confirmTransaction($whereId, $dataInv);
+        redirect('User_admin/orders');
+    }
+    // END ORDERS & TRANSACTION PAGE
 
     // TESTIMONIALS PAGE
     function testimonials(){

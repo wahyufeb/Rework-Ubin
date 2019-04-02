@@ -200,8 +200,8 @@
     </li>
     <li class="nav-item">
     <a class="nav-link" href="<?= base_url() ?>User_admin/orders">
-        <span class="menu-title">Orders</span>
-        <i class="mdi mdi-basket menu-icon"></i>
+        <span class="menu-title">Orders & Transaction</span>
+        <i class="mdi mdi-square-inc-cash menu-icon"></i>
     </a>
     </li>
     <li class="nav-item">
