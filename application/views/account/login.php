@@ -30,7 +30,6 @@
     <div id="loader"></div>
     <p>Loading...</p>
 </div>
-
 <div class="flashdata" data-flashdata="<?= $this->session->flashdata('flash') ?>" ></div>
     <div class="container">
         <div class="row">

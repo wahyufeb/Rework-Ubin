@@ -96,4 +96,31 @@ $('.active').on("click", function(e){
 });
 // End Sweet Activate Account
 
+// SWEET LOGOUT
+$('#logout').on("click", function(e){
+    e.preventDefault();
+    let href = $(this).attr('href');
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Do you want to Logout?",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: 'salmon',
+        cancelButtonColor: 'skyblue',
+        confirmButtonText: 'Yes, Logout '
+        }).then((result) => {
+        if (result.value) {
+            Swal.fire(
+            'Success',
+            'You has been Logged out',
+            'success'
+            );
+            setTimeout(() => {
+                document.location.href = href;
+            }, 2000);
+        }
+    });
+});
+// End SWEET Logout
+
 

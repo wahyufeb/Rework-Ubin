@@ -5,6 +5,8 @@ if (flashData == "sukses") {
   Swal.fire("Registration Success", "Click Ok to Continue!", "success");
 } else if (flashData == "verifikasi") {
   Swal.fire("Verification Success", "Click Ok to Continue!", "success");
+} else if (flashData == "success") {
+  Swal.fire("Success", "Your problem has been sent", "success");
 }
 
 // update profile sweetalert

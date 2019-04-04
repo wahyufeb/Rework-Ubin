@@ -50,17 +50,20 @@
                 <li><a href='<?= base_url() ?>Ubin'>Home</a></li>
                 <li class='active has-sub'><a href='#'>Catagories</a>
                     <ul>
-                        <li class='has-sub'><a href='#'>Product 1</a>
+                        <li class='has-sub'><a href='#'>Mugs</a>
                             <ul>
                             <li><a href='#'>Sub Product</a></li>
                             <li><a href='#'>Sub Product</a></li>
                             </ul>
                         </li>
-                        <li class='has-sub'><a href='#'>Product 2</a>
+                        <li class='has-sub'><a href='#'>Gucci</a>
                             <ul>
                             <li><a href='#'>Sub Product</a></li>
                             <li><a href='#'>Sub Product</a></li>
                             </ul>
+                        </li>                        
+                        <li>
+                            <a href='#'>Vase</a>
                         </li>
                     </ul>
                 </li>

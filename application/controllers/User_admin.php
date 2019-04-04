@@ -212,6 +212,18 @@ class User_admin extends CI_Controller {
         $data['testimonial'] = $this->M_Admin->getTesti();
         $this->template->admin('user_admin/testimonials', $data);
     }
+    // END TESTIMONIALS PAGE
+
+    function userProblems(){
+        $data['problems'] = $this->M_Admin->problems();
+        $this->template->admin('user_admin/user_problems', $data);
+    }
+
+
+    function logout(){
+        $this->session->sess_destroy();
+        redirect('login');
+    }
 
 
 }

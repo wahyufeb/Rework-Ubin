@@ -45,12 +45,17 @@
         </div>
         <div class="row mt-5">
             <div class="col-12 text-center mt-xl-2">
+            <a class="text-white font-weight-medium" href="<?= base_url() ?>Ubin/contactAdmin">Contact Admin</a>
+            </div>
+        </div>        
+        <div class="row mt-5">
+            <div class="col-12 text-center">
             <a class="text-white font-weight-medium" href="<?= base_url() ?>">Back to home</a>
             </div>
         </div>
         <div class="row mt-5">
             <div class="col-12 mt-xl-2">
-            <p class="text-white font-weight-medium text-center">Copyright &copy; 2018  All rights reserved.</p>
+            <p class="text-white font-weight-medium text-center">Copyright &copy; 2019  All rights reserved.</p>
             </div>
         </div>
         </div>

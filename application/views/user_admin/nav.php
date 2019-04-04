@@ -7,7 +7,7 @@
 <a class="navbar-brand brand-logo" href="index.html"><img src="<?= base_url() ?>assets/admin/images/logo.svg" alt="logo"/></a>
 <a class="navbar-brand brand-logo-mini" href="index.html"><img src="<?= base_url() ?>assets/admin/images/logo-mini.svg" alt="logo"/></a>
 </div>
-<div class="navbar-menu-wrapper d-flex align-items-stretch">
+<div class="navbar-menu-wrapper d-flex align-items-stretch">    
 <div class="search-field d-none d-md-block">
     <form class="d-flex align-items-center h-100" action="#">
     <div class="input-group">
@@ -22,7 +22,7 @@
     <li class="nav-item nav-profile dropdown">
     <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
         <div class="nav-profile-img">
-        <img src="<?= base_url() ?>assets/admin/images/faces/face1.jpg" alt="image">
+        <img src="<?= base_url() ?>assets/admin/images/faces/<?= $admin[0]['photo'] ?>" alt="image">
         <span class="availability-status online"></span>             
         </div>
         <div class="nav-profile-text">
@@ -35,7 +35,7 @@
         Activity Log
         </a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">
+        <a class="dropdown-item " href="<?= base_url() ?>user_admin/logout" id="logout">
         <i class="mdi mdi-logout mr-2 text-primary"></i>
         Signout
         </a>
@@ -145,12 +145,6 @@
         <div class="dropdown-divider"></div>
         <h6 class="p-3 mb-0 text-center">See all notifications</h6>
     </div>
-    </li>
-    <li class="nav-item nav-logout d-none d-lg-block">
-    <a class="nav-link" href="#">
-        <i class="mdi mdi-power"></i>
-    </a>
-    </li>
     <li class="nav-item nav-settings d-none d-lg-block">
     <a class="nav-link" href="#">
         <i class="mdi mdi-format-line-spacing"></i>
@@ -170,7 +164,7 @@
     <li class="nav-item nav-profile">
     <a href="#" class="nav-link">
         <div class="nav-profile-image">
-        <img src="<?= base_url() ?>assets/admin/images/faces/face1.jpg" alt="profile">
+        <img src="<?= base_url() ?>assets/admin/images/faces/<?= $admin[0]['photo'] ?>" alt="profile">
         <span class="login-status online"></span> <!--change to offline or busy as needed-->              
         </div>
         <div class="nav-profile-text d-flex flex-column">
@@ -207,13 +201,13 @@
     <li class="nav-item">
     <a class="nav-link" href="<?= base_url() ?>User_admin/testimonials">
         <span class="menu-title">Testimonials</span>
-        <i class="mdi mdi-basket menu-icon"></i>
+        <i class="mdi mdi-account-switch menu-icon"></i>
     </a>
     </li>
     <li class="nav-item">
-    <a class="nav-link" href="pages/charts/chartjs.html">
-        <span class="menu-title">Charts</span>
-        <i class="mdi mdi-chart-bar menu-icon"></i>
+    <a class="nav-link" href="<?= base_url() ?>User_admin/userProblems">
+        <span class="menu-title">User Problems</span>
+        <i class="mdi mdi-comment-account menu-icon"></i>
     </a>
     </li>
     <li class="nav-item sidebar-actions">

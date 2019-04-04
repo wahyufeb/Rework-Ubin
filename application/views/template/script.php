@@ -13,23 +13,11 @@
 
 <!-- custom -->
 <script src="<?= base_url() ?>assets/custom/js/custom.js"></script>
-<script src="<?= base_url() ?>assets/custom/js/sweetcustom.js"></script>
+<script src="<?= base_url() ?>/assets/custom/js/sweetcustom.js"></script>
 <!-- <script src="<?= base_url() ?>assets/dropzone/dropzone.min.js"></script> -->
 <script src="<?= base_url() ?>/assets/custom/js/mycode.js"></script>
 <script src="<?= base_url() ?>assets/custom/js/jquery-ui.min.js"></script>
 
-
-<script>
-    $('#navigation').slimmenu(
-        {
-            resizeWidth: '800',
-            collapserTitle: 'Menu',
-            animSpeed: 'medium',
-            easingEffect: null,
-            indentChildren: false,
-            childrenIndenter: '&nbsp;'
-        });
-</script>
 <script type="text/javascript">
     $(document).ready(()=>{
         $('#search').keyup('blur', function(){

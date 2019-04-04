@@ -3,8 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Registration extends CI_Controller {
     
-    public function __construct()
-    {
+    public function __construct(){
         parent::__construct();
         $this->load->model('M_Registration');
     }
@@ -112,19 +111,18 @@ class Registration extends CI_Controller {
             $config['newline']="\r\n"; 
             $config['wordwrap'] = TRUE;
             //memanggil library email dan set konfigurasi untuk pengiriman email
-           
             $this->email->initialize($config);
             //konfigurasi pengiriman
             $this->email->from($config['smtp_user']);
             $this->email->to($email);
             $this->email->subject("Verifikasi Akun");
             $this->email->message('Terimakasih telah melakukan Registrasi, untuk verifikasi akun silahkan klik <a href="http://localhost/rework/Registration/verification/'. $enkripsi_id .'">disini</a>
-             ');
-          
+                ');
+            
             if($this->email->send()){
-               echo "Berhasil melakukan registrasi, silahkan cek email kamu";
+                echo "Berhasil melakukan registrasi, silahkan cek email kamu";
             }else{
-               echo "Berhasil melakukan registrasi, namu gagal mengirim verifikasi email, silahkan masukan email yang valid";
+                echo "Berhasil melakukan registrasi, namu gagal mengirim verifikasi email, silahkan masukan email yang valid";
             }
         }        
     }

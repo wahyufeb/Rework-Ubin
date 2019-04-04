@@ -3,8 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ubin extends CI_Controller {
 	
-	public function __construct()
-	{
+	public function __construct(){
 		parent::__construct();
 		// Load Libraries
 		$this->load->library('Template');
@@ -161,6 +160,20 @@ class Ubin extends CI_Controller {
 						'data_products' => $this->M_Ubin->fetch_details($config['per_page'], $start)
 		);
 		echo json_encode($output);
+	}
+
+	function contactAdmin(){
+		$this->template->component('contact');
+	}
+
+	function sendToAdmin(){
+		$data = array('email' => $this->input->post('email'),
+										'problem' => $this->input->post('problem'),
+										'problem_detail' => $this->input->post('problem_detail')
+									);
+		$this->M_Ubin->sendContact($data);
+		$this->session->set_flashdata('flash', 'success');
+		redirect('Login');
 	}
 
 	

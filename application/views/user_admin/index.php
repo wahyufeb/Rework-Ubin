@@ -42,7 +42,7 @@
     <!-- End custom js for this page-->
     <!-- sweetalert -->
     <script src="<?= base_url() ?>assets/sweetalert/sweetalert2.min.js"></script>
-    <script src="<?= base_url() ?>assets/admin/custom/sweet.js"></script>
+    <script src="<?= base_url() ?>/assets/admin/custom/sweet.js"></script>
 
     <!-- datatables -->
     <script type="text/javascript" src="<?= base_url() ?>assets/datatables/datatables.min.js"></script>

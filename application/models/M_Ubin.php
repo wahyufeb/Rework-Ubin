@@ -118,6 +118,10 @@ class M_Ubin extends CI_Model {
         return $output;
     }
 
+    function sendContact($data){
+        $this->db->insert('contacts', $data);
+    }
+
 
 
     
