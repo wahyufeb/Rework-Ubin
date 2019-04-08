@@ -118,7 +118,6 @@
                     dataType:'json',
                     type:'POST',
                     success:function(resp){
-                        console.log(resp);
                         let data = '';
                         for (let i = 0; i < resp.length; i++) {                    
                             let total = resp[i].total;

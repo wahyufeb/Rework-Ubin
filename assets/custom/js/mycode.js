@@ -44,11 +44,31 @@ $("#login_user").on("click", function() {
     .toggleClass("fa-caret-up");
 });
 
-const date = $("#clock").data("clock");
-const cancel = $("#cancel");
-const href = cancel.attr("href");
+const date    = $("#clock").data("clock");
+const cancel  = $("#cancel");
+const href    = cancel.attr("href");
+const base    = "http://localhost/rework/";
+
+// id user
+let id = $('#exp').data('exp');
+
+
 $("#clock").countdown(date, function(event) {
   $(this).html(event.strftime("%D days %H:%M:%S"));
+  let exp = event.strftime("%D days %H:%M:%S");
+  if(exp =="00 days 00:00:00"){
+    console.log("EXPIRED");
+    $.ajax({
+      url:base+'Order/expired',
+      type:'POST',
+      data:'id='+id,
+      success:function(data){
+        console.log("SUKSES");
+    }
+    });
+  }else{
+  $(this).html(event.strftime("%D days %H:%M:%S")); 
+  }
 });
 
 cancel.click(e => {

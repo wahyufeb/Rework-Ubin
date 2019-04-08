@@ -124,6 +124,11 @@ class M_Order extends CI_Model {
         $this->db->delete('orders');
     }
 
+    function expired($whereId, $table){
+        $this->db->where($whereId);
+        $this->db->delete($table);
+    }
+
     // ============================================================= //
 
 }

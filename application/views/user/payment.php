@@ -40,10 +40,10 @@
                                 <a href="<?= base_url() ?>Order/cancelOrder/<?= $row['id_order'] ?>" class="btn btn-danger" id="cancel">Cancel Order <?= $i ?></a>
                             </div>
                         </div>
-                    </div>
+                </div>
                 <?php endforeach; ?>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-4 col-12">
+            <div class="col-lg-6 col-md-6 col-sm-4 col-12" id="exp" data-exp="<?= $this->session->userdata('id_user')?>">
                 Expired : 
                     <div id="clock" data-clock="<?= $row['due_date'] ?>"></div><br>
             </div>

@@ -275,6 +275,14 @@ class Order extends CI_Controller {
         // $wherecost = array('id_cost' => $id_cost);
     }
 
+    function expired(){
+        $whereId = array('id_user' => $this->input->post('id'));
+        $this->M_Order->expired($whereId, 'costs');
+        $this->M_Order->expired($whereId, 'invoices');
+        $this->M_Order->expired($whereId, 'orders');
+        $this->M_Order->expired($whereId, 'transaction');
+    }
+
 
 }
 
