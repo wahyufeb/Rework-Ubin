@@ -214,8 +214,8 @@ class Order extends CI_Controller {
         $destCity       = $this->input->post('destination_city');
         $courier        = $this->input->post('couirer');
         $service        = $this->input->post('service');
-        $postalcode     = $this->input->post('postalcode');
-        $street         = $this->input->post('street');
+        $postalcode     = htmlspecialchars($this->input->post('postalcode'));
+        $street         = htmlspecialchars($this->input->post('street'));
         $cost           = $this->input->post('cost');
         $total          = $this->input->post('total');
 

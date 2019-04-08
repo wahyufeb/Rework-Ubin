@@ -31,6 +31,10 @@
         #delete-photo .trash:hover{
             color:red;
         }
+
+        .side-menu a{
+            color:#009DFF;
+        }
     </style>
 </head>
 <body>

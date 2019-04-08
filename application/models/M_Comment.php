@@ -7,8 +7,9 @@ class M_Comment extends CI_Model {
         $this->db->insert($table, $data);
     }
 
-    function getTestimonial($whereProduct){
-        
+    function getTestimonial($whereProduct){    
+        $this->db->limit(7);
+        $this->db->order_by('date_created', 'DESC');
         $this->db->join('users', 'users.id_user = testimonials.id_user', 'left');
         return $this->db->get_where('testimonials', $whereProduct)->result_array();
     }

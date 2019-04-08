@@ -33,7 +33,8 @@ $("#dropdown").on("click", function() {
 
 // tombol dropdown nav
 $("#login_user").on("click", function() {
-  $("#login-menu").css("marginLeft", "-50px");
+  $("#login-menu").css("marginLeft", "0px");
+  $("#login-menu").css("backgroundColor", "#333");
   $("#login-menu").css("line-height", "40px");
   $("#login-menu").css("position", "absolute");
   $("#login-menu").slideToggle("swing");

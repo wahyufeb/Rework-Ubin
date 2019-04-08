@@ -41,7 +41,7 @@ class Comment extends CI_Controller {
             'id_user' => $id,
             'id_product' => $idProduct,
             'comment' => htmlspecialchars($this->input->post('comment')),
-            'date_created' => $date->format('d-M-Y')
+            'date_created' => $date->format('d-M-Y H:i:s')
         );
         
 

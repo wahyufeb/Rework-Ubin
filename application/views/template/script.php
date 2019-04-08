@@ -15,8 +15,10 @@
 <script src="<?= base_url() ?>assets/custom/js/custom.js"></script>
 <script src="<?= base_url() ?>/assets/custom/js/sweetcustom.js"></script>
 <!-- <script src="<?= base_url() ?>assets/dropzone/dropzone.min.js"></script> -->
-<script src="<?= base_url() ?>/assets/custom/js/mycode.js"></script>
+<script src="<?= base_url() ?>assets/custom/js/mycode.js"></script>
 <script src="<?= base_url() ?>assets/custom/js/jquery-ui.min.js"></script>
+<script src="<?= base_url() ?>/assets/custom/js/scroll.js"></script>
+<script src="<?= base_url() ?>/assets/custom/js/jquery-easing.js"></script>
 
 <script type="text/javascript">
     $(document).ready(()=>{

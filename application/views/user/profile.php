@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-3 col-4">
                             <div class="photo">
-                                <img src="<?= base_url() ?>uploads/<?= $user[0]->photo;?>" width="100%">
+                                <img src="<?= base_url() ?>uploads/<?= $user[0]->photo;?>" width="230">
                                     <a href="<?= base_url(); ?>User/delete_photo" id="delete-trash">
                                         <div id="delete-photo" data-toggle="tooltip" data-placement="left" tittle="Delete your photo">
                                             <i class="fas fa-trash trash" id="trash"></i>
@@ -18,11 +18,11 @@
                                     </a>
                             </div>
                         </div>
-                        <div class="col-lg-9 col-md-9 col-sm-9 col-8">
+                        <div class="col-lg-9 col-md-9 col-sm-12 col-12">
                             <div class='content'>
                                 <div class="dropzone">
                                     <div class="dz-message">
-                                        <p style="font-size:15px;"> Drop file here to upload your photo profile</p>
+                                        <p style="font-size:12px;"> Drop file or click here to upload your photo profile</p>
                                     </div>
                                 </div>
                             </div>

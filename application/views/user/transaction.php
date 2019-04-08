@@ -2,6 +2,15 @@
     .card:hover{
         transform:none;
     }
+    @media only screen and (max-width: 400px) {
+        #list{
+            font-size:13px;
+        }
+        #list span{
+            font-weight: bold;
+            font-size: 13px;
+        }
+    }
 </style>
 <div class="col-lg-9 col-md-9 col-sm-9 col-9 offset-lg-1 offset-md-1 offset-sm-1 offset-1 right-side">
     <h5>Transaction</h5>
@@ -128,9 +137,9 @@
                             let due_date = resp[i].due_date;
 
                             data += `
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6 col-12">`+no+`. `+resp[i].name+`</div>
-                                    <div class="col-md-2 col-sm-2 col-6">`+ resp[i].qty +`</div>
+                                <div class="row" id="list">
+                                    <div class="col-md-6 col-sm-6 col-12"><span>`+no+`.</span> `+resp[i].name+`</div>
+                                    <div class="col-md-2 col-sm-2 col-6">qty :`+ resp[i].qty +`</div>
                                     <div class="col-md-4 col-sm-4 col-6"> Rp. `+ payment +`</div>
                                 </div>
                             `;

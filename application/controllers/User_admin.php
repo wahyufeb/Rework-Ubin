@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_admin extends CI_Controller {
     
-    public function __construct(){
+    function __construct(){
         parent::__construct();
         if($this->session->userdata('level') != "admin"){
             redirect('Login');
@@ -15,15 +15,19 @@ class User_admin extends CI_Controller {
         
     }
     
-    public function index(){
+    function index(){
         $id = $this->session->userdata('id_user');
         $where = array('id_user' => $id);
         $data['admin'] = $this->M_Admin->saiaAdmin($where);
+
+        // count orders
+        $data['countOrders'] = $this->M_Admin->countall('orders');
+
         $this->template->admin('user_admin/home', $data);
     }
 
     // PRODUCTS PAGE
-    public function products(){
+    function products(){
         $id = $this->session->userdata('id_user');
         $where = array('id_user' => $id);
 
@@ -35,7 +39,7 @@ class User_admin extends CI_Controller {
         $this->template->admin('user_admin/allproducts', $data);
     }
 
-    public function addProduct(){
+    function addProduct(){
         $config['upload_path']          = './assets/img/';
         $config['allowed_types']        = 'gif|jpg|png|jpeg';
         $config['max_size']             = 2048;
@@ -66,13 +70,13 @@ class User_admin extends CI_Controller {
         }
     }
 
-    public function getProductId(){
+    function getProductId(){
         $where = array('id_product' => $this->input->post('id'));
         $result = $this->M_Admin->getProductId($where);
         echo json_encode($result);
     }
 
-    public function deleteProduct($id){
+    function deleteProduct($id){
         $where = array('id_product' => $id);
 
         $getProduct = $this->M_Admin->getProductId($where);
@@ -84,7 +88,7 @@ class User_admin extends CI_Controller {
         redirect('User_admin/products');
     }
 
-    public function updateImage(){
+    function updateImage(){
         $config['upload_path']   = FCPATH.'/assets/img/';
         $config['allowed_types'] = 'gif|jpg|png|ico';
         $this->load->library('upload',$config);
@@ -100,7 +104,7 @@ class User_admin extends CI_Controller {
         }
     }
 
-    public function remove_image(){
+    function remove_image(){
 		//Ambil id image
         $id     =    $this->input->post('id');
         $where  =    array('id_product' => $id);
@@ -212,9 +216,20 @@ class User_admin extends CI_Controller {
         $data['testimonial'] = $this->M_Admin->getTesti();
         $this->template->admin('user_admin/testimonials', $data);
     }
+
+    function deleteComment($id){
+        $where = array('id_comment' => $id);
+        $this->M_Admin->deleteComment($where);
+        redirect('User_admin/testimonials');
+    }
     // END TESTIMONIALS PAGE
 
     function userProblems(){
+        $id = $this->session->userdata('id_user');
+        $where = array('id_user' => $id);
+
+        // saia admin
+        $data['admin'] = $this->M_Admin->saiaAdmin($where);
         $data['problems'] = $this->M_Admin->problems();
         $this->template->admin('user_admin/user_problems', $data);
     }

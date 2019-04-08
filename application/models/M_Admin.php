@@ -80,8 +80,8 @@ class M_Admin extends CI_Model {
 
     // END ACCOUNTS
 
-    // ORDERS & TRANSACTION
 
+    // ORDERS & TRANSACTION
     function orders(){
         $this->db->from('transaction');
         $this->db->select('transaction.id_transaction, transaction.transaction_code, users.email, users.photo, users.name, users.telephone, invoices.date, invoices.status');
@@ -100,8 +100,8 @@ class M_Admin extends CI_Model {
         $this->db->where($whereId);
         $this->db->update('invoices', $dataInv);
     }
-
     // END ORDERS & TRANSACTION
+
 
     // TESTIMONIALS PAGE
     function getTesti(){
@@ -112,7 +112,25 @@ class M_Admin extends CI_Model {
         $this->db->order_by('date_created', 'desc');
         return $this->db->get()->result_array();
     }
+
+    function deleteComment($where){
+        $this->db->where($where);
+        $this->db->delete('testimonials');
+    }
     // END TESTIMONIALS PAGE
+
+    // USER PROBLEMS PAGE
+    function problems(){
+        $this->db->order_by('date', 'DESC');
+        return $this->db->get('contacts')->result_array();
+    }
+    // END USER PROBLEMS PAGE
+
+    // COUNTS
+    function countall($table){
+        return $this->db->count_all($table);
+    }
+    // END COUNTS
 
 }
 

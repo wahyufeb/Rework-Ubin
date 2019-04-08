@@ -167,9 +167,11 @@ class Ubin extends CI_Controller {
 	}
 
 	function sendToAdmin(){
-		$data = array('email' => $this->input->post('email'),
-										'problem' => $this->input->post('problem'),
-										'problem_detail' => $this->input->post('problem_detail')
+        date_default_timezone_set('Asia/Jakarta');
+		$data = array('email' => htmlspecialchars($this->input->post('email')),
+						'problem' => htmlspecialchars($this->input->post('problem')),
+						'problem_detail' => htmlspecialchars($this->input->post('problem_detail')),
+						'date' => date("d-M-Y h:i:s")
 									);
 		$this->M_Ubin->sendContact($data);
 		$this->session->set_flashdata('flash', 'success');

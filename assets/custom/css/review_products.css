@@ -78,6 +78,9 @@
 }
 
 /* Recent Side */
+.side-comment{
+  height:700px;   
+}
 .recent-side p {
   font-size: 20px;
   margin-top: 20px;
@@ -134,7 +137,7 @@
   margin-bottom: 100px;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
   .product-side h2 {
     font-size: 20px;
   }
@@ -147,5 +150,17 @@
   }
   .testimonial .photo-profile p {
     font-size: 13px;
+  }
+  .side-comment{
+    height:100%;   
+  }
+
+  #form_comment{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    padding-top: 10px;
+    z-index: 20;
   }
 }

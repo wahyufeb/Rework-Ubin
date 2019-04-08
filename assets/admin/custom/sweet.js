@@ -37,6 +37,7 @@ $('.delete-product').on("click", function(e){
     });
 });
 // end Sweet Delete Product
+// END PRODUCTS PAGE
 
 
 
@@ -68,6 +69,7 @@ $('.suspend').on("click", function(e){
     });
 });
 // End Sweet Suspend Account
+
 // Sweet Activate Account
 $('.active').on("click", function(e){
     e.preventDefault(e);
@@ -95,6 +97,40 @@ $('.active').on("click", function(e){
     });
 });
 // End Sweet Activate Account
+// END ACCOUNTS PAGE
+
+
+// TESTIMONIALS PAGE
+// Sweet Delete Comment
+$('.delete-comment').on("click", function(e){
+    let name = $(this).data('delete');
+    e.preventDefault();
+    let href = $(this).attr('href');
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Do you want delete Comment from "+ name+"?",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#07cdae',
+        cancelButtonColor: 'salmon',
+        confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+        if (result.value) {
+            Swal.fire(
+            'Deleted!',
+            'Comment from '+ name +' has been deleted.',
+            'success'
+            );
+            setTimeout(() => {
+                document.location.href = href;
+            }, 2000);
+        }
+    });
+})
+// End Sweet Delete Comment
+
+// END TESTIMONIALS PAGE
+
 
 // SWEET LOGOUT
 $('#logout').on("click", function(e){

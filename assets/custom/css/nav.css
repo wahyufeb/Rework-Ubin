@@ -1,6 +1,6 @@
 a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 body {
@@ -9,7 +9,7 @@ body {
 }
 a:hover {
   text-decoration: none;
-  color: #ffa900;
+  color: #00B5FF;
 }
 
 .fa-shopping-cart {
@@ -21,10 +21,13 @@ a:hover {
   z-index: 30;
   left: 0;
   top: 0;
+  background-color:#333 !important;
+  color: white !important;
 }
 
 .navbar .navbar-brand {
-  color: #ffa900;
+  /* color: #ffa900; */
+  color: white;
 }
 .navbar a:nth-child(2) {
   opacity: 0;
@@ -54,8 +57,7 @@ a:hover {
 .sign {
   width: 80px;
   border-radius: 15px;
-  background-color: white;
-  border: 1px solid #ffa900;
+  background-color: #ffaa00;
   color: #ffa900;
   padding: 4px 8px;
   text-align: center;
@@ -63,12 +65,11 @@ a:hover {
 }
 
 .sign a {
-  color: #ffa900;
+  color: white;
 }
 
 .sign:hover {
-  background-color: #ffa900;
-  border: 1px solid #ffa900;
+  background-color: #ec9f05;
 }
 
 .sign:hover a {
@@ -138,3 +139,10 @@ a:hover {
     opacity: 0;
   }
 }
+
+@media only screen and (max-width: 991px) {
+  #login-menu{
+    margin-left:100px;
+  }
+}
+

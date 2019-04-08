@@ -158,6 +158,7 @@
                             
                             let date = resp[i].date;
                             let due_date = resp[i].due_date;
+                            let service = resp[i].service;
                             
                             data += `
                                 <div class="row" style="font-size:15px;">
@@ -168,6 +169,7 @@
                             `;
                             $('#address').html(`<h6>Address : </h6><p>`+ resp[i].province+`, `+resp[i].city+`, `+resp[i].street_adress +`</p>
                             <div class="row">
+                            <div class="col-md-12"><h6>Service : </h6><p><span class="text-uppercase">`+ resp[i].courier+`</span> `+ service.substr(6) +`</p></div>
                                 <div class="col-md-6"><h6>Date : </h6><p>`+ date.substr(0, 10) +`</p></div>
                                 <div class="col-md-6"><h6>Expired : </h6><p>`+ due_date.substr(0,10) +`</p></div>
                             </div>

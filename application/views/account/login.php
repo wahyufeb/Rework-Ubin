@@ -14,7 +14,7 @@
         crossorigin="anonymous">
 
     <!-- CSS login -->
-    <link rel="stylesheet" href="<?= base_url() ?>assets/custom/css/login.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/custom/css/login.css">
 
     <!-- Sweet Alert -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/sweetalert/sweetalert2.min.css">

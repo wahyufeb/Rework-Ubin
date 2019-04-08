@@ -119,6 +119,10 @@
 #pagination {
   margin: auto;
 }
+
+#pagination a{
+  color:#009DFF;
+}
 /* end pagination */
 
 /* Testimonial */
@@ -134,6 +138,26 @@
 .card:hover {
   box-shadow: 0px 4px 2px 1px rgba(0, 0, 0, 0.2);
   transform: translateY(-10px);
+}
+
+.go-top{
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  z-index: 800;
+  bottom: 20px;
+  right:20px;
+  font-size: 30px;
+  line-height: 50px;
+  background: #00B5FF;
+  opacity: .7;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+.go-top a{
+  color:white;
+  text-align: center;
 }
 
 @media only screen and (max-width: 750px) {
@@ -154,10 +178,51 @@
   /* end Items */
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 991px) {
   /* Top Items */
   .top-items .card img {
-    height: 150px;
+    height: 250px;
+  }
+
+  /* End top Items */
+
+  /* Free Shipping */
+  .product-free-shipping .card img {
+    height: 250px;
+  }
+}
+
+
+
+@media only screen and (max-width: 750px) {
+    /* Top Items */
+    .top-items .card img {
+      height: 170px;
+    }
+  
+    /* End top Items */
+  
+    /* Free Shipping */
+    .product-free-shipping .card img {
+      height: 170px;
+    }
+  /* BIG DISCOUNT */
+  .discount h3{
+    position: absolute;
+    top: -40px;
+    right: 40px;
+    font-size:25px;
+  }
+  /* END BIG DISCOUNT */
+}
+
+
+
+
+@media only screen and (max-width: 400px) {
+  /* Top Items */
+  .top-items .card img {
+    height: 100px;
   }
 
   .top-items .card a {
@@ -168,11 +233,27 @@
 
   /* Free Shipping */
   .product-free-shipping .card img {
-    height: 150px;
+    height: 100px;
   }
 
   .product-free-shipping .card .card-body a {
     bottom: 10px;
+    font-size:11px;
   }
   /* end Free Shipping */
+  .card-body h5{
+    font-size:12px;
+  }
+  .card-body p{
+    font-size:11px;
+  }
+
+  /* BIG DISCOUNT */
+  .discount h3{
+    position: absolute;
+    top: -40px;
+    right: 40px;
+    font-size:20px;
+  }
+  /* END BIG DISCOUNT */
 }

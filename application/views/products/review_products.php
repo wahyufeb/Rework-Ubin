@@ -7,9 +7,43 @@
     <title>Products</title>
 </head>
 <body>
+<!-- SPECIAL NAV -->
+<div id="top"></div>
+        <div id='cssmenu'>
+            <ul>
+                <li><a href='<?= base_url() ?>Ubin'>Home</a></li>
+                <li class='active has-sub'><a href='#'>Catagories</a>
+                    <ul>
+                        <li class='has-sub'><a href='#'>Mugs</a>
+                            <ul>
+                            <li><a href='#'>Sub Product</a></li>
+                            <li><a href='#'>Sub Product</a></li>
+                            </ul>
+                        </li>
+                        <li class='has-sub'><a href='#'>Gucci</a>
+                            <ul>
+                            <li><a href='#'>Sub Product</a></li>
+                            <li><a href='#'>Sub Product</a></li>
+                            </ul>
+                        </li>                        
+                        <li>
+                            <a href='#'>Vase</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href='<?= base_url() ?>Ubin/index#big-discounts'>Big Discounts</a></li>
+                <li><a href='<?= base_url() ?>Ubin/index#top-products'>Top Products</a></li>
+                <li><a href='<?= base_url() ?>Ubin/index#all-products'>All Products</a></li>
+                <li><a href='<?= base_url() ?>Ubin/index#testimonials'>Testimonials</a></li>
+                <li><a href='<?= base_url() ?>Ubin/index#about'>About</a></li>
+            </ul>
+        </div>
+</div>
+<!-- END SPECIAL NAV -->
+
 <div class="container">
     <div class="row">
-        <div class="col-lg-9 product-side">
+        <div class="col-lg-7 product-side">
 <?php foreach($productid as $row): ?>
             <h2><?= $row['name']; ?></h2>
             <div class="big-img">
@@ -42,57 +76,24 @@
             <a href="<?= base_url() ?>Ubin/addToCart/<?= $row['id_product']; ?>" class="col-lg-12 btn btn add_cart">Buy</a>
 <?php endforeach; ?>
         </div>
-        <div class="col-lg-3 recent-side">
-            <div class="row">
-                <p>&emsp;&emsp;Recent Products</p>
-                <hr>
-                <div class="col-lg-12 col-md-10 col-sm-6 col-6 recent-img">
-                        <img src="<?= base_url() ?>assets/img/5.jpg" class="hover-img" height="200">
-                    <p class="hover">
-                        $200
-                        <a href="">Product Name</a>
-                    </p>
-                </div>
-                <div class="col-lg-12 col-md-10 col-sm-6 col-6 recent-img" >
-                    <img src="<?= base_url() ?>assets/img/2.jpg" class="hover-img" height="200">
-                    <p class="hover">
-                        $200
-                        <a href="">Product Name</a>
-                    </p>
-                </div>
-                <div class="col-lg-12 col-md-10 col-sm-6 col-6 recent-img" >
-                    <img src="<?= base_url() ?>assets/img/3.jpg" class=" hover-img" height="200">
-                    <p class="hover">
-                        $200
-                        <a href="">Product Name</a>
-                    </p>
-                </div>
-                <div class="col-lg-12 col-md-10 col-sm-6 col-6 recent-img" >
-                    <img src="<?= base_url() ?>assets/img/3.jpg" class=" hover-img" height="200">
-                    <p class="hover">
-                        $200
-                        <a href="">Product Name</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="testi" id="comment">
-                <h5>Testimonial</h5>
-                <div class="row" style="padding:20px;">
+        <div class="col-lg-4 side-comment" style="overflow:auto;">
+        <h6>Testimonial</h6>
+        <hr>
+                <div class="row" style="padding:20px;" id="comment">
                 <?php foreach($comment as $row): ?>
+                <?php $date = $row['date_created']; ?>
                     <div class="col-lg-12 photo-profile" style="background-color:#eaeff2;padding:15px;border-radius:10px;margin-bottom:10px;">
-                        <img src="<?= base_url() ?>uploads/<?= $row['photo'] ?>" alt="">
-                        <span><?= $row['name'] ?></span><span style="font-weight:lighter;font-size:15px;float:right;"><?= $row['date_created']; ?></span>
-                        <p><?= $row['comment'] ?></p>
+                        <img src="<?= base_url() ?>uploads/<?= $row['photo'] ?>" alt="user" width="30" height="30" style="border-radius:50%;">
+                        <span style="opacity:.7;"><?= $row['name'] ?></span><span style="opacity:.9;font-weight:300;font-size:15px;float:right;"><?= substr($date, 0, 17) ?></span>
+                        <p style="opacity:.9;"><?= $row['comment'] ?></p>
                         <?php if($this->session->userdata('id_user') == $row['id_user']){ ?>
                         <div class="row">
                             <div class="col-lg-12 text-right">
-                                <button type="button" class="btn btn-success edit-comment" data-id="<?= $row['id_comment'] ?>">
-                                    <a href="#form" style="color:white;"><i class="far fa-edit" ></i>edit</i></a>
+                                <button type="button" class="btn btn-success edit-comment" data-id="<?= $row['id_comment'] ?>" style="transform:scale(.8)">
+                                    <a href="#form" class="scroll" style="color:white;"><i class="far fa-edit" ></i>edit</i></a>
                                 </button>
 
-                                <button type="button" class="btn btn-danger">
+                                <button type="button" class="btn btn-danger" style="transform:scale(.8)">
                                     <a href="<?= base_url() ?>Comment/deleteComment/<?= $row['id_comment'] ?>/<?= $row['id_product'] ?>" style="color:white;"><i class="fas fa-trash-alt"></i>delete</a>
                                 </button>
                                     <!-- <a href="<?= $row['id_comment'] ?>"><i class="fas fa-trash-alt"></i></a> -->
@@ -102,13 +103,12 @@
                     </div>
                 <?php endforeach; ?>
                 </div>
-            </div>
         </div>
         </div>
         <div id="form"></div>
         <div class="row">
             <div class="col-lg-1">
-                <div class="col-lg-12 col-sm-3 col-3">
+                <div class="col-lg-12 col-sm-3 col-3" id="top-comment">
                 <?php if($this->session->userdata('level') == "member"){ ?>
                     <img src="<?= base_url() ?>uploads/<?= $user[0]->photo;?>" width="60" style="margin-top:35px;border-radius:50%;width:70px;height:70px;">
                 <?php }else{ ?>
@@ -116,21 +116,20 @@
                 <?php } ?>
                 </div>
             </div>
-            <div class="col-lg-11 col-md-12 col-sm-12 col-12" >
+            <div class="col-lg-11 col-md-12 col-sm-12 col-12" id="form_comment">
             <form action="<?= base_url() ?>Comment/addComment" method="post" id="update-comment">
                 <input type="hidden" name="idproduct" value="<?= $this->uri->segment(3); ?>">
                 <input type="hidden" name="idcomment">
                         <div class="form-group">
                             <label for="comment">Comment</label>
-                            <textarea class="form-control" id="comment" rows="5"  name="comment"></textarea>
+                            <textarea class="form-control" id="comment" rows="5"  name="comment" required></textarea>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 text-right">
-                    <button type="submit" class="btn btn-primary" id="submit"></button>
-                </div>
-            </form>
-    </div>
+                        <div class="col-lg-12 text-right">
+                            <button type="submit" class="btn btn-primary" id="submit"></button>
+                        </div>
+                        </form>
+            </div>
+        </div>
 </div>
 </body>
 <script>

@@ -298,11 +298,11 @@ class User extends CI_Controller {
         $telephone  = $this->input->post('telephone');
 
         $where = array ('id_user' => $id);
-        $data = array ('name' => $name,
-                        'province' => $province,
-                        'city' => $city,
-                        'street' => $street,
-                        'telephone' => $telephone
+        $data = array ('name' => htmlspecialchars($name),
+                        'province' => htmlspecialchars($province),
+                        'city' => htmlspecialchars($city),
+                        'street' => htmlspecialchars($street),
+                        'telephone' => htmlspecialchars($telephone)
                     );
         $this->M_User->update_profile($data, $where, 'users');
         $this->session->set_flashdata('mess', 'success');

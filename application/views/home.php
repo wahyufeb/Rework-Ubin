@@ -1,11 +1,47 @@
+<div id="top"></div>
+        <div id='cssmenu'>
+            <ul>
+                <li><a href='<?= base_url() ?>Ubin'>Home</a></li>
+                <li class='active has-sub'><a href='#'>Catagories</a>
+                    <ul>
+                        <li class='has-sub'><a href='#'>Mugs</a>
+                            <ul>
+                            <li><a href='#'>Sub Product</a></li>
+                            <li><a href='#'>Sub Product</a></li>
+                            </ul>
+                        </li>
+                        <li class='has-sub'><a href='#'>Gucci</a>
+                            <ul>
+                            <li><a href='#'>Sub Product</a></li>
+                            <li><a href='#'>Sub Product</a></li>
+                            </ul>
+                        </li>                        
+                        <li>
+                            <a href='#'>Vase</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href='#big-discounts' class="scroll">Big Discounts</a></li>
+                <li><a href='#top-products' class="scroll">Top Products</a></li>
+                <li><a href='#all-products' class="scroll">All Products</a></li>
+                <li><a href='#testimonials' class="scroll">Testimonials</a></li>
+                <li><a href='#about' class="scroll">About</a></li>
+            </ul>
+        </div>
+</div>
 <div id="nostock" data-stock="<?= $this->session->flashdata('nostock') ?>"></div>
 <?php if($this->session->flashdata('nostock')){ ?>
 <?php $this->session->flashdata('nostock'); ?>
 <?php } ?>
+<div class="go-top">
+    <a href="#top" class="scroll">
+        <center><i class="fas fa-chevron-up"></i></center>
+    </a>
+</div>
 <div class="container">
     <!-- Discount -->
-    <h3 style="color:#009ae1;">BIG DISCOUNT <i class="fas fa-percent fa-sm"></i></h3>
-    <div class="row">
+    <h3 style="color:#009ae1;" >BIG DISCOUNT <i class="fas fa-percent fa-sm"></i></h3>
+    <div class="row" id="big-discounts">
     <?php foreach($discount as $row): ?>
     <?php
         $price = $row['price'];
@@ -29,7 +65,7 @@
 
         <!-- Top Items -->
         <div class="list">
-            <h3 style="color:#009ae1;">Top 4 Products</h3>
+            <h3 style="color:#009ae1;" id="top-products">Top 4 Products</h3>
         <?php foreach($top as $row): ?>
         <?php         
             $price = $row['price'];
@@ -64,7 +100,7 @@
     </nav>
 </div>
     <!-- Testimonial -->
-    <div class="testimonial">
+    <div class="testimonial" id="testimonials">
         <h2 style="color:#009ae1;">Testimonial</h2>
     </div>
     <!-- end Testimonial -->

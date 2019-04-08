@@ -1,5 +1,5 @@
-<div class="footer">
- <div class="container">
+<div class="footer scroll" id="about">
+    <div class="container">
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-6 col-6 text-center" >
             <h4 id="about">About</h4>
@@ -42,6 +42,6 @@
             </ul>
         </div>
     </div>
- </div>
+    </div>
 </div>
 <div class="ubin text-center">Copyright 2019    </div>
