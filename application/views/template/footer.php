@@ -1,4 +1,4 @@
-<div class="footer scroll" id="about">
+<div class="footer scroll" id="about"style="width:100%;">
     <div class="container">
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-6 col-6 text-center" >

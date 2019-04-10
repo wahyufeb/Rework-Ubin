@@ -100,15 +100,60 @@
     </nav>
 </div>
     <!-- Testimonial -->
-    <div class="testimonial" id="testimonials">
-        <h2 style="color:#009ae1;">Testimonial</h2>
-    </div>
+        <div class="testimonial" id="testimonials">
+            <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active first" data-interval="10000" style="background-color:#009ae1;height:400px;padding:20px;">
+                        <div class="row">                            
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <img src="<?= base_url() ?>assets/img/icon/testi.svg">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6" style="color:white;">
+                                <h3>Testimonials</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos consectetur autem cum nesciunt eligendi iste dolore reiciendis laboriosam dolorem laudantium soluta hic necessitatibus sunt quas sapiente, suscipit nulla sed dolor?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php foreach($testi as $row): ?>                                                           
+                    <div class="carousel-item second" style="background-color:#009ae1;background-repeat: no-repeat;background-size: cover;background-position: center;height:400px;padding:20px;background-image:url('<?= base_url()?>assets/img/<?= $row['image'] ?>');">
+                        <div class="row">
+                                <div class="col-lg-6 col-md-8 col-sm-10 col-12 offset-lg-3 offset-md-2 offset-sm-1">
+                                    <div class="card">
+                                        <p>
+                                            <?= $row['comment'] ?>
+                                        </p>
+                                        <h5><?= $row['username'] ?></h5>
+                                        <span>
+                                            <?php if($row['level'] =="member"): ?>
+                                                Customer
+                                            <?php endif;?>
+                                        </span>
+                                    </div>
+                                    <center>
+                                        <img src="<?= base_url() ?>uploads/<?= $row['photo'] ?>" width="100" height="100">
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true" style="padding:15px;"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true" style="padding:15px;"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
     <!-- end Testimonial -->
 <div class="row">
     <!-- Ilustration -->
-    <!-- <div class="ilustration">
-        <img src="<?= base_url() ?>assets/img/ilustrasi.svg" width="100%">
-    </div> -->
+    <div class="ilustration">
+        <!-- <img src="<?= base_url() ?>assets/img/people.svg"> -->
+    </div>
     <!-- end Ilustration -->
 </div>
 </div>

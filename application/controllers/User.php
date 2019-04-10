@@ -11,8 +11,20 @@ class User extends CI_Controller {
         $this->load->library('Template');
         $this->load->library('email');
         $this->load->model('M_User');
+
     }
-    
+    function coba(){
+        $where = array('id_user' => $this->session->userdata('id_user'));
+        $getUser = $this->M_User->getUser($where, 'invoices');
+        $start  = date($getUser[0]->date);
+        $exp    = date($getUser[0]->due_date);
+
+        if($start >= $exp){
+            echo "expired";
+        }else{
+            echo "masih jangka waktu";
+        }
+    }    
     public function index(){
         $id = $this->session->userdata('id_user');
         $where = array('id_user' => $id);

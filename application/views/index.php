@@ -19,13 +19,13 @@
 
     <!-- nav plugin -->
     <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/menu/css/slimmenu.min.css"> -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/custom/menu/styles.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/custom/menu/styles.css">
 
     <!-- Nav -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/custom/css/nav.css">
 
     <!-- Home Content -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/custom/css/content.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/custom/css/content.css">
 
     <!-- Review Products -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/custom/css/review_products.css">
@@ -51,9 +51,15 @@
 
     <!-- Jquery UI -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/custom/css/jquery-ui.min.css">
-
-
-
+    <style>
+        .navbar-toggler{
+            background-color: #009AE1 !important;
+        }
+        .navbar-light .navbar-toggler {
+            color: black;
+            border-color: black;
+        }
+    </style>
 
 </head>
 

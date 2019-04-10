@@ -269,7 +269,7 @@ class Order extends CI_Controller {
             // Delete Cost
             $this->M_Order->deleteCost($whereCost);
         }
-
+        redirect('User/payment');
         // // Delete Cost
         // $id_cost = $getOrder[0]['id_cost'];
         // $wherecost = array('id_cost' => $id_cost);
@@ -277,10 +277,14 @@ class Order extends CI_Controller {
 
     function expired(){
         $whereId = array('id_user' => $this->input->post('id'));
-        $this->M_Order->expired($whereId, 'costs');
-        $this->M_Order->expired($whereId, 'invoices');
-        $this->M_Order->expired($whereId, 'orders');
-        $this->M_Order->expired($whereId, 'transaction');
+        $where = array('id_user' => $this->session->userdata('id_user'));
+        $getOrders = $this->M_Order->getOrder($where);
+        print_r($getOrders);
+        // $this->M_Order->expired($whereId, 'costs');
+        // $this->M_Order->expired($whereId, 'invoices');
+        // $this->M_Order->expired($whereId, 'orders');
+        // $this->M_Order->expired($whereId, 'transaction');
+        // redirect('User/payment');
     }
 
 

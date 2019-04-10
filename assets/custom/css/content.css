@@ -160,22 +160,75 @@
   text-align: center;
 }
 
-@media only screen and (max-width: 750px) {
-  /* discount */
-  .discount {
-    height: 200px;
-    background-position: center;
-    background-size: cover;
-    margin-bottom: 10px;
-  }
-  /* end discount */
+/* testimonials */
+#testimonials{
+  margin-bottom: -60px;
+}
 
-  /* Top Items */
-  .top-product {
-    height: 180px;
-    margin-bottom: 20px;
+#testimonials .first img{
+  width: 520px;
+}
+
+#testimonials .second .card:hover{
+  transform: none;
+  box-shadow: none;
+}
+/* #testimonials .second .card:hover h5{
+  color:#00B5FF;
+} */
+#testimonials .second .card {
+  background-color: white;
+  border: none;
+  height: 230px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#testimonials .second .card p{
+  opacity: .6;
+  font-family: sans-serif;
+}
+
+#testimonials .second .card h5{
+  color:#00B5FF;
+}
+
+#testimonials .second .card span{
+  color:#ffa900;
+  margin-top: -12px
+}
+
+#testimonials .second .card::after{
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 30px solid white;
+  border-right: 35px solid transparent;
+  border-left: 35px solid transparent;
+  position: absolute;
+  top: 226px;
+  left: 45%;
+}
+
+#testimonials .second img{
+  margin-top: 30px;
+  border-radius: 50%;
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 996px) {
+  #testimonials .first img{
+    width: 400px;
   }
-  /* end Items */
+  #testimonials .second .card::after{
+    left: 45%;
+  }
 }
 
 @media only screen and (max-width: 991px) {
@@ -189,6 +242,14 @@
   /* Free Shipping */
   .product-free-shipping .card img {
     height: 250px;
+  }
+
+  #testimonials .first img{
+    width: 380px;
+  }
+
+  #testimonials .second .card::after{
+    left: 45%;
   }
 }
 
@@ -213,11 +274,43 @@
     right: 40px;
     font-size:25px;
   }
-  /* END BIG DISCOUNT */
+
+    /* discount */
+    .discount {
+      height: 200px;
+      background-position: center;
+      background-size: cover;
+      margin-bottom: 10px;
+    }
+    /* end discount */
+  
+    /* Top Items */
+    .top-product {
+      height: 180px;
+      margin-bottom: 20px;
+    }
+    /* end Items */
+  
+    /* END BIG DISCOUNT */
+      #testimonials .first img{
+        width: 320px;
+      }
+    #testimonials .second .card::after{
+      left: 45%;
+    }
 }
 
 
+@media only screen and (max-width: 551px) {
+  #testimonials .first img{
+    width: 250px;
+  }
 
+  #testimonials .second .card::after{
+    left: 45%;
+  }
+
+}
 
 @media only screen and (max-width: 400px) {
   /* Top Items */
@@ -254,6 +347,17 @@
     top: -40px;
     right: 40px;
     font-size:20px;
+  }
+
+  #testimonials .first img{
+    width: 200px;
+  }
+
+  #testimonials .first p{
+    font-size: 15px;
+  }
+  #testimonials .second .card::after{
+    left: 40%;
   }
   /* END BIG DISCOUNT */
 }

@@ -8,6 +8,8 @@
 </head>
 <body>
     <div class="container">
+        <h4 style="margin:100px 0 0px 0;opacity:.6;" class="text-center">Hasil Pencarian :</h4>
+        <p class="text-center" style="opacity:.9;"><b><?= $input ?></b></p>
         <div class="free-shipping">
                 <?php foreach($results as $row): ?>
                 <?php         
@@ -37,7 +39,11 @@
                     <!-- end Free Shipping -->
         </div>
     </div>
-    <div class="clear" style="clear:left;"></div>
-    
+    <div class="clear" style="clear:left;"></div><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </body>
 </html>

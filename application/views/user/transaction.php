@@ -23,6 +23,8 @@
     <div class="row" id="result-search">
     </div>  
 </div>
+    </div>
+</div>
 </body>
 <script>
     $(document).ready(function(){

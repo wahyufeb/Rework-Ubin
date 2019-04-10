@@ -69,6 +69,16 @@ class M_Ubin extends CI_Model {
         return $this->db->get()->result_array();  
     }
 
+    // top test
+    function topTesti(){
+        $this->db->select('users.id_user, users.name as username, users.photo, users.level, products.id_product, products.image, testimonials.comment, testimonials.date_created');
+        
+        $this->db->join('users', 'users.id_user = testimonials.id_user', 'left');
+        $this->db->join('products', 'products.id_product = testimonials.id_product', 'left');
+        $this->db->order_by('date_created', 'desc');
+        return $this->db->get('testimonials', 6)->result_array();
+    }
+
     //Discount
     function discount(){
         $noStock = 0;

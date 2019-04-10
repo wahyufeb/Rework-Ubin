@@ -57,17 +57,20 @@ $("#clock").countdown(date, function(event) {
   $(this).html(event.strftime("%D days %H:%M:%S"));
   let exp = event.strftime("%D days %H:%M:%S");
   if(exp =="00 days 00:00:00"){
-    console.log("EXPIRED");
     $.ajax({
       url:base+'Order/expired',
       type:'POST',
       data:'id='+id,
-      success:function(data){
-        console.log("SUKSES");
-    }
+      success:function(){
+        Swal.fire({
+          type: 'error',
+          title: 'Oops, Expired...',
+          text: 'Sorry Your Orders has been expired, please pay for the order on time '
+        });
+      }
     });
   }else{
-  $(this).html(event.strftime("%D days %H:%M:%S")); 
+    $(this).html(event.strftime("%D days %H:%M:%S")); 
   }
 });
 

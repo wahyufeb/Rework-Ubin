@@ -34,6 +34,9 @@ class Ubin extends CI_Controller {
 		
 		// top product
 		$data['top'] = $this->M_Ubin->top(); 
+
+		//top testimonials
+		$data['testi'] = $this->M_Ubin->topTesti();
 	
 		$this->template->component('home', $data);
 	}
@@ -64,6 +67,7 @@ class Ubin extends CI_Controller {
 		
 		//result search
 		$data['results'] = $this->M_Ubin->search($search);
+		$data['input'] = $search;
 		$this->template->component('user/search', $data);
 	}
 

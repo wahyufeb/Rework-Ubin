@@ -256,14 +256,15 @@
   #cssmenu #menu-button::after {
     content: '';
     position: absolute;
-    top: 20px;
+    top: 15px;
     right: 20px;
     display: block;
-    width: 15px;
-    height: 2px;
-    background: #000000;
+    width: 20px;
+    height: 20px;
+    background-image: url('./a.png');
+    background-size: cover;
   }
-  #cssmenu #menu-button::before {
+  /* #cssmenu #menu-button::before {
     content: '';
     position: absolute;
     top: 25px;
@@ -273,7 +274,7 @@
     height: 3px;
     border-top: 2px solid #000000;
     border-bottom: 2px solid #000000;
-  }
+  } */
   #cssmenu .submenu-button {
     position: absolute;
     z-index: 10;

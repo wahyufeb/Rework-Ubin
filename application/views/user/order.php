@@ -3,11 +3,12 @@
                 font-size:15px;
             }
         </style>
+
         <div id="order" data-order="<?= $this->session->flashdata('order');  ?>"></div>
         <?php if($this->session->flashdata('order')){ ?>
         <?php $this->session->flashdata('order') ?>
         <?php }?>
-        <div class="col-lg- col-md-9 col-sm-12 col-12 offset-md-1  right-side">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-12 offset-md-1  right-side">
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead align="center" >
@@ -130,6 +131,7 @@
             </form>
         </div>
     </div>
+</div>
 </body>
 <script>
 

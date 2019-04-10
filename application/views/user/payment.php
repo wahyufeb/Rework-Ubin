@@ -48,6 +48,8 @@
                     <div id="clock" data-clock="<?= $row['due_date'] ?>"></div><br>
             </div>
         </div>
+    </div>
+    </div>
 </div>
 </body>
 </html>

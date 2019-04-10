@@ -46,6 +46,15 @@
     <!-- link rel="stylesheet" href="<?= base_url() ?>assets/dropzone/dropzone.min.css"> -->
 
     <script src="<?= base_url() ?>assets/custom/js/jquery.js"></script>
+    <style>
+        .navbar-toggler{
+            background-color: #009AE1 !important;
+        }
+        .navbar-light .navbar-toggler {
+            color: black;
+            border-color: black;
+        }
+    </style>
 </head>
 
 <body>

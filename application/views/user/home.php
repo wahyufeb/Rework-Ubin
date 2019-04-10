@@ -3,5 +3,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae neque sed doloremque quos eaque eligendi voluptas adipisci atque similique sapiente, reprehenderit laudantium accusantium fugiat. Excepturi, illum? Repellendus eaque pariatur rerum!</p>
         </div>
     </div>
+    </div>
+    </div>
 </body>
 </html>
