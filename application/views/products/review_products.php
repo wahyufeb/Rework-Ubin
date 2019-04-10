@@ -45,13 +45,24 @@
     <div class="row">
         <div class="col-lg-7 product-side">
 <?php foreach($productid as $row): ?>
+<?php         
+    $price = $row['price'];
+    $disc  = $row['discount'];
+
+    $discount = $price * $disc / 100;
+    $countDisc = $price - $discount;
+    $row['price'] = $countDisc;
+?>
             <h2><?= $row['name']; ?></h2>
             <div class="big-img">
                 <img class="col-lg-12 col-md-12 col-sm-12 col-12 img-product" src="<?= base_url() ?>assets/img/<?= $row['image'];?>" alt="">
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-5 con-price">
-                    <p class="price">Price</p>
+                    <p class="price">Price </p>
+                    <?php if($disc > 0):?>
+                    <p style="text-decoration:line-through;">Rp.<?= number_format($price, 0,',','.') ?></p>
+                    <?php endif; ?>
                     <h3>Rp.<?= number_format($row['price'], 0,',','.') ?></h3>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-5 offset-lg-6 offset-md-6 offset-sm-6 offset-2 con-weight">

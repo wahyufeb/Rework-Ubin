@@ -55,9 +55,10 @@
             <div class="discount" style="background-image:url('<?= base_url() ?>assets/img/<?= $row['image']; ?>');">
                 <h1><?= $row['discount'] ?>%</h1>
                 <img src="<?= base_url() ?>assets/img/icon/as.png">
-                <p style="color:white;text-decoration:line-through;margin:50px 0px -50px 10px">Rp. <?= number_format($price, 0,',','.') ?></p>
+                <p style="color:white;text-decoration:line-through;margin:40px 0px -50px 10px">Rp. <?= number_format($price, 0,',','.') ?></p>
                 <h3 style="color:white;margin-top:50px;margin-left:20px;">Rp. <?= number_format($row['price'], 0,',','.') ?></h3>
                 <button class="btn btn-primary"><a href="<?= base_url() ?>Ubin/addToCart/<?= $row['id_product']; ?>" class="add-cart">Buy Now</a></button>
+                <a href="<?= base_url() ?>Ubin/product/<?= $row['id_product'] ?>" class="btn  detail_pro">Detail product</a>
             </div>
         </div>
     <?php endforeach; ?>
@@ -118,9 +119,12 @@
                     <div class="carousel-item second" style="background-color:#009ae1;background-repeat: no-repeat;background-size: cover;background-position: center;height:400px;padding:20px;background-image:url('<?= base_url()?>assets/img/<?= $row['image'] ?>');">
                         <div class="row">
                                 <div class="col-lg-6 col-md-8 col-sm-10 col-12 offset-lg-3 offset-md-2 offset-sm-1">
-                                    <div class="card">
+                                    <div class="card animated fadeInDown">
                                         <p>
-                                            <?= $row['comment'] ?>
+                                            <?php 
+                                                $testi = $row['comment']; 
+                                                echo substr($testi, 0, 270);
+                                            ?>
                                         </p>
                                         <h5><?= $row['username'] ?></h5>
                                         <span>
@@ -130,7 +134,7 @@
                                         </span>
                                     </div>
                                     <center>
-                                        <img src="<?= base_url() ?>uploads/<?= $row['photo'] ?>" width="100" height="100">
+                                        <img src="<?= base_url() ?>uploads/<?= $row['photo'] ?>" width="100" height="100" class="animated fadeInUp ">
                                     </center>
                                 </div>
                             </div>
@@ -157,3 +161,11 @@
     <!-- end Ilustration -->
 </div>
 </div>
+<script>
+    $('.discount').mouseenter(function(){
+        $('.detail_pro', this).css('display', 'block');
+    });
+    $('.discount').mouseleave(function(){
+        $('.detail_pro', this).css('display', 'none');
+    });
+</script>

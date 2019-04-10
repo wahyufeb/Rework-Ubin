@@ -37,6 +37,36 @@
   background-color: #ffa900;
   border: 2px solid #ffa900;
 }
+
+.discount a.detail_pro{
+  background-color:#333;
+  border:none;
+  border-radius:0;
+  position:absolute;
+  bottom:-15px;
+  left:40px;
+  border-radius: 5px;
+  display: none;
+  z-index: 100;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.discount a.detail_pro:hover{
+  color: #f2f2f2
+}
+
+.discount a.detail_pro::after{
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-bottom: 18px solid #333;
+  border-right: 18px solid transparent;
+  border-left: 18px solid transparent;
+  position: absolute;
+  top: -40%;
+  left: 30%;
+}
 /* end Discount */
 
 /* Top Items */
@@ -161,9 +191,9 @@
 }
 
 /* testimonials */
-#testimonials{
+/* #testimonials{
   margin-bottom: -60px;
-}
+} */
 
 #testimonials .first img{
   width: 520px;
@@ -195,7 +225,7 @@
 
 #testimonials .second .card span{
   color:#ffa900;
-  margin-top: -12px
+  margin-top: -12px;
 }
 
 #testimonials .second .card::after{
@@ -228,6 +258,10 @@
   }
   #testimonials .second .card::after{
     left: 45%;
+  }
+
+  #testimonials .second .card p{
+    font-size: 14px;
   }
 }
 
@@ -358,6 +392,10 @@
   }
   #testimonials .second .card::after{
     left: 40%;
+  }
+
+  #testimonials .second .card p{
+    font-size: 13px;
   }
   /* END BIG DISCOUNT */
 }
