@@ -133,7 +133,7 @@
                 <input type="hidden" name="idcomment">
                         <div class="form-group">
                             <label for="comment">Comment</label>
-                            <textarea class="form-control" id="comment" rows="5"  name="comment" required></textarea>
+                            <textarea class="form-control" id="comment" rows="3"  name="comment" required></textarea>
                         </div>
                         <div class="col-lg-12 text-right">
                             <button type="submit" class="btn btn-primary" id="submit"></button>

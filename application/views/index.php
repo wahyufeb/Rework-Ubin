@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/custom/css/content.css">
 
     <!-- Review Products -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/custom/css/review_products.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/custom/css/review_products.css">
 
     <!-- User -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/custom/css/user.css">

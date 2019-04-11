@@ -24,7 +24,6 @@
     </div>  
 </div>
     </div>
-</div>
 </body>
 <script>
     $(document).ready(function(){
@@ -80,8 +79,8 @@
                         `;
                     }else{
                         result +=`
-                        <div class="col-lg-6  col-md-6 col-sm-12 col-12" style="margin-bottom:20px;">
-                            <div class="card" style="box-shadow:none;">
+                        <div class="col-lg-6  col-md-12 col-sm-12 col-12" style="margin-bottom:20px;">
+                            <div class="card" style="box-shadow:none;overflow:hidden;">
                                 <div class="card-body">
                                     <h6 class="card-title" id="code" data-code="`+data[i].transaction_code +`">Transaction Code : <span style="font-weight:normal;">`+data[i].transaction_code +`</span> </h6>
                                         <div class="detail"></div>
@@ -95,7 +94,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                             <p>Step for Payment Confirmation</p>
                             <ol>
                                 <li>Check your email</li>

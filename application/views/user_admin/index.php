@@ -21,6 +21,10 @@
 
         <!-- datatables -->
         <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/datatables/datatables.min.css"/>
+        
+        <!-- datepicker -->
+        <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/bootstrap/css/bootstrap-datepicker.min.css"/>
+        
 
         </head>
     <body>
@@ -46,6 +50,17 @@
 
     <!-- datatables -->
     <script type="text/javascript" src="<?= base_url() ?>assets/datatables/datatables.min.js"></script>
+
+    <!-- datepicker -->
+    <script src="<?= base_url() ?>assets/bootstrap/js/bootstrap-datepicker.min.js"></script>
+    <!-- <script type="text/javascript">
+        $(document).ready(function () {
+            $('.tanggal').datepicker({
+                format: "dd-mm-yyyy",
+                autoclose:true
+            });
+        });
+    </script> -->
     <script>
         $(document).ready(function(){
             $('#table').DataTable( {

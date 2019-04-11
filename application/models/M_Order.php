@@ -119,9 +119,13 @@ class M_Order extends CI_Model {
     }
     // end Cost
 
-    function cancelOrder($where){
+    function cancelOrder($where, $table){
         $this->db->where($where);
-        $this->db->delete('orders');
+        $this->db->delete($table);
+    }
+    function cancelTransaction($where, $table){
+        $this->db->where($where);
+        $this->db->delete($table);
     }
 
     function expired($whereId, $table){

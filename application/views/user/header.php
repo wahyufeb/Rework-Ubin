@@ -32,7 +32,7 @@
             color:red;
         }
         .side-menu{
-            margin-top:-20px;
+            margin-top:-10px;
         }
         .side-menu a{
             color:#009DFF;
@@ -49,7 +49,7 @@
         }
         @media only screen and (max-width: 469px) {
             .left-side {
-                margin-left: 60px;
+                margin-left: 70px;
                 border:none;
             }
 
@@ -60,7 +60,6 @@
     </style>
 </head>
 <body>
-    <div class="container" style="margin:10px;" id="containerhead">
     <div class="row" id="user-content">
         <div class="col-lg-2 col-md-2 col-sm-6 col-5 left-side">
             <div class="header-menu">

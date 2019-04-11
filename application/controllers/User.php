@@ -340,6 +340,26 @@ class User extends CI_Controller {
         }
     }
 
+    function deleteImg(){
+        $id             =    array('id_user'=>$this->session->userdata('id_user'));
+        $photo         =    $this->M_User->get_where('users', $id);
+
+
+        if($photo->num_rows()>0){
+            $result      =   $photo->row();
+            $photoname   =   $result->photo;
+            
+            if($photoname == "user.svg"){
+                echo "USER SVG";
+            }else{
+                if(file_exists($file=FCPATH.'/uploads/'.$photoname)){
+                    unlink($file);
+                }
+            }
+        }
+        echo "{}";
+    }
+
     
 
     

@@ -23,6 +23,24 @@ class User_admin extends CI_Controller {
         // count orders
         $data['countOrders'] = $this->M_Admin->countall('orders');
 
+        // Total Sales
+        $data['salesTotal'] = $this->M_Admin->totalSales();
+
+        // Total products sold
+        $data['soldout'] = $this->M_Admin->sold();
+
+        // Total Orders
+        $data['totalorders'] = $this->M_Admin->totalOrd();
+
+        // Total Product
+        $data['totalpro'] = $this->M_Admin->totalPro();
+
+        // Total Users
+        $data['totalusers']  = $this->M_Admin->totalUsers();
+
+        // Total testi
+        $data['totaltesti'] = $this->M_Admin->totalTesti();
+        
         $this->template->admin('user_admin/home', $data);
     }
 
@@ -87,6 +105,22 @@ class User_admin extends CI_Controller {
         $this->M_Admin->deleteProduct($where);
         redirect('User_admin/products');
     }
+    function deleteImg(){
+        //Ambil id image
+        $id     =    $this->input->post('id');
+        $where  =    array('id_product' => $id);
+        $image  =    $this->M_Admin->get_where('products', $where);
+
+        if($image->num_rows() > 0){
+            $result     =   $image->row();
+            $img        =   $result->image;
+            
+            if(file_exists($file=FCPATH.'/assets/img/'.$img)){
+                unlink($file);
+            }
+        }
+        echo "{}";
+    }
 
     function updateImage(){
         $config['upload_path']   = FCPATH.'/assets/img/';
@@ -110,18 +144,32 @@ class User_admin extends CI_Controller {
         $where  =    array('id_product' => $id);
         $image  =    $this->M_Admin->get_where('products', $where);
 
-        if($image->num_rows()>0){
+        if($image->num_rows() > 0){
 			$result     =   $image->row();
             $img        =   $result->image;
             
 			if(file_exists($file=FCPATH.'/assets/img/'.$img)){
 				unlink($file);
             }
-            $data = array( 'image' => '');
-            $this->M_User->updateFile('products', $data, $where);
+            $data = array( 'image' => 'no picture');
+            $this->M_Admin->updateFile('products', $data, $where);
 		}
         echo "{}";
 
+    }
+
+    function updateProduct(){
+        $data = array('name' => $this->input->post('update_name'),
+                        'price' => $this->input->post('update_price'),
+                        'weight' => $this->input->post('update_weight'),
+                        'stock' => $this->input->post('update_stock'),
+                        'discount' => $this->input->post('update_discount'),
+                        'catagory' => $this->input->post('update_catagory'),
+                        'description' => $this->input->post('update_description')
+        );
+        $where = array('id_product' => $this->input->post('update_idproduct'));
+        $this->M_Admin->updateProduct($data, $where);
+        redirect('User_admin/products');
     }
 
     // END PRODUCTS PAGE

@@ -79,7 +79,7 @@
                     <p class="card-description">
                         Update Products
                     </p>
-                    <form action="<?= base_url() ?>User_admin/updateProduct">
+                    <form action="<?= base_url() ?>User_admin/updateProduct" method="post">
                     <div id="img"></div>
                     <input type="hidden" value="" name="update_idproduct">
                         <div class="form-group">
@@ -170,17 +170,27 @@
     });
 
     //Event ketika Memulai mengupload
-    image_upload.on("sending",function(a,b,c){
-        a.id = $('input[name="update_idproduct"]').val();
-        c.append("id_product",a.id); //Menmpersiapkan token untuk masing masing foto
+    image_upload.on("sending", function(a,b,c){
+        a.id = $("input[name='update_idproduct']").val();
+        c.append("id_product", a.id); //Menmpersiapkan token untuk masing masing foto
+        $.ajax({
+            type:"POST",
+            data:"id="+a.id,
+            url:"<?= base_url() ?>User_admin/deleteImg",
+            dataType:"json",
+            success:function (){
+                console.log("SUCCESS"); 
+            }
+
+        });
     });
 
     // //Event ketika foto dihapus
     image_upload.on("removedfile",function(a){
-        var id=a.id;
+        var id = a.id;
         $.ajax({
-            type:"post",
-            data:{id:id},
+            type:"POST",
+            data:'id='+id,
             url:"<?php echo base_url('User_admin/remove_image')?>",
             cache:false,
             dataType: 'json',
@@ -281,6 +291,7 @@
                     $('#img').html(`
                     <center>
                         <img src="<?= base_url() ?>assets/img/`+data[i].image+`" width="300">
+                        <a href="#"><i class="fas fa-trash trash"></i></a>
                     </center>
                     `);
                     $('input[name="update_idproduct"]').val(data[i].id_product);

@@ -10,9 +10,9 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-3 col-4">
                             <div class="photo">
-                                <img src="<?= base_url() ?>uploads/<?= $user[0]->photo;?>" width="230">
+                                <img src="<?= base_url() ?>uploads/<?= $user[0]->photo;?>" width="150" style="position:relative;z-index:20;">
                                     <a href="<?= base_url(); ?>User/delete_photo" id="delete-trash">
-                                        <div id="delete-photo" data-toggle="tooltip" data-placement="left" tittle="Delete your photo">
+                                        <div id="delete-photo">
                                             <i class="fas fa-trash trash" id="trash"></i>
                                         </div>  
                                     </a>
@@ -107,7 +107,6 @@
         </div>
         </div>
     </div>
-</div>
 </body>
 <script>
 
@@ -126,7 +125,16 @@ var foto_upload= new Dropzone(".dropzone",{
 //Event ketika Memulai mengupload
 foto_upload.on("sending",function(a,b,c){
 	a.token=Math.random();
-	c.append("token_foto",a.token); //Menmpersiapkan token untuk masing masing foto
+    c.append("token_foto",a.token); //Menmpersiapkan token untuk masing masing foto
+    $.ajax({
+        type:"POST",
+        data:"token="+a.token,
+        url:"<?= base_url() ?>User/deleteImg",
+        dataType:"json",
+        success:function (){
+            console.log("SUCCESS"); 
+        }
+    });
 });
 
 // //Event ketika foto dihapus

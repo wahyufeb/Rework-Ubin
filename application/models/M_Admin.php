@@ -49,6 +49,11 @@ class M_Admin extends CI_Model {
         $this->db->update($table, $data);
     }
 
+    function updateProduct($data, $where){
+        $this->db->where($where);
+        $this->db->update('products', $data);
+    }
+
     // END PRODUCTS
 
 
@@ -131,6 +136,42 @@ class M_Admin extends CI_Model {
         return $this->db->count_all($table);
     }
     // END COUNTS
+
+    // ALL DASHBOARD
+    function totalSales(){
+        $this->db->select('transaction.id_user, transaction.total_payment, invoices.id_user, invoices.status, sum(total_payment) as total');
+        $this->db->join('transaction', 'transaction.id_user = invoices.id_user', 'left');
+        return $this->db->get('invoices')->result_array();
+    }
+
+    function sold(){
+        $this->db->select('orders.id_user, orders.qty, invoices.status, sum(qty) as sold');
+        $this->db->join('orders', 'orders.id_user = invoices.id_user', 'left');
+        return $this->db->get('invoices')->result_array();
+    }
+
+    function totalOrd(){
+        $this->db->select('count(id_order) as orders');
+        return $this->db->get('orders')->result_array();
+    }
+
+    function totalPro(){
+        $this->db->select('count(id_product) as products');
+        return $this->db->get('products')->result_array();   
+    }
+
+    function totalUsers(){
+        $this->db->select('count(id_user) as users');
+        $this->db->where_not_in('level', 'admin');
+        $this->db->where_not_in('level', 'super_admin');
+        return $this->db->get('users')->result_array();
+    }
+
+    function totalTesti(){
+        $this->db->select('count(comment) as comments');
+        return $this->db->get('testimonials')->result_array();
+    }
+    // END ALL DASHBOARD
 
 }
 

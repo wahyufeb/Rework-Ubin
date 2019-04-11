@@ -124,14 +124,13 @@
                 </div><hr>
                 <div class="row mt-200">
                     <div class="col-lg-3 offset-lg-9" >
-                        <a href="#" class="btn btn-danger">Cancel</a>
+                        <a href="<?= base_url() ?>Cart/index" class="btn btn-danger">Cancel</a>
                         <button type="submit" class="btn btn-success">Order Now</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-</div>
 </body>
 <script>
 
