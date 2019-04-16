@@ -151,7 +151,7 @@ class M_Admin extends CI_Model {
     }
 
     function totalOrd(){
-        $this->db->select('count(id_order) as orders');
+        $this->db->select('sum(qty) as orders');
         return $this->db->get('orders')->result_array();
     }
 

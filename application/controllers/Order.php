@@ -269,7 +269,11 @@ class Order extends CI_Controller {
             $this->M_Order->deleteInv($whereInv);
             // Delete Cost
             $this->M_Order->deleteCost($whereCost);
-            $this->M_Order->cancelTransaction($whereId, 'transaction');
+            $getTrans = $this->M_User->transaction($whereId);
+            $status = $getTrans[0]->status;
+            if($status == "unpaid"){
+                $this->M_Order->cancelTransaction($whereId, 'transaction');
+            }
             redirect('User/payment');
         }
     }
@@ -281,7 +285,11 @@ class Order extends CI_Controller {
         $this->M_Order->expired($whereId, 'costs');
         $this->M_Order->expired($whereId, 'invoices');
         $this->M_Order->expired($whereId, 'orders');
-        $this->M_Order->expired($whereId, 'transaction');
+        $getTrans = $this->M_User->transaction($whereId);
+        $status = $getTrans[0]->status;
+        if($status == "unpaid"){
+            $this->M_Order->expired($whereId, 'transaction');
+        }
         redirect('User/payment');
     }
 

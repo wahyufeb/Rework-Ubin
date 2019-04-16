@@ -68,6 +68,14 @@
             height: 160px;
         }
 
+        .dropdown-menu.show {
+            display: block;
+            margin-left: -100px;
+        }
+        a:hover{
+            text-decoration: none;
+        }
+
     </style>
 </head>
 

@@ -49,6 +49,7 @@ class User_super_admin extends CI_Controller {
     }
 
     function productsxls(){
+        $data['filename'] = $this->input->post('filename');
         // Set Time
         date_default_timezone_set('Asia/Jakarta');
         $data['datereport'] = date('d-m-Y');

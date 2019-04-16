@@ -9,11 +9,10 @@ class User_admin extends CI_Controller {
         if($this->session->userdata('level') != "admin"){
             redirect('Login');
         }
-
         $this->load->library('Template');
         $this->load->model('M_Admin'); 
         $this->load->model('M_User');
-        
+        $this->load->model('M_Order');
     }
     
     function index(){
@@ -274,6 +273,7 @@ class User_admin extends CI_Controller {
 
         $whereId = array('id_user' => $id_user);
         $dataInv = array('status' => 'paid');
+        // confirm transaction
         $this->M_Admin->confirmTransaction($whereId, $dataInv);
         redirect('User_admin/orders');
     }

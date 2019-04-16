@@ -18,8 +18,10 @@
                     <i class="mdi mdi-cash-multiple mdi-24px float-right"></i>
                     </h4>
                     <?php foreach($salesTotal as $row): ?>
-                        <?php if($row['status'] == "paid"): ?>
+                        <?php if($row['status'] == "paid"):?>
                             <h2 class="mb-5">Rp. <?= number_format($row['total'], 0,',','.') ?></h2>
+                        <?php else: ?>
+                            <h2 class="mb-5">Rp. 0</h2>
                         <?php endif; ?>
                     <?php endforeach;?>
                         <h6 class="card-text"><?= $soldout[0]['sold'] ?> <span style="font-weight:340;">products sold</span></h6>
