@@ -13,10 +13,11 @@
                 Products
             </h3>
         </div>
+        <!-- <a href="<?= base_url()?>User_admin/cetak" class="btn btn-success" id="cetak">Cetak</a> -->
             <div class="row">
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card" style="padding:30px;">
-                        <div class="table-hover table-striped table-responsive">
+                        <div class="table-hover table-striped table-responsive cetaktable">
                         <table class="table" id="table">
                         <thead align="center"> 
                             <tr>
@@ -26,7 +27,7 @@
                                 <th>Price</th>
                                 <th>Weight</th>
                                 <th>Sold</th>
-                                <th>Action</th>
+                                <th class="hide">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,17 +46,17 @@
                                 </div>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-inverse-dark btn-icon update" data-id="<?= $row['id_product'] ?>" data-toggle="modal" data-target=".bd-example-modal-md-update">
+                                    <button type="button" class="btn btn-inverse-dark btn-icon update hide" data-id="<?= $row['id_product'] ?>" data-toggle="modal" data-target=".bd-example-modal-md-update">
                                         <i class="mdi mdi-pencil"></i>
                                     </button>
 
-                                    <a href="<?= base_url() ?>User_admin/deleteProduct/<?= $row['id_product'] ?>" class="delete-product" data-delete="<?= $row['name'] ?>">   
+                                    <a href="<?= base_url() ?>User_admin/deleteProduct/<?= $row['id_product'] ?>" class="delete-product hide" data-delete="<?= $row['name'] ?>">   
                                         <button type="button" class="btn btn-inverse-danger btn-icon">
                                         <i class="mdi mdi-delete"></i>
                                         </button>
                                     </a>
 
-                                    <button type="button" class="btn btn-inverse-info btn-icon" data-toggle="modal" data-target=".bd-example-modal-md-detail" onclick="detail(<?= $row['id_product'] ?>)">
+                                    <button type="button" class="btn btn-inverse-info btn-icon hide" data-toggle="modal" data-target=".bd-example-modal-md-detail" onclick="detail(<?= $row['id_product'] ?>)">
                                         <i class="mdi mdi-information-outline"></i>
                                     </button>
                                 </td>
@@ -306,6 +307,11 @@
             }
         });
     });
-
-
 </script>
+<!-- <script>
+    $('#cetak').on("click", function(e){
+        e.preventDefault();
+        $('.hide').hide();
+        $('.cetaktable').printArea();
+    });
+</script> -->

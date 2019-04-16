@@ -71,6 +71,47 @@ class Ubin extends CI_Controller {
 		$this->template->component('user/search', $data);
 	}
 
+	function productCat($catagory){
+		// user login id
+		$id = $this->session->userdata('id_user');
+		$where = array('id_user' => $id);
+		
+		// get user by id
+		$data['user'] = $this->M_User->getUser($where, 'users');
+		$where = array('catagory' => $catagory);
+		$data['catagory'] = $this->M_Ubin->catagoryPro($where);
+		$this->template->component('template/search', $data);
+	}
+
+	// Sorting Catagory
+	function sortCatagory(){
+		// user login id
+		$id = $this->session->userdata('id_user');
+		$where = array('id_user' => $id);
+		
+		// get user by id
+		$data['user'] = $this->M_User->getUser($where, 'users');
+		$catagory = $this->input->post('catagory');
+		$sortcat 	= $this->input->post('sortcat');
+			if($sortcat == "upto"){
+				$data['catagory'] = $this->M_Ubin->upto($catagory);
+				$this->template->component('template/search', $data);
+			}elseif($sortcat =="under"){
+				$data['catagory'] = $this->M_Ubin->under($catagory);
+				$this->template->component('template/search', $data);
+			}elseif($sortcat =="alldiscount"){
+				$data['catagory'] = $this->M_Ubin->alldiscount($catagory);
+				$this->template->component('template/search', $data);
+			}else{
+				$where = array('catagory' => $catagory);
+				$data['catagory'] = $this->M_Ubin->catagoryPro($where);
+				$this->template->component('template/search', $data);
+			}
+		$where = array('catagory' => $catagory);
+		$data['catagory'] = $this->M_Ubin->catagoryPro($where);
+		$this->template->component('template/search', $data);
+	}
+
 	function product($id_product){
 		// user login id
 		$id = $this->session->userdata('id_user');
@@ -135,7 +176,7 @@ class Ubin extends CI_Controller {
 	
 		$config['base_url'] = '#';
 		$config['total_rows'] = $this->M_Ubin->count_all();;
-		$config["per_page"] = 8;
+		$config["per_page"] = 16;
 		$config["uri_segment"] = 3;
 		$config["use_page_numbers"] = TRUE;
 		$config['first_link']       = 'First';

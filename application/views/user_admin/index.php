@@ -53,6 +53,7 @@
 
     <!-- datepicker -->
     <script src="<?= base_url() ?>assets/bootstrap/js/bootstrap-datepicker.min.js"></script>
+    <script src="<?= base_url() ?>assets/custom/js/jquery.PrintArea.js"></script>
     <!-- <script type="text/javascript">
         $(document).ready(function () {
             $('.tanggal').datepicker({

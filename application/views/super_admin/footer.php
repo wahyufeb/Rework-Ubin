@@ -40,16 +40,23 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
     <script src="<?= base_url() ?>assets/super_admin/assets/js/init/fullcalendar-init.js"></script>
 
+
+    <!-- datepicker -->
+    <script src="<?= base_url() ?>assets/bootstrap/js/bootstrap-datepicker.min.js"></script>
     <!--Local Stuff-->
+    <script>
+        $(document).ready(function(){
+            $('#tableproduct').DataTable();
+        });
+    </script>
     <script>
         jQuery(document).ready(function($) {
             "use strict";
-
             // Pie chart flotPie1
             var piedata = [
-                { label: "Desktop visits", data: [[1,32]], color: '#5c6bc0'},
-                { label: "Tab visits", data: [[1,33]], color: '#ef5350'},
-                { label: "Mobile visits", data: [[1,35]], color: '#66bb6a'}
+                { label: "Desktop visits", data: [[1,20]], color: '#5c6bc0'},
+                { label: "Tab visits", data: [[1,30]], color: '#ef5350'},
+                { label: "Mobile visits", data: [[1,50]], color: '#66bb6a'}
             ];
 
             $.plot('#flotPie1', piedata, {

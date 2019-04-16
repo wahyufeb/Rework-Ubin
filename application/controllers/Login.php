@@ -15,7 +15,8 @@ class Login extends CI_Controller {
     function login(){
         $email      = $this->input->post('email');
         $password   = $this->input->post('password');
-        $userLog = $this->db->get_where('users', ['email' => $email])->row_array();
+        $userLog    = $this->db->get_where('users', ['email' => $email])->row_array();
+        
         if($userLog){
             if($userLog['active'] == 0){
                 redirect('My404/error');

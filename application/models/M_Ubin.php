@@ -9,7 +9,23 @@ class M_Ubin extends CI_Model {
         return $this->db->get('products')->result();
     }
 
+    function catagoryPro($where){
+        $this->db->where($where);
+        return $this->db->get('products')->result();
+    }
 
+    // Sorting
+    function upto($cat){
+        return $this->db->query("SELECT * FROM products WHERE price > 50000 AND catagory='$cat' AND discount = 0 AND stock > 0")->result();
+    }
+
+    function under($cat){
+        return $this->db->query("SELECT * FROM products WHERE price < 50000 AND catagory='$cat' AND discount = 0 AND stock > 0")->result();
+    }
+
+    function alldiscount($cat){
+        return $this->db->query("SELECT * FROM products WHERE catagory='$cat' AND discount > 0 AND stock > 0")->result();
+    }
     // get all products width no discount
     function getProducts(){
         //return $this->db->limit(12)->get('products')->result_array();
@@ -102,7 +118,7 @@ class M_Ubin extends CI_Model {
         $output = '';
         $this->db->select('*');
         $this->db->from('products');
-        $this->db->order_by('name', 'asc');
+        $this->db->order_by('sold', 'desc');
         $this->db->limit($limit, $start);
         $this->db->where($where);
         $query = $this->db->get();

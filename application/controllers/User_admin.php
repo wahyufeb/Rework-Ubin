@@ -5,6 +5,7 @@ class User_admin extends CI_Controller {
     
     function __construct(){
         parent::__construct();
+        require_once APPPATH.'third_party/dompdf/dompdf_config.inc.php';
         if($this->session->userdata('level') != "admin"){
             redirect('Login');
         }
@@ -57,12 +58,36 @@ class User_admin extends CI_Controller {
         $this->template->admin('user_admin/allproducts', $data);
     }
 
+    // public function cetak(){ 
+    //     $id = $this->session->userdata('id_user');
+    //     $where = array('id_user' => $id);
+
+    //     // saia admin
+        
+    //     // all products
+        
+    //     $dompdf = new Dompdf();
+    //     $data   = "";
+    //     $data['admin'] = $this->M_Admin->saiaAdmin($where);
+    //     $data['products'] = $this->M_Admin->allProducts();
+    //     $html   = $this->load->view('user_admin/allproducts', $data, true);
+    
+    //     $dompdf->load_html($html);
+    
+    //     $dompdf->set_paper('A4', 'landscape');
+    
+    //     $dompdf->render();
+    
+    //     $pdf = $dompdf->output();
+    //     $dompdf->stream('laporanku.pdf', array("Attachment" => false));
+    // }
+
     function addProduct(){
         $config['upload_path']          = './assets/img/';
         $config['allowed_types']        = 'gif|jpg|png|jpeg';
-        $config['max_size']             = 2048;
-        $config['max_width']            = 2000;
-        $config['max_height']           = 2000;
+        $config['max_size']             = 12228;
+        $config['max_width']            = 10000;
+        $config['max_height']           = 10000;
 
         $this->load->library('upload', $config);
 

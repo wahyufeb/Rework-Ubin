@@ -14,21 +14,10 @@
                 <li><a href='<?= base_url() ?>Ubin'>Home</a></li>
                 <li class='active has-sub'><a href='#'>Catagories</a>
                     <ul>
-                        <li class='has-sub'><a href='#'>Mugs</a>
-                            <ul>
-                            <li><a href='#'>Sub Product</a></li>
-                            <li><a href='#'>Sub Product</a></li>
-                            </ul>
-                        </li>
-                        <li class='has-sub'><a href='#'>Gucci</a>
-                            <ul>
-                            <li><a href='#'>Sub Product</a></li>
-                            <li><a href='#'>Sub Product</a></li>
-                            </ul>
-                        </li>                        
-                        <li>
-                            <a href='#'>Vase</a>
-                        </li>
+                        <li><a href='<?= base_url() ?>Ubin/productCat/mugs'>Mugs</a></li>
+                        <li><a href='<?= base_url() ?>Ubin/productCat/vase'>Vase</a></li>
+                        <li><a href='<?= base_url() ?>Ubin/productCat/bowl'>Bowl</a></li>
+                        <li><a href='<?= base_url() ?>Ubin/productCat/jars'>Jars</a></li>
                     </ul>
                 </li>
                 <li><a href='<?= base_url() ?>Ubin/index#big-discounts'>Big Discounts</a></li>
@@ -154,7 +143,7 @@
             data:'id_comment='+id,
             success:function(data){
                 let result = data[0];
-                $('textarea[name="comment"]').val(result.comment);
+                $('textarea[name="comment"]').val(result.comment).focus();
                 $('#update-comment').attr('action', '<?= base_url() ?>Comment/updateComment');
                 $('input[name="idcomment"]').attr('value', ''+ id +'');
                 $('#submit').removeClass('btn-primary');

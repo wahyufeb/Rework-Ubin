@@ -1,41 +1,29 @@
-<div id="top"></div>
-        <div id='cssmenu'>
+<div id='cssmenu'>
+    <ul>
+        <li><a href='<?= base_url() ?>Ubin'>Home</a></li>
+        <li class='active has-sub'><a href='#'>Catagories</a>
             <ul>
-                <li><a href='<?= base_url() ?>Ubin'>Home</a></li>
-                <li class='active has-sub'><a href='#'>Catagories</a>
-                    <ul>
-                        <li class='has-sub'><a href='#'>Mugs</a>
-                            <ul>
-                            <li><a href='#'>Sub Product</a></li>
-                            <li><a href='#'>Sub Product</a></li>
-                            </ul>
-                        </li>
-                        <li class='has-sub'><a href='#'>Gucci</a>
-                            <ul>
-                            <li><a href='#'>Sub Product</a></li>
-                            <li><a href='#'>Sub Product</a></li>
-                            </ul>
-                        </li>                        
-                        <li>
-                            <a href='#'>Vase</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href='#big-discounts' class="scroll">Big Discounts</a></li>
-                <li><a href='#top-products' class="scroll">Top Products</a></li>
-                <li><a href='#all-products' class="scroll">All Products</a></li>
-                <li><a href='#testimonials' class="scroll">Testimonials</a></li>
-                <li><a href='#about' class="scroll">About</a></li>
+                <li><a href='<?= base_url() ?>Ubin/productCat/mugs'>Mugs</a></li>
+                <li><a href='<?= base_url() ?>Ubin/productCat/vase'>Vase</a></li>
+                <li><a href='<?= base_url() ?>Ubin/productCat/bowl'>Bowl</a></li>
+                <li><a href='<?= base_url() ?>Ubin/productCat/jars'>Jars</a></li>
             </ul>
-        </div>
+        </li>
+        <li><a href='#top-products' class="scroll">Top Products</a></li>
+        <li><a href='#all-products' class="scroll">All Products</a></li>
+        <li><a href='#testimonials' class="scroll">Testimonials</a></li>
+        <li><a href='#about' class="scroll">About</a></li>
+    </ul>
+</div>
+<div id="top"></div>
 </div>
 <div id="nostock" data-stock="<?= $this->session->flashdata('nostock') ?>"></div>
 <?php if($this->session->flashdata('nostock')){ ?>
-<?php $this->session->flashdata('nostock'); ?>
-<?php } ?>
-<div class="go-top">
-    <a href="#top" class="scroll">
-        <center><i class="fas fa-chevron-up"></i></center>
+    <?php $this->session->flashdata('nostock'); ?>
+    <?php } ?>
+    <div class="go-top">
+        <a href="#top" class="scroll">
+            <center><i class="fas fa-chevron-up"></i></center>
     </a>
 </div>
 <div class="container">
@@ -46,7 +34,7 @@
     <?php
         $price = $row['price'];
         $disc  = $row['discount'];
-
+        
         $discount = $price * $disc / 100;
         $countDisc = $price - $discount;
         $row['price'] = $countDisc;
@@ -58,10 +46,10 @@
                 <p style="color:white;text-decoration:line-through;margin:40px 0px -50px 10px">Rp. <?= number_format($price, 0,',','.') ?></p>
                 <h3 style="color:white;margin-top:50px;margin-left:20px;">Rp. <?= number_format($row['price'], 0,',','.') ?></h3>
                 <button class="btn btn-primary"><a href="<?= base_url() ?>Ubin/addToCart/<?= $row['id_product']; ?>" class="add-cart">Buy Now</a></button>
-                <a href="<?= base_url() ?>Ubin/product/<?= $row['id_product'] ?>" class="btn  detail_pro">Detail product</a>
+                <a href="<?= base_url() ?>Ubin/product/<?= $row['id_product'] ?>" class="btn  detail_pro">Detail Product</a>
             </div>
         </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
         <!-- end Discount -->
 
         <!-- Top Items -->
@@ -97,7 +85,6 @@
     </div>
     <div class="table-responsive" id="products"></div>
     <nav aria-label="Page navigation example" id="pagination">
-        
     </nav>
 </div>
     <!-- Testimonial -->
@@ -151,6 +138,7 @@
                 </a>
             </div>
         </div>
+        
 
     <!-- end Testimonial -->
 <div class="row">

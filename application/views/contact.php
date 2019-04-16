@@ -11,6 +11,22 @@
 		background-color:#009ae1;
 		color:white;
 	}
+
+	textarea{
+		width: 600px;
+		height:100px;
+	}
+
+	@media only screen and (max-width: 1000px) {
+		textarea{
+			width: 400px;
+		}
+	}
+	@media only screen and (max-width: 400px) {
+		textarea{
+			width: 320px;
+		}
+	}
 </style>
 	<div class="row">
 			<div class="col-lg-6 col-md-8 col-sm-12 col-12 offset-lg-3 offset-md-2 login">
@@ -30,7 +46,7 @@
 							<br>
 						<label for="problemdetail">Problem detail</label>
 						<div class="form-group">
-								<textarea name="problem_detail" id="problem_detail	" cols="58" rows="5"></textarea>
+							<textarea name="problem_detail" id="problem_detail"></textarea>
 						</div>
 						<br><hr>
 						<button type="submit" class="btn text-center" id="btn-contact">Send Problem</button>
