@@ -15,7 +15,7 @@
                             <div class="stat-content">
                                 <div class="text-left dib">
                                 <?php foreach($salesTotal as $row): ?>
-                                    <?php if($row['status'] == "paid"): ?>
+                                    <?php if($row['status'] = "paid"): ?>
                                         <div class="stat-text" style="margin-left:-20px;">Rp.<?= number_format($salesTotal[0]['total'],0,',','.')?></div>
                                     <?php else: ?>
                                         <div class="stat-text" style="margin-left:-20px;">Rp.0</div>

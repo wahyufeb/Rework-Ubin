@@ -43,10 +43,18 @@
 
     <!-- datepicker -->
     <script src="<?= base_url() ?>assets/bootstrap/js/bootstrap-datepicker.min.js"></script>
+    <!-- Print Area -->
+    <script src="<?= base_url() ?>assets/custom/js/jquery.PrintArea.js"></script>
     <!--Local Stuff-->
     <script>
         $(document).ready(function(){
             $('#tableproduct').DataTable();
+        });
+        $(document).ready(function(){
+            $('#tableadmin').DataTable();
+            $('#tableorders').DataTable({
+                responsive:true
+            })
         });
     </script>
     <script>

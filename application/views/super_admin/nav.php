@@ -14,12 +14,15 @@
                     <!-- Accounts -->
                     <li class="menu-title">Accounts</li><!-- /.menu-title -->
                     <li>
-                        <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
+                        <a href="<?= base_url() ?>User_super_admin/users"> <i class="menu-icon fa fa-users"></i>User </a>
                     </li>
 
-                    <li class="menu-title">Extras</li><!-- /.menu-title -->
+                    <li class="menu-title">Orders & Transactions</li><!-- /.menu-title -->
                     <li>
-                        <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
+                        <a href="<?= base_url() ?>User_super_admin/orders"> <i class="menu-icon ti-bag"></i>Orders</a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url() ?>User_super_admin/transaction"> <i class="menu-icon ti-credit-card"></i>Transactions</a>
                     </li>
                     
                 </ul>

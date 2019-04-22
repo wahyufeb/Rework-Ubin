@@ -5,7 +5,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>PRODUCTS</h1>
+                        <h1>USERS</h1>
                     </div>
                 </div>
             </div>
@@ -13,7 +13,7 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li>Data Products</li>
+                            <li>Data Users</li>
                         </ol>
                     </div>
                 </div>
@@ -21,20 +21,19 @@
         </div>
     </div>
 </div>
-
 <div class="content">
     <div class="row">
         <div class="col-lg-3">
             <div class="card">
                 <div class="card-body">
                     <div class="stat-widget-five">
-                        <div class="stat-icon dib flat-color-4">
-                            <i class="ti-package"></i>
+                        <div class="stat-icon dib flat-color-1">
+                            <i class="fa fa-group"></i>
                         </div>
                         <div class="stat-content">
                             <div class="text-left dib">
-                                <div class="stat-text"><span class="count"><?= $totalproducts[0]['totalpro'] ?></span></div>
-                                <div class="stat-heading" style="margin-left:-10px;">Total Products</div>
+                                <div class="stat-text"><span class="count"><?= $totalusers[0]['users'] ?></span></div>
+                                <div class="stat-heading" style="margin-left:-10px;">Total Users</div>
                             </div>
                         </div>
                     </div>
@@ -45,13 +44,13 @@
             <div class="card">
                 <div class="card-body">
                     <div class="stat-widget-five">
-                        <div class="stat-icon dib flat-color-1">
-                            <i class="ti-shopping-cart-full"></i>
+                        <div class="stat-icon dib flat-color-3">
+                            <i class="ti-user"></i>
                         </div>
                         <div class="stat-content">
                             <div class="text-left dib">
-                                <div class="stat-text"><span class="count"><?= $soldout[0]['sold'] ?></span></div>
-                                <div class="stat-heading">Products Sold</div>
+                                <div class="stat-text"><span class="count"><?= $totaladmin[0]['admins'] ?></span></div>
+                                <div class="stat-heading">Total Admins</div>
                             </div>
                         </div>
                     </div>
@@ -61,21 +60,20 @@
         <div class="col-lg-3">
             <div class="card" >
                 <div class="card-body">
-                <button id="printpdf" class="card-body btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="font-size:18px;padding:15px;"><i class="ti-printer"></i> Print</button>
+                    <button id="printpdf" class="card-body btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="font-size:18px;padding:15px;"><i class="ti-printer"></i> Print</button>
                 </div>
             </div>
         </div>
         <div class="col-lg-3">
             <div class="card" >
                 <div class="card-body">
-                <button class="card-body btn btn-success" style="font-size:18px;padding:15px;" data-toggle="modal" data-target="#staticModal"><i class="fa fa-file-text"></i> Excel</button>
+                    <button class="card-body btn btn-success" style="font-size:18px;padding:15px;" data-toggle="modal" data-target="#staticModal"><i class="fa fa-file-text"></i> Excel</button>
                 </div>
             </div>
         </div>
     </div>
     <div class="animated fadeIn">
         <div class="row">
-
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -84,53 +82,75 @@
                     <div class="card-body">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="font-size:16px;">Data Table</a>
+                                <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="font-size:16px;">Users</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false" style="font-size:16px;">Chart</a>
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false" style="font-size:16px;">Admins</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false" style="font-size:16px;">Menu 2</a>
+                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false" style="font-size:16px;">Charts</a>
                             </li>
                         </ul>
                         <div class="tab-content pl-3 p-1" id="myTabContent">
                             <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <div style="margin-bottom:30px;margin-top:30px;"></div>
                             <table id="tableproduct" class="table table-striped table-bordered">
-                                    <thead>
+                                <thead>
                                         <tr align="center">                                
                                             <th>No</th>
-                                            <th>Image</th>
+                                            <th>Photo</th>
+                                            <th>Email</th>
                                             <th>Name</th>
-                                            <th>Price</th>
-                                            <th>Weight</th>
-                                            <th>Discount</th>
-                                            <th>Sold</th>
-                                            <th>Stock</th>
-                                            <th>Catagory</th>
+                                            <th>Telephone</th>
+                                            <th>Province</th>
+                                            <th>City</th>
+                                            <th>Street</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                 <?php $i = 0; ?>
-                                <?php foreach($allproducts as $row): ?>
+                                <?php foreach($users as $row): ?>
                                 <?php $i++ ?>
-                                    <tr align="center">
+                                <tr align="center">
                                         <td><?= $i ?></td>
-                                        <td><img src="<?= base_url() ?>assets/img/<?= $row['image'] ?>" alt="<?= $row['image'] ?>" style="border-radius:0px;width:60px;height:50px;"></td>
-                                        <td align="left"><?= $row['name']; ?></td>
-                                        <td>Rp.<?= number_format($row['price'], 0,',','.') ?></td>
-                                        <td><?=  $row['weight']?> grams</td>
-                                        <td><?= $row['discount'] ?>%</td>
-                                        <td><?= $row['sold'] ?></td>
-                                        <td><?= $row['stock'] ?></td>
-                                        <td><?= $row['catagory'] ?></td>
+                                        <td><img src="<?= base_url() ?>uploads/<?= $row['photo'] ?>" alt="<?= $row['photo'] ?>" style="border-radius:50%;width:60px;height:60px;"></td>
+                                        <td align="left"><?= $row['email']; ?></td>
+                                        <td><?= $row['name'] ?></td>
+                                        <td><?=  $row['telephone']?></td>
+                                        <td><?= $row['province'] ?></td>
+                                        <td><?= $row['city'] ?></td>
+                                        <td><?= $row['street'] ?></td>
                                     </tr>
                                 <?php endforeach; ?>
-                                </tbody>
+                            </tbody>
                             </table>
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <h3>Menu 1</h3>
+                            <div style="margin-bottom:30px;margin-top:30px;"></div>
+                            <table id="tableadmin" class="table table-striped table-bordered">
+                                <thead>
+                                        <tr align="center">                                
+                                            <th>No</th>
+                                            <th>Photo</th>
+                                            <th>Email</th>
+                                            <th>Name</th>
+                                            <th>Telephone</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                <?php $i = 0; ?>
+                                <?php foreach($alladmin as $row): ?>
+                                <?php $i++ ?>
+                                <tr align="center">
+                                        <td><?= $i ?></td>
+                                        <td><img src="<?= base_url() ?>uploads/<?= $row['photo'] ?>" alt="<?= $row['photo'] ?>" style="border-radius:50%;width:60px;height:60px;"></td>
+                                        <td align="left"><?= $row['email']; ?></td>
+                                        <td><?= $row['name'] ?></td>
+                                        <td><?=  $row['telephone']?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                            </table>
                             </div>
                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                                 <h3>Menu 2</h3>
@@ -140,8 +160,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div><!-- .animated -->
 </div><!-- .content -->
@@ -159,13 +177,13 @@
 <div class="modal-dialog" role="document">
     <div class="modal-content">
     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Print Data Product</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Print Data Users</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="modal-body">
-        <form action="<?= base_url() ?>User_super_admin/printProduct" method="post">
+        <form action="<?= base_url() ?>User_super_admin/printUsers" method="post">
         <div class="row">
                 <div class="col-lg-12">
                     <div class="form-group">
@@ -206,13 +224,13 @@
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticModalLabel">Export Data Products</h5>
+                    <h5 class="modal-title" id="staticModalLabel">Export Data Users</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?= base_url() ?>User_super_admin/productsxls" method="post">
+                    <form action="<?= base_url() ?>User_super_admin/usersxls" method="post">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">

@@ -89,7 +89,7 @@ class M_Admin extends CI_Model {
     // ORDERS & TRANSACTION
     function orders(){
         $this->db->from('transaction');
-        $this->db->select('transaction.id_transaction, transaction.transaction_code, users.email, users.photo, users.name, users.telephone, invoices.date, invoices.status');
+        $this->db->select('transaction.id_transaction, transaction.transaction_code, transaction.total_payment, users.email, users.photo, users.name, users.telephone, invoices.date, invoices.status');
         $this->db->join('users', 'users.id_user = transaction.id_user', 'left');
         $this->db->join('invoices', 'invoices.id_user = transaction.id_user', 'left');
         
