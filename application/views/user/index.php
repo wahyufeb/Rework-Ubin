@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/custom/css/review_products.css">
 
     <!-- User -->
-    <link rel="stylesheet" href="<?= base_url() ?>assets/custom/css/user.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/custom/css/user.css">
 
     <!-- Footer -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/custom/css/footer.css">

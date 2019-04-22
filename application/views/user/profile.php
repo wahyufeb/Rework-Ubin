@@ -1,10 +1,22 @@
-<div class="col-lg-9 col-md-9 col-sm-9 col-9 right-side">
+<style>
+    .breadcrumb-item a{
+        color:#333;
+    }
+    .breadcrumb-item a:hover{
+        color:skyblue;
+    }
+</style>
+<div class="col-lg-9 col-md-9 col-sm-11 col-11 offset-lg-1 offset-md-1 right-side">
+    <nav aria-label="breadcrumb" style="margin-top:20px;">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?= base_url() ?>User">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+        </ol>
+    </nav>
 <div class="mess" data-flashdata="<?= $this->session->flashdata('mess');?>"></div>
 <?php if ($this->session->flashdata('mess')):?>
 <?php $this->session->flashdata('mess');?>
 <?php endif; ?>
-            <h5>Profile </h5>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus rerum debitis, quidem quam vero a voluptatum commodi maxime eligendi mollitia magnam eius excepturi, labore doloremque fugit itaque quibusdam sint suscipit.</p>
                 <div class="row">
                     <div class="col-lg-11 col-md-12 col-sm-12 col-12 offset-lg-1 offset-md-1 ">
                     <div class="row">

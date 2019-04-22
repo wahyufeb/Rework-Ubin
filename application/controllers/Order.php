@@ -241,39 +241,35 @@ class Order extends CI_Controller {
         redirect('Cart/index');
     }
 
-    function cancelOrder($id_order){
+    function cancelOrder(){
         $id = $this->session->userdata('id_user');
-
-        $where = array('id_order' => $id_order);
         $whereId = array('id_user' => $id);
-        // add qty in stock products
-        $getOrder = $this->M_Order->getOrder($where);
-        
-        // Delete Invoice
+        $getOrder = $this->M_Order->getOrder($whereId);
+        // Get id for you need
         $id_invoice = $getOrder[0]['id_invoice'];
         $id_cost    = $getOrder[0]['id_cost'];
 
-        $whereInv = array('id_invoice' => $id_invoice);
-        $whereCost= array('id_cost' => $id_cost);
-        
-        $invoice = $this->M_Order->countInv($whereInv);
-        $cost = $this->M_Order->countCost($whereCost);
+        $whereInv   = array('id_invoice' => $id_invoice);
+        $whereCost  = array('id_cost' => $id_cost);
 
-        if($invoice[0]['inv'] == 0 && $cost[0]['cost'] == 0){
-            // Cancel Order
-            $this->M_Order->cancelOrder($where, 'orders');
-            redirect('User/payment');
-            $this->M_Order->cancelOrder($where, 'transaction');
-        }else{
+        // get Inv
+        $inv = $this->M_Order->getInv($whereInv);
+        $status = $inv[0]['status'];
+        if($status == "unpaid"){
+            foreach($getOrder as $row){
+                $qty        = $row['qty'];
+                $id_product = $row['id_product'];
+                $this->M_Order->stockBack($qty, $id_product);
+            }
+            $this->M_Order->cancelOrder($whereId, 'orders');
             //  Delete Invoice
             $this->M_Order->deleteInv($whereInv);
             // Delete Cost
             $this->M_Order->deleteCost($whereCost);
-            $getTrans = $this->M_User->transaction($whereId);
-            $status = $getTrans[0]->status;
-            if($status == "unpaid"){
-                $this->M_Order->cancelTransaction($whereId, 'transaction');
-            }
+            $this->M_Order->cancelOrder($whereId, 'transaction');
+            redirect('User/payment');
+        }else{
+            $this->session->set_flashdata('msg', 'wait');
             redirect('User/payment');
         }
     }

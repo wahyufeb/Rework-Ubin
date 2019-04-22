@@ -18,7 +18,6 @@ class M_Admin extends CI_Model {
     function allProducts(){
         $this->db->order_by('sold', 'desc');
         return $this->db->get('products')->result_array();
-        
     }
 
     // get product id

@@ -2,13 +2,22 @@
             label{
                 font-size:15px;
             }
+            .breadcrumb-item a{
+                color:#333;
+            }
         </style>
-
-        <div id="order" data-order="<?= $this->session->flashdata('order');  ?>"></div>
-        <?php if($this->session->flashdata('order')){ ?>
-        <?php $this->session->flashdata('order') ?>
-        <?php }?>
-        <div class="col-lg-9 col-md-9 col-sm-12 col-12 offset-md-1  right-side">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-12 offset-md-1  right-side">
+                <nav aria-label="breadcrumb" style="margin-top:20px;">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="<?= base_url() ?>User">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="<?= base_url() ?>Cart/index">Cart</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Order</li>
+                        </ol>
+                    </nav>
+                    <div id="order" data-order="<?= $this->session->flashdata('order');  ?>"></div>
+                    <?php if($this->session->flashdata('order')){ ?>
+                        <?php $this->session->flashdata('order') ?>
+                        <?php }?>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead align="center" >

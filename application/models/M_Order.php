@@ -78,7 +78,10 @@ class M_Order extends CI_Model {
     function getOrdersId($where){
         return $this->db->get_where('orders', $where);
     }
-
+    function getInv($idInv){
+        $this->db->where($idInv);
+        return $this->db->get('invoices')->result_array();
+    }
 
     // ======================= Cancel Order ====================== //
 
@@ -120,10 +123,6 @@ class M_Order extends CI_Model {
     // end Cost
 
     function cancelOrder($where, $table){
-        $this->db->where($where);
-        $this->db->delete($table);
-    }
-    function cancelTransaction($where, $table){
         $this->db->where($where);
         $this->db->delete($table);
     }

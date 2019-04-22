@@ -1,10 +1,24 @@
+<style>
+    .breadcrumb-item a{
+        color:#333;
+    }
+    .breadcrumb-item a:hover{
+        color:skyblue;
+    }
+</style>
 <div id="order" data-order="<?= $this->session->flashdata('order');  ?>"></div>
 <div id="nostock" data-stock="<?= $this->session->flashdata('nostock') ?>"></div>
 <?php if($this->session->flashdata('order') && $this->session->flashdata('nostock')){ ?>
 <?php $this->session->flashdata('order') ?>
 <?php $this->session->flashdata('nostock'); ?>
 <?php }?>
-        <div class="col-lg-9 col-md-9 col-sm-11 col-11 right-side">
+<div class="col-lg-9 col-md-9 col-sm-11 col-11 right-side">
+        <nav aria-label="breadcrumb" style="margin-top:20px;">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?= base_url() ?>User">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cart</li>
+        </ol>
+        </nav>
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead align="center">
