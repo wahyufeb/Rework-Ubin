@@ -82,11 +82,13 @@ class Registration extends CI_Controller {
             $name = $first_name.' '.$last_name;
             $level = "member";
             $photo = "user.svg";
+            $join_since = date('Y-m-d');
             
             $data = array(  'email' => htmlspecialchars($email),
                             'name' => htmlspecialchars($name),
                             'photo' => $photo,
                             'password' => password_hash($password, PASSWORD_DEFAULT),
+                            'join_since' => $join_since,
                             'level' => $level,
                             'active' => 0
                         );

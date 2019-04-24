@@ -1,4 +1,4 @@
-<div id='cssmenu'>
+<!-- <div id='cssmenu'>
     <ul>
         <li><a href='<?= base_url() ?>Ubin'>Home</a></li>
         <li class='active has-sub'><a href='#'>Catagories</a>
@@ -14,8 +14,32 @@
         <li><a href='#testimonials' class="scroll">Testimonials</a></li>
         <li><a href='#about' class="scroll">About</a></li>
     </ul>
-</div>
+</div> -->
 <div id="top"></div>
+    <div id="menu-side" ></div>
+    <div id="side-menu-show">
+        <div id="btn-close"></div>
+        <h5 class="text-center">Menu</h5>
+        <hr style="margin-top:30px;background-color:white; height:.7px;" width="70%"/>
+            <div id="menu-data">
+                <ul>
+                    <li><a href='<?= base_url() ?>Ubin'>Home</a></li>
+                    <li id="catagory">Catagory <i class="fa fa-caret-down" id="drop"></i>
+                        <ul>                
+                            <li><a href='<?= base_url() ?>Ubin/productCat/mugs'>Mugs</a></li>
+                            <li><a href='<?= base_url() ?>Ubin/productCat/vase'>Vase</a></li>
+                            <li><a href='<?= base_url() ?>Ubin/productCat/bowl'>Bowl</a></li>
+                            <li><a href='<?= base_url() ?>Ubin/productCat/jars'>Jars</a></li>
+                        </ul>
+                    </li>        
+                    <li><a href='#top-products' class="scroll">Top Products</a></li>
+                    <li><a href='#all-products' class="scroll">All Products</a></li>
+                    <li><a href='#testimonials' class="scroll">Testimonials</a></li>
+                    <li><a href='#about' class="scroll">About</a></li>
+                </ul>
+            </div>
+            <span><i>www.cubinwebsite.com</i> </span>
+    </div>
 </div>
 <div id="nostock" data-stock="<?= $this->session->flashdata('nostock') ?>"></div>
 <?php if($this->session->flashdata('nostock')){ ?>
@@ -103,9 +127,9 @@
                         </div>
                     </div>
                     <?php foreach($testi as $row): ?>                                                           
-                    <div class="carousel-item second" style="background-color:#009ae1;background-repeat: no-repeat;background-size: cover;background-position: center;height:400px;padding:20px;background-image:url('<?= base_url()?>assets/img/<?= $row['image'] ?>');">
+                    <div class="carousel-item second" style="filter:blur(.5px);background-color:#009ae1;background-repeat: no-repeat;background-size: cover;background-position: center;height:400px;padding:20px;background-image:url('<?= base_url()?>assets/img/<?= $row['image'] ?>');">
                         <div class="row">
-                                <div class="col-lg-6 col-md-8 col-sm-10 col-12 offset-lg-3 offset-md-2 offset-sm-1">
+                                <div class="col-lg-6 col-md-8 col-sm-10 col-12 offset-lg-3 offset-md-2 offset-sm-1" style="position:relative;z-index:400;">
                                     <div class="card animated fadeInDown">
                                         <p>
                                             <?php 
@@ -156,4 +180,5 @@
     $('.discount').mouseleave(function(){
         $('.detail_pro', this).css('display', 'none');
     });
+
 </script>

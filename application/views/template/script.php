@@ -19,6 +19,7 @@
 <script src="<?= base_url() ?>assets/custom/js/jquery-ui.min.js"></script>
 <script src="<?= base_url() ?>/assets/custom/js/scroll.js"></script>
 <script src="<?= base_url() ?>/assets/custom/js/jquery-easing.js"></script>
+<script src="<?= base_url() ?>assets/custom/js/sidemenu.js"></script>
 
 <script type="text/javascript">
     $(document).ready(()=>{

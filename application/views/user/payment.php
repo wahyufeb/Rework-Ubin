@@ -74,13 +74,22 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-4 col-12" id="exp" data-exp="<?= $this->session->userdata('id_user')?>">
                 <?php if(count($orders) > 0):?>
-                Expired : 
-                <div id="clock" data-clock="<?= $row['due_date'] ?>"></div><br>
+                <div class="time">
+                <?php if($orders[0]['status'] == "paid"): ?>
+                <?php else:?>
+                    Expired : 
+                    <div id="clock" data-clock="<?= $row['due_date'] ?>"></div>
+                <?php endif;?>
+                </div>
+                <br>
                     <?php if($orders[0]['status'] == "paid"): ?>
-                        Status : Dalam Pengiriman
+                    <h6>Status : 
+                        <i class="fas fa-shipping-fast"></i> In Shipping 
+                    </h6>
                         <div class="row">
-                            <a href="#" class="btn btn-success" id="cancel">Dalam Pengiriman</a>
+                            <button class="btn btn-success" id="confirm">Confirm Payment</button>
                         </div>
+
                     <?php else:?>
                         <div class="row">
                             <a href="<?= base_url() ?>Order/cancelOrder" class="btn btn-danger" id="cancel">Cancel All Order</a>
@@ -94,4 +103,10 @@
     </div>
 </div>
 </body>
+<script>
+    $('#confirm').on("click", function(){
+        $('.clock').hide();
+
+    })
+</script>
 </html>

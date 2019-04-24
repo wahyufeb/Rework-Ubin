@@ -97,8 +97,18 @@ body {
     transform: rotate(-30deg);
   }
 }
-
 @media only screen and (max-width: 770px) {
+  .side-menu ul {
+    display: block;
+    background-color: white;
+    position: relative;
+    z-index: 1;
+    margin-left: -150px;
+    margin-top: 100px;
+    cursor: pointer;
+  }
+}
+@media only screen and (max-width: 400px) {
   .side-menu ul {
     display: block;
     background-color: white;

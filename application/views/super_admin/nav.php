@@ -24,7 +24,10 @@
                     <li>
                         <a href="<?= base_url() ?>User_super_admin/transaction"> <i class="menu-icon ti-credit-card"></i>Transactions</a>
                     </li>
-                    
+                    <li class="menu-title">Mail</li><!-- /.menu-title -->
+                    <li>
+                        <a href="<?= base_url() ?>User_super_admin/message"> <i class="menu-icon ti-email"></i>Message</a>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

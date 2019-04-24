@@ -8,28 +8,31 @@
 </head>
 <body>
 <!-- SPECIAL NAV -->
-<div id="top"></div>
-        <div id='cssmenu'>
-            <ul>
-                <li><a href='<?= base_url() ?>Ubin'>Home</a></li>
-                <li class='active has-sub'><a href='#'>Catagories</a>
-                    <ul>
-                        <li><a href='<?= base_url() ?>Ubin/productCat/mugs'>Mugs</a></li>
-                        <li><a href='<?= base_url() ?>Ubin/productCat/vase'>Vase</a></li>
-                        <li><a href='<?= base_url() ?>Ubin/productCat/bowl'>Bowl</a></li>
-                        <li><a href='<?= base_url() ?>Ubin/productCat/jars'>Jars</a></li>
-                    </ul>
-                </li>
-                <li><a href='<?= base_url() ?>Ubin/index#big-discounts'>Big Discounts</a></li>
-                <li><a href='<?= base_url() ?>Ubin/index#top-products'>Top Products</a></li>
-                <li><a href='<?= base_url() ?>Ubin/index#all-products'>All Products</a></li>
-                <li><a href='<?= base_url() ?>Ubin/index#testimonials'>Testimonials</a></li>
-                <li><a href='<?= base_url() ?>Ubin/index#about'>About</a></li>
-            </ul>
-        </div>
-</div>
+<div id="menu-side"></div>
+    <div id="side-menu-show">
+        <div id="btn-close"></div>
+        <h5 class="text-center">Menu</h5>
+        <hr style="margin-top:30px;background-color:white; height:.7px;" width="70%"/>
+            <div id="menu-data">
+                <ul>
+                    <li><a href='<?= base_url() ?>Ubin'>Home</a></li>
+                    <li id="catagory">Catagory <i class="fa fa-caret-down" id="drop"></i>
+                        <ul>                
+                            <li><a href='<?= base_url() ?>Ubin/productCat/mugs'>Mugs</a></li>
+                            <li><a href='<?= base_url() ?>Ubin/productCat/vase'>Vase</a></li>
+                            <li><a href='<?= base_url() ?>Ubin/productCat/bowl'>Bowl</a></li>
+                            <li><a href='<?= base_url() ?>Ubin/productCat/jars'>Jars</a></li>
+                        </ul>
+                    </li>        
+                    <li><a href='<?= base_url() ?>Ubin/#top-products'>Top Products</a></li>
+                    <li><a href='<?= base_url() ?>Ubin/#all-products'>All Products</a></li>
+                    <li><a href='<?= base_url() ?>Ubin/#testimonials'>Testimonials</a></li>
+                    <li><a href='<?= base_url() ?>Ubin/#about'>About</a></li>
+                </ul>
+            </div>
+            <span><i>www.cubinwebsite.com</i> </span>
+    </div>
 <!-- END SPECIAL NAV -->
-
 <div class="container">
     <div class="row">
         <div class="col-lg-7 product-side">

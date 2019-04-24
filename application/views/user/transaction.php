@@ -10,11 +10,20 @@
     }
     @media only screen and (max-width: 400px) {
         #list{
-            font-size:13px;
+            font-size:14px;
         }
         #list span{
             font-weight: bold;
-            font-size: 13px;
+            font-size: 14px;
+        }
+        .card-body p{
+            font-size: 14px;
+        }
+        .card-body h5{
+            font-size: 18px;
+        }
+        #null{
+            font-size:13px;
         }
     }
 </style>

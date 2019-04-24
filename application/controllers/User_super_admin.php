@@ -265,7 +265,11 @@ class User_super_admin extends CI_Controller {
         }
         
     }
-
+    
+// MESSAGE
+function message(){
+    $this->template->super('super_admin/message');
+} 
 
 
 

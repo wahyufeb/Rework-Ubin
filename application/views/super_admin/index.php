@@ -34,6 +34,9 @@
     <!-- datepicker -->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/bootstrap/css/bootstrap-datepicker.min.css"/>
     <style>
+        body{
+            background-color: rgba(0,0,0,.05)!important;
+        }
     #weatherWidget .currentDesc {
         color: #ffffff!important;
     }

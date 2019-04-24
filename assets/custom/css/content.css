@@ -190,6 +190,92 @@
   text-align: center;
 }
 
+#menu-side{
+  width: 45px;
+  height: 45px;
+  background-image: url('../../arrow.svg');
+  position: fixed;
+  top:50%;
+  left:-1.5%;
+  z-index: 500;
+  border-radius: 50%;
+}
+#menu-side:hover{
+  cursor: pointer;
+}
+#side-menu-show{
+  width: 25%;
+  height: 100vh;
+  background-color:#ffaa00;
+  position: fixed;
+  top:8.4%;
+  left:0;
+  z-index: 500;
+  display: none;
+}
+
+#side-menu-show a:hover{
+  color:#333;
+}
+
+#side-menu-show h5{
+  color: #333;
+  margin-bottom: -20px;
+}
+#side-menu-show span{
+  color: #333;
+  position: absolute;
+  right: 3%;
+  bottom: 12%
+}
+#btn-close{
+  position: absolute;
+  right:3%;
+  top:1.5%;
+  color:#fff;
+  background-image: url('../../close.svg');
+  width: 16px;
+  height:16px;
+}
+#btn-close:hover{
+  cursor: pointer;
+}
+
+#menu-data{
+  color:#fff;
+}
+
+#menu-data ul {
+  margin-top: 30px;
+  list-style: none;
+}
+
+#menu-data ul li {
+  margin-top: 30px;
+}
+
+#menu-data ul li ul{
+  margin-top: -2px;
+  display: none;
+}
+
+ul li#catagory ul li{
+  list-style: square;
+  margin-top: 6px;
+  font-size: 15px;
+}
+
+ul li#catagory:hover{
+  cursor: pointer;
+}
+
+/* Icon dropdown */
+ul li#catagory i#drop{
+  float:right;
+  margin-right:170px;
+}
+
+
 /* testimonials */
 /* #testimonials{
   margin-bottom: -60px;
@@ -249,8 +335,20 @@
 
 
 
+@media only screen and (max-width: 1024px) {
+  /* Icon dropdown */
+  ul li#catagory i#drop{
+    float:right;
+    margin-right:90px;
+  }
 
-
+  #side-menu-show{
+    top:18.8%;
+  }
+  #menu-side{
+    left:-2%;
+  }
+}
 
 @media only screen and (max-width: 996px) {
   #testimonials .first img{
@@ -263,6 +361,22 @@
   #testimonials .second .card p{
     font-size: 14px;
   }
+
+  #side-menu-show{
+    top:11%;
+  }
+
+  #menu-data ul li {
+    margin-top: 20px;
+  }
+  /* Icon dropdown */
+  ul li#catagory i#drop{
+    float:right;
+    margin-right:120px;
+  }
+
+
+  
 }
 
 @media only screen and (max-width: 991px) {
@@ -285,10 +399,29 @@
   #testimonials .second .card::after{
     left: 45%;
   }
+  #menu-data ul li {
+    margin-top: 20px;
+  }
+
+  /* Icon dropdown */
+  ul li#catagory i#drop{
+    float:right;
+    margin-right:120px;
+  }
 }
 
 
+@media only screen and (max-width: 768px) {
+  /* Icon dropdown */
+  ul li#catagory i#drop{
+    float:right;
+    margin-right:50px;
+  }
 
+  #menu-side{
+    left:-2.5%;
+  }
+}
 @media only screen and (max-width: 750px) {
     /* Top Items */
     .top-items .card img {
@@ -332,6 +465,20 @@
     #testimonials .second .card::after{
       left: 45%;
     }
+
+    #side-menu-show{
+      width:40%;
+    }
+
+    #menu-data ul li {
+      margin-top: 20px;
+    }
+    
+    /* Icon dropdown */
+    ul li#catagory i#drop{
+      float:right;
+      margin-right:160px;
+    }
 }
 
 
@@ -341,11 +488,31 @@
   }
 
   #testimonials .second .card::after{
-    left: 45%;
+    left: 47%;
+  }
+
+  /* Icon dropdown */
+  ul li#catagory i#drop{
+    float:right;
+    margin-right:90px;
+  }
+
+  #menu-side{
+    left:-3%;
   }
 
 }
+@media only screen and (max-width: 425px) {
+  /* Icon dropdown */
+  ul li#catagory i#drop{
+    float:right;
+    margin-right:40px;
+  }
 
+  #menu-side{
+    left:-3.8%;
+  }
+}
 @media only screen and (max-width: 400px) {
   /* Top Items */
   .top-items .card img {
@@ -398,4 +565,25 @@
     font-size: 13px;
   }
   /* END BIG DISCOUNT */
+  #side-menu-show{
+    width:60%;
+  }
+  #menu-data ul li {
+    margin-top: 15px;
+  }
+
+  /* Icon dropdown */
+  ul li#catagory i#drop{
+    float:right;
+    margin-right:60px;
+  }
+
+  #menu-side{
+    left:-4.3%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  #menu-side{
+    left:-5%;
+  }
 }
