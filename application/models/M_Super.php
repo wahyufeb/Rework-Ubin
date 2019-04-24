@@ -16,7 +16,7 @@ class M_Super extends CI_Model {
 
     function alladmin(){
         $this->db->where('level', 'admin');
-        return $this->db->get('users')->result_array();
+        return $this->db->get('users');
     }
 
     function allorders(){
@@ -72,6 +72,23 @@ class M_Super extends CI_Model {
     function totalPayment(){
         $this->db->select('SUM(total_payment) as payment');
         return $this->db->get('transaction')->result_array();
+    }
+
+    // MESSAGE
+    function searchAdmin($key){
+        $this->db->where("level", "admin");
+        $this->db->like('name', $key);;
+        return $this->db->get('users')->result();
+    }
+
+    function send($data){
+        $this->db->insert('message', $data);
+    }
+
+    function chat($from, $to){
+        $this->db->where('send_from', $from);
+        $this->db->where('send_to', $to);
+        return $this->db->get('message')->result();
     }
 }
 

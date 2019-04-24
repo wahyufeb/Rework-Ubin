@@ -96,7 +96,7 @@ class User_super_admin extends CI_Controller {
         $data['totaladmin'] = $this->M_Super->totaladmin();
 
         // Admins
-        $data['alladmin'] = $this->M_Super->alladmin();
+        $data['alladmin'] = $this->M_Super->alladmin()->result_array();
         // Users
         $data['users'] = $this->M_Admin->allAccounts();
         $this->template->super('super_admin/users', $data);
@@ -267,9 +267,46 @@ class User_super_admin extends CI_Controller {
     }
     
 // MESSAGE
-function message(){
-    $this->template->super('super_admin/message');
-} 
+    function message(){
+        $this->template->super('super_admin/message');
+    } 
+    function getAllAdmin(){
+        $alladmin = $this->M_Super->alladmin()->result();
+        echo json_encode($alladmin);
+    }
+
+    function searchAdmin(){
+        $key = $this->input->post('key');
+        $search = $this->M_Super->searchAdmin($key);
+        echo json_encode($search);
+    }
+
+    function messageTo(){
+        $this->template->super('super_admin/directMessage');
+    }
+
+    function sendMess(){
+        date_default_timezone_set('Asia/Jakarta');
+        $from   = $this->session->userdata('id_user');
+        $to     = $this->input->post('to');
+        $mess   = $this->input->post('mess');
+        $date   = date('d-m-y H:i');
+            $data = array(
+                'send_from' => $from,
+                'send_to'   => $to,
+                'mess'     => $mess,
+                'date'      => $date
+            );
+        $send = $this->M_Super->send($data);
+        echo json_encode($send);
+    }
+
+    function getChat(){
+        $from   = $this->session->userdata('id_user');
+        $to     = $this->input->post('to');
+        $chat = $this->M_Super->chat($from, $to);
+        echo json_encode($chat);
+    }
 
 
 
