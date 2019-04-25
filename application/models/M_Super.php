@@ -85,9 +85,16 @@ class M_Super extends CI_Model {
         $this->db->insert('message', $data);
     }
 
+    function getUser($where){
+        $this->db->where($where);
+        return $this->db->get('users');
+    }
+
     function chat($from, $to){
+        $this->db->join('users', 'users.id_user = message.send_from', 'left');
         $this->db->where('send_from', $from);
         $this->db->where('send_to', $to);
+        $this->db->order_by('date', 'asc');
         return $this->db->get('message')->result();
     }
 }

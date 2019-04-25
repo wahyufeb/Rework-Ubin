@@ -308,6 +308,12 @@ class User_super_admin extends CI_Controller {
         echo json_encode($chat);
     }
 
+    function getUser(){
+        $where = array('id_user' => $this->input->post('id'));
+        $get = $this->M_Super->getUser($where)->result();
+        echo json_encode($get);
+    }
+
 
 
 }
