@@ -39,8 +39,6 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
     <script src="<?= base_url() ?>assets/super_admin/assets/js/init/fullcalendar-init.js"></script>
-
-
     <!-- datepicker -->
     <script src="<?= base_url() ?>assets/bootstrap/js/bootstrap-datepicker.min.js"></script>
     <!-- Print Area -->
@@ -152,7 +150,7 @@
                 var chart = new Chartist.Line('#traffic-chart', {
                     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
                     series: [
-                    [0, 18000, 35000,  25000,  22000,  0],
+                    [0, 100, 200,  300,  400,  0],
                     [0, 33000, 15000,  20000,  15000,  300],
                     [0, 15000, 28000,  15000,  30000,  5000]
                     ]

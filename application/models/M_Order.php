@@ -8,6 +8,12 @@ class M_Order extends CI_Model {
     }
 
     function orderNow($id, $invoice, $costs, $total){
+        // add to costs table
+        $this->db->insert('costs', $costs);
+        $id_costs = $this->db->insert_id();
+        // add to invoice table
+        $this->db->insert('invoices', $invoice);
+        $id_invoice = $this->db->insert_id();
         //  Transaction Table
         $length = 15;
         $code= "";
@@ -18,16 +24,11 @@ class M_Order extends CI_Model {
             }
         $transaction = array('transaction_code' => $code,
                                 'id_user' => $id,
+                                'id_invoice' => $id_invoice,
                                 'total_payment' => $total
         );
         $this->db->insert('transaction', $transaction);
 
-        // add to costs table
-        $this->db->insert('costs', $costs);
-        $id_costs = $this->db->insert_id();
-        // add to invoice table
-        $this->db->insert('invoices', $invoice);
-        $id_invoice = $this->db->insert_id();
 
         // Qty
         foreach($this->cart->contents() as $row){

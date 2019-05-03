@@ -51,8 +51,6 @@ const base    = "http://localhost/rework/";
 
 // id user
 let id = $('#exp').data('exp');
-
-
 $("#clock").countdown(date, function(event) {
   $(this).html(event.strftime("%D days %H:%M:%S"));
   let exp = event.strftime("%D days %H:%M:%S");

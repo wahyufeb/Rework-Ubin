@@ -106,7 +106,7 @@
 <script>
     $('#confirm').on("click", function(){
         $('.clock').hide();
-
     })
+    
 </script>
 </html>

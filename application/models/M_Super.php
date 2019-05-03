@@ -18,7 +18,7 @@ class M_Super extends CI_Model {
         $this->db->where('level', 'admin');
         return $this->db->get('users');
     }
-
+//  ORDERS
     function allorders(){
         $this->db->select('invoices.date, invoices.status, costs.province, costs.city, costs.courier, costs.service, costs.postal_code, costs.street_adress, costs.total_cost, products.image, products.name as namapro, products.price, users.email, transaction.total_payment, orders.qty');
         $this->db->join('invoices', 'invoices.id_invoice = orders.id_invoice', 'left');
@@ -53,6 +53,15 @@ class M_Super extends CI_Model {
         return $this->db->get('orders')->result_array();
     }
 
+    function chartOrders(){
+        $this->db->select('invoices.date as date, transaction.total_payment as total');
+        
+        $this->db->join('invoices', 'invoices.id_invoice = transaction.id_invoice', 'left');
+        return $this->db->get('transaction')->result();
+    }
+
+
+// TRANSACTION
     function searchTransaction($start, $end){
         $this->db->from('transaction');
         $this->db->select('transaction.id_transaction, transaction.transaction_code,transaction.total_payment, users.email, users.photo, users.name, users.telephone, invoices.date, invoices.status');
@@ -74,7 +83,7 @@ class M_Super extends CI_Model {
         return $this->db->get('transaction')->result_array();
     }
 
-    // MESSAGE
+// MESSAGE
     function searchAdmin($key){
         $this->db->where("level", "admin");
         $this->db->like('name', $key);;
@@ -95,6 +104,13 @@ class M_Super extends CI_Model {
         $this->db->where('send_from', $from);
         $this->db->where('send_to', $to);
         $this->db->order_by('date', 'asc');
+        return $this->db->get('message')->result();
+    }
+    function chat2($from, $to){
+        $this->db->join('users', 'users.id_user = message.send_from', 'left');
+        $this->db->where('send_from', $from);
+        $this->db->where('send_to', $to);
+        $this->db->order_by('date', 'desc');
         return $this->db->get('message')->result();
     }
 }

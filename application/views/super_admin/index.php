@@ -33,6 +33,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/r-2.2.2/datatables.min.js"></script>
     <!-- datepicker -->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/bootstrap/css/bootstrap-datepicker.min.css"/>
+
     <style>
         body{
             background-color: rgba(0,0,0,.05)!important;

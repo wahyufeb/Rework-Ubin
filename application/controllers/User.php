@@ -122,19 +122,17 @@ class User extends CI_Controller {
         }
         // Konfigurasi email
         $this->load->library('email');
-        $config = array();
-        $config['charset'] = 'utf-8';
-        $config['useragent'] = 'Codeigniter';
-        $config['protocol']= "smtp";
-        $config['mailtype']= "html";
-        $config['smtp_host']= "ssl://smtp.gmail.com";//pengaturan smtp
-        $config['smtp_port']= "465";
-        $config['smtp_timeout']= "400";
-        $config['smtp_user'] = "cubinwebsite@gmail.com";
-        $config['smtp_pass'] = "wahyu23022002";
-        $config['crlf']="\r\n"; 
-        $config['newline']="\r\n"; 
-        $config['wordwrap'] = TRUE;
+        $ci = get_instance();
+        $ci->load->library('email');
+        $config['protocol'] = "smtp";
+        $config['smtp_host'] = "ssl://smtp.gmail.com";
+        $config['smtp_port'] = "465";
+        $config['smtp_user'] = "shopcubeen@gmail.com";
+        $config['smtp_pass'] = "wahyufebrianto23022002";
+        $config['charset'] = "utf-8";
+        $config['mailtype'] = "html";
+        $config['newline'] = "\r\n";
+        $ci->email->initialize($config);
 
         
         //memanggil library email dan set konfigurasi untuk pengiriman email

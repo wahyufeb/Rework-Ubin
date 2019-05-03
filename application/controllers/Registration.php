@@ -96,24 +96,17 @@ class Registration extends CI_Controller {
             //print_r($id);
             //enkripsi id
             $enkripsi_id = md5($id);
-
-
-            $this->load->library('email');
-            $config = array();
-            $config['charset'] = 'utf-8';
-            $config['useragent'] = 'Codeigniter';
-            $config['protocol']= "smtp";
-            $config['mailtype']= "html";
-            $config['smtp_host']= "ssl://smtp.gmail.com";//pengaturan smtp
-            $config['smtp_port']= "465";
-            $config['smtp_timeout']= "400";
-            $config['smtp_user'] = "cubinwebsite@gmail.com";
-            $config['smtp_pass'] = "wahyu23022002";
-            $config['crlf']="\r\n"; 
-            $config['newline']="\r\n"; 
-            $config['wordwrap'] = TRUE;
-            //memanggil library email dan set konfigurasi untuk pengiriman email
-            $this->email->initialize($config);
+            $ci = get_instance();
+            $ci->load->library('email');
+            $config['protocol'] = "smtp";
+            $config['smtp_host'] = "ssl://smtp.gmail.com";
+            $config['smtp_port'] = "465";
+            $config['smtp_user'] = "shopcubeen@gmail.com";
+            $config['smtp_pass'] = "wahyufebrianto23022002";
+            $config['charset'] = "utf-8";
+            $config['mailtype'] = "html";
+            $config['newline'] = "\r\n";
+            $ci->email->initialize($config);
             //konfigurasi pengiriman
             $this->email->from($config['smtp_user']);
             $this->email->to($email);
@@ -124,6 +117,7 @@ class Registration extends CI_Controller {
             if($this->email->send()){
                 echo "Berhasil melakukan registrasi, silahkan cek email kamu";
             }else{
+                show_error($this->email->print_debugger());
                 echo "Berhasil melakukan registrasi, namu gagal mengirim verifikasi email, silahkan masukan email yang valid";
             }
         }        
@@ -133,8 +127,8 @@ class Registration extends CI_Controller {
         $this->M_Registration->verificationKey($key);
         $this->session->set_flashdata('flash', 'verifikasi');
         redirect('Login/index');
+
     }
 
 }
-
 /* End of file Registration.php */

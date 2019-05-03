@@ -1,3 +1,4 @@
+
 <div class="breadcrumbs">
     <div class="breadcrumbs-inner">
         <div class="row m-0">
@@ -141,32 +142,32 @@
                                             </tr>
                                         </thead>
                                         <tbody id="result">
-                                        </tbody>
-                                </table>
-                            </div>
-                            </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <h3>Menu 1</h3>
-                                <p>Some content here.</p>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <h3>Menu 1</h3>
+                                    <p>Some content here.</p>
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <h4 class="mb-3">Line Chart </h4>
-                                                    <canvas id="line"></canvas>
+                                                    <h4 class="mb-3">Bar chart </h4>
+                                                    <canvas id="barChartOrders"></canvas>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div style="display:none;">
-                                        <div class="col-lg-12">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <h4 class="mb-3">Yearly Sales </h4>
-                                                            <canvas id="sales-chart"></canvas>
-                                                        </div>
+                                        </div><!-- /# column -->
+                                        <div style="display:none">
+                                            <div class="col-lg-6">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="mb-3">Yearly Sales </h4>
+                                                        <canvas id="sales-chart"></canvas>
                                                     </div>
+                                                </div>
                                             </div><!-- /# column -->
+
                                             <div class="col-lg-6">
                                                 <div class="card">
                                                     <div class="card-body">
@@ -175,14 +176,61 @@
                                                     </div>
                                                 </div>
                                             </div><!-- /# column -->
+
+
                                             <div class="col-lg-6">
                                                 <div class="card">
                                                     <div class="card-body">
-                                                        <h4 class="mb-3">Bar chart </h4>
-                                                        <canvas id="barChart"></canvas>
+                                                        <h4 class="mb-3">Rader chart </h4>
+                                                        <canvas id="radarChart"></canvas>
                                                     </div>
                                                 </div>
                                             </div><!-- /# column -->
+
+                                            <div class="col-lg-6">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="mb-3">Line Chart </h4>
+                                                        <canvas id="lineChart"></canvas>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h4 class="mb-3">Doughut Chart </h4>
+                                                            <canvas id="doughutChart"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- /# column -->
+                                            </div><!-- /# column -->
+                                            <div class="col-lg-6">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="mb-3">Pie Chart </h4>
+                                                        <canvas id="pieChart"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div><!-- /# column -->
+
+
+                                            <div class="col-lg-6">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="mb-3">Polar Chart </h4>
+                                                        <canvas id="polarChart"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div><!-- /# column -->
+
+                                            <div class="col-lg-6">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="mb-3">Single Bar Chart </h4>
+                                                        <canvas id="singelBarChart"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div><!-- /# column -->    
                                         </div>
                                     </div>
                             </div>
@@ -254,10 +302,23 @@
         </div>
     </div>
 </div>
+
 <!-- Print Area -->
+
 <script src="<?= base_url() ?>assets/custom/js/jquery.PrintArea.js"></script>
 <!-- datepicker -->
 <script src="<?= base_url() ?>assets/bootstrap/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+<script src="<?= base_url() ?>assets/super_admin/assets/js/main.js"></script>
+<!--  Chart js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script>
+<script src="<?= base_url() ?>assets/super_admin/assets/js/init/chartjs-init.js"></script>
+<!--Flot Chart-->
+<script src="https://cdn.jsdelivr.net/npm/jquery.flot@0.8.3/jquery.flot.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flot-spline@0.0.1/js/jquery.flot.spline.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
 		$('.tanggal').datepicker({
@@ -266,6 +327,7 @@
 		});
 	});
 </script>
+
 <script>
 $(document).ready(function(){
 	$.ajax({
@@ -327,6 +389,7 @@ $(document).ready(function(){
 	});
 })
 </script>
+
 <script>
     $('.typo').hide();
     $('#printpdf').on("click", function(){
@@ -334,3 +397,65 @@ $(document).ready(function(){
         $('.out').printArea();
     });
 </script>
+
+<script>
+</script>
+<script> 
+$(document).ready(function(){
+    realData();
+})
+        const realData=(val)=>{
+            $.ajax({
+                url:'<?=base_url() ?>User_super_admin/chartData',
+                dataType:'json',
+                type:'POST',
+                success:function(data){
+                    for (let i = 0; i < data.length; i++) {
+                            myChart.data.labels.push(data[i].date);
+                            myChart.data.datasets[0].data.push(data[i].total);
+                            myChart.update();
+                    }
+                }
+            });
+        }
+        const up=()=>{
+            $.ajax({
+                url:'<?=base_url() ?>User_super_admin/chartData',
+                dataType:'json',
+                type:'POST',
+                success:function(data){
+                    console.log(data)
+                }
+            });
+        }
+        // bar chart
+        var ctx = document.getElementById( "barChartOrders" );
+        // ctx.height = 200;
+        var myChart = new Chart( ctx, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [
+                    {
+                        label: "Orders",
+                        data: [],
+                        borderColor: "rgba(0, 194, 146, 0.9)",
+                        borderWidth: "0",
+                        backgroundColor: "rgba(0, 194, 146, 0.5)"
+                                }
+                            ]
+            },
+            options: {
+                scales: {
+                    yAxes: [ {
+                        ticks: {
+                            beginAtZero: true
+                        }
+                                    } ]
+                }
+            }
+        } );
+
+// }
+</script>
+

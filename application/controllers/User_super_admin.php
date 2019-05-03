@@ -153,6 +153,12 @@ class User_super_admin extends CI_Controller {
         $data['orders'] = $this->M_Super->allOrders()->result();
         $this->template->super('super_admin/orders', $data);
     }
+
+    function chartData(){
+        // charJS Order
+        $chartOrder = $this->M_Super->chartOrders();
+        echo json_encode($chartOrder);
+    }
     function ordersxls(){ 
         $start = $this->input->post('start');
         $end = $this->input->post('end');
@@ -305,6 +311,12 @@ class User_super_admin extends CI_Controller {
         $from   = $this->session->userdata('id_user');
         $to     = $this->input->post('to');
         $chat = $this->M_Super->chat($from, $to);
+        echo json_encode($chat);
+    }
+    function getChat2(){
+        $from   = $this->session->userdata('id_user');
+        $to     = $this->input->post('to');
+        $chat = $this->M_Super->chat2($to, $from);
         echo json_encode($chat);
     }
 

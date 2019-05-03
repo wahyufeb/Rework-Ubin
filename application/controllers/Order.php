@@ -276,17 +276,10 @@ class Order extends CI_Controller {
 
     function expired(){
         $whereId = array('id_user' => $this->input->post('id'));
-        $where = array('id_user' => $this->session->userdata('id_user'));
-        $getOrders = $this->M_Order->getOrder($where);
         $this->M_Order->expired($whereId, 'costs');
         $this->M_Order->expired($whereId, 'invoices');
         $this->M_Order->expired($whereId, 'orders');
-        $getTrans = $this->M_User->transaction($whereId);
-        $status = $getTrans[0]->status;
-        if($status == "unpaid"){
-            $this->M_Order->expired($whereId, 'transaction');
-        }
-        redirect('User/payment');
+        $this->M_Order->expired($whereId, 'transaction');
     }
 
 
